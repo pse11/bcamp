@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      background-color: black;
+    }
+    img{
+      color: white;
+    }
+    #header li {
+        /*하위 선택자*/
+        display: inline-block;
+        float: right;
+      }
+    #header>img {
+      display: inline-block;
+      float: left;
+    }
+    .imgs{
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <ul class="imgs">
+      <img src="" alt="mini_logo">
+      <li><img src="" alt="first" onclick="detail_Calander()"></li>
+      <li><img src="" alt="second" onclick="talk()"></li>
+      <li><img src="" alt="third" onclick="more()"></li>
+    </ul>
+  </div>
+  <div id="profile">
+    <img src="" alt="">
+    <img src="" alt="">
+  </div>
+  <div id="main">
+    <div id="left_contents">
+      <div id="prof"></div>
+      <div id="calander"></div>
+    </div>
+    <div id="right_contents"></div>
+  </div>
+  <div id="footer">
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+  </div>
+</body>
+</html>

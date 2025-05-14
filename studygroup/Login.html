@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      background-color: black;
+    }
+    div{
+      text-align: center;
+    }
+    h1,p{
+      color: white;
+    }
+    img{
+      width: 100px;
+      height: 150px;
+    }
+  </style>
+  <script>
+    function guest(){
+      let loc = location.href;
+      location.href="./Main.html";
+    }
+    function join(){
+      let loc = location.href;
+      location.href="./Join.html";
+    }
+  </script>
+</head>
+<body>
+  <div>
+    <img src="./logo.png" alt="logo" id="logo">
+    <h1 id="title">todo mate</h1>
+    <p>할 일을 작성하고 매일을 기록해보세요.</p>
+  </div>
+  <div>
+    <button id="guest" onclick="guest()">게스트로 시작</button><br>
+    <button id="join" onclick="join()">회원가입</button><br>
+    <button id="login" onclick="login()">로그인</button><br>
+  </div>
+</body>
+</html>
