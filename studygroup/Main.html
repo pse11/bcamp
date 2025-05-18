@@ -7,36 +7,87 @@
   <style>
     body{
       background-color: black;
+      margin-left: 100px;
+      margin-top: 50px;
+      margin-right: 100px;
+
     }
     img{
       color: white;
     }
-    #header li {
-        /*하위 선택자*/
-        display: inline-block;
-        float: right;
-      }
-    #header>img {
-      display: inline-block;
+    #header_left{
       float: left;
     }
-    .imgs{
+    #header_right{
+      float:right;
+    }
+   
+    #pimg{
       cursor: pointer;
+    }
+    a{
+      text-decoration: none;
+      font-size:15pt;
+    }
+    #header_left > img{
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+    #header{
+      height: 30px;
+    }
+    #pimg{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline;
+    }
+    #profile{
+      margin-top: 20px;
+    }
+    #pbtn{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .ps{
+      width: 50px;
+      height: 50px;
+      float: left;
+      cursor: pointer;
+    }
+    .ps>p{
+      width: 40px;
+      color: white;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-size: 10px;
     }
   </style>
 </head>
 <body>
   <div id="header">
-    <ul class="imgs">
-      <img src="" alt="mini_logo">
-      <li><img src="" alt="first" onclick="detail_Calander()"></li>
-      <li><img src="" alt="second" onclick="talk()"></li>
-      <li><img src="" alt="third" onclick="more()"></li>
-    </ul>
+    <div id="header_left">
+        <img src="./logo.png" alt="mini_logo">
+    </div>
+    <div id="header_right">
+        <a href="">&nbsp;📅&nbsp;</a>
+        <a href="">&nbsp;✈️&nbsp;</a>
+        <a href="">&nbsp;➕&nbsp;</a>
+    </div>
   </div>
   <div id="profile">
-    <img src="" alt="">
-    <img src="" alt="">
+    <div class="ps">
+      <img src="./logo.png" alt="me" id="pimg">
+      <p>me</p>
+    </div>
+    <div class="ps">
+      <button id="pbtn">></button>
+    </div>
+    
   </div>
   <div id="main">
     <div id="left_contents">
