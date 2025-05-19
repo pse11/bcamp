@@ -8,9 +8,11 @@
 <script src="./js/jquery-3.7.1.min.js"></script>
 <script>
   $(function(){
+    // 11
     $("button").eq(0).click(function(){
       $(".highlight").append("✔ 완료");
     })
+    //12
     $("button").eq(1).click(function(){
       for(let i=0;i<$("ul:eq(0) > li").length;i++){
         let nan = $("ul:eq(0) >li").eq(i).text().split(" ");
@@ -20,17 +22,21 @@
         }
       }
     })
+    //13
     $("#clickCounter").click(function(){
       let c = $("#clickCounter").text();
       c++;
       $("#clickCounter").text(c);
     })
+    //14
     $("#liveInput").change(function(){
       $("#liveOutput").text($("#liveInput").val());
     })
+    //15
     $("button").eq(2).click(function(){
       $(".sBox:nth-child(odd)").slideUp();
     })
+    //16
     $("#lengthCheck").change(function(){
       if($("#lengthCheck").val().length>=5){
         $("#lengthCheck").css("background-color","green");
@@ -38,6 +44,7 @@
         $("#lengthCheck").css("background-color","red");
       }
     })
+    //17
     $("button").eq(3).click(function(){
       let max = 0;
       let idx = 0;
@@ -49,10 +56,31 @@
       })
       $("#maxTable td:contains(9)").css("background-color","orange");
     })
+    //18
+    let count = 1; //count는 실행될때마다 누적되어야하기 때문에 전역변수로 사용하였다.
     $("button").eq(4).click(function(){
-      let count = 0;
-      
+      //버튼을 클릭할 때 3개가 한 사이클로 돌기 때문에 각각 3으로 나눈 나머지가 1,2,0일때로 조건을 걸면 같은 패턴으로 색을 바꿀 수 있다.
+      switch(count%3){ 
+        case 1:
+          $("#colorCycle").css("background-color","red");
+          break;
+        case 2:
+          $("#colorCycle").css("background-color","blue");
+          break;
+        case 0:
+          $("#colorCycle").css("background-color","green");
+          break;
+      }
       count++;
+    })
+    //19
+    $("button").eq(5).click(function(){
+      $("#dynamicList").append($("<li>").text("추가됨"));
+    })
+    //20
+    $("#addTextBtn").click(function(){
+      let val = $("#createText").val();
+      $("#textOutput").append($("<p>").text(val));
     })
   })
 </script>

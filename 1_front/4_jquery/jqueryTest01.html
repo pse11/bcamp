@@ -52,9 +52,30 @@
 		$("button").eq(5).click(function(){
 			$("#isChild").children().children().parent().remove();
 		})
+		//7
+		//replace의 $("p").replaceWith("<b>replaceWith</b>");를 사용
 		$("button").eq(6).click(function(){
-			$("")
+			$("table:eq(0) tr").eq(0).replaceWith($("table:eq(0) tr").eq(1)); //사라지네..?
 		})
+		//8
+		$("button").eq(7).click(function(){
+			$("#cellTable td").each(function(){ //td를 순회하면서 함수 실행한다.
+				if($(this).text()>10){
+					$(this).css("background-color","yellow");
+				}
+			})
+		})
+		//9
+		$("button").eq(8).click(function(){
+			//클래스 box의 3번째 요소의 자식 span가 bold라는 텍스트를 갖고 있는 지
+			$(".box:eq(3) span:contains('bold')").css("font-weight","bold");
+		})
+		//10
+		$("button").eq(9).click(function(){
+			$("#lastQuestion").attr("readonly","readonly");
+			$("#lastQuestion").css("color","red");
+		})
+		
 	})
 	
 </script>
