@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .menu{
+            width:150px;
+            background-color: pink;
+            position: absolute;
+        }
+        #menu2{
+            left:170px;
+
+        }
+        #menu3{
+            left: 330px;
+        }
+        a{text-decoration: none;}
+    </style>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            //.menu 아래 모든 div태그를 숨긴다.
+            $(".menu div").css("display","none");
+            //마우스를 올리면 숨겨둔 애들을 보여준다.
+            $(".menu").hover(
+                /*
+                function(){ //hover : 마우스가 올라오는지. function: 마우스 올라왔을 때 handlerIn
+                    $(this).children("div").show();//이벤트가 발생한 태그($(this))의 자식태그인 div태그를 보여준다.
+                },
+                function(){ //function: 마우스 내려갔을 때 handlerOut
+                    $(this).children("div").hide();
+                }
+                */
+               function(){
+                $(this).children("div").toggle(); //toggle() : 보일땐 안보이게, 안보일땐 보이게 
+               }
+            );
+        });
+    </script>
+</head>
+<body>
+    <b>dom 탐색</b>
+    <div id="menu1" class="menu">
+        <a href="jq06_dom01.html">필터링</a>
+        <div>.eq()</div>
+        <div>.slice()</div>
+        <div>first()</div>
+        <div>.last()</div>
+    </div>
+    <div id="menu2" class="menu">
+        <a href="jq07_dom02.html">트리 탐색</a>
+        <div>.find()</div>
+        <div>.children()</div>
+        <div>.parent()</div>
+        <div>next()</div>
+        <!-- 태그들이 트리 형식으로 구조화된다. div의 자식이나 부모와 같이 구조내에서 원하는 엘리멘트를 추가적으로 접근할 수 있다.  -->
+    </div>
+    <div id="menu3" class="menu">
+            <a href="jq08_dom03.html">기타 탐색</a>
+            <div>.add()</div>
+            <div>.is()</div>
+    </div>
+</body>
+</html>

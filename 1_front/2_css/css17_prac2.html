@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #body {
+        background: rgb(59, 146, 59);
+        border-radius: 10px 10px 10px 10px;
+        width: 400px;
+        height: 700px;
+        padding: 10px;
+      }
+      .comment {
+        width: 300px;
+        height: 40px;
+        border: 5px white;
+        border-radius: 10px;
+        background: rgb(186, 214, 175);
+        padding-top: 10px;
+        padding-left: 10px;
+      }
+      .submit {
+        padding-right: 20px;
+        width: 100px;
+      }
+      #final {
+        border-radius: 30px;
+        width: 70px;
+        height: 30px;
+        color: white;
+        background-color: rgb(75, 83, 75);
+      }
+    </style>
+  </head>
+  <body>
+    <h2>CSS3</h2>
+    <div id="body">
+      <form>
+        <p>Step 1:로그인 정보</p>
+        <p class="comment">
+          아이디 <input type="text" name="userid" class="submit" />
+        </p>
+        <p class="comment">
+          비밀번호 <input type="password" name="userpw" class="submit" />
+        </p>
+        <p class="comment">
+          비밀번호 확인 <input type="password" name="userpw2" class="submit" />
+        </p>
+        <p class="comment">
+          회원 등급
+          <input type="text" name="userlev" value="준회원" class="submit" />
+        </p>
+        <p>Step 2:개인 정보</p>
+        <p class="comment">
+          이름
+          <input
+            type="text"
+            name="name"
+            class="submit"
+            maxlength="5"
+            placeholder="5자미만 공백없이"
+          />
+        </p>
+        <p class="comment">
+          메일 주소
+          <input
+            type="email"
+            name="email"
+            class="submit"
+            placeholder="abcd@domain.com"
+          />
+        </p>
+        <p class="comment">
+          연락처 <input type="tel" name="tel" class="submit" />
+        </p>
+        <p>Step 3:코딩 숙련도(상,중,하)</p>
+        <p class="comment">
+          <input type="range" min="0" max="2" name="score" />
+        </p>
+        <input type="submit" value="제출" id="final" />
+      </form>
+    </div>
+  </body>
+</html>

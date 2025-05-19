@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript" src="./js/test.js"></script>
+  </head>
+  <body>
+    <h2>자바스크립트 사용법</h2>
+    <ol>
+      <li>태그에 직접 간단 소스코드를 작성해서 실행되게 하는 방법, inline</li>
+      <li>script 태그 영역에 작성해서 실행되게 하는 방법, interner</li>
+      <li>별도의 js파일로 작성해서 가져다 실행하는 방법, externer</li>
+    </ol>
+    <hr />
+    <h3>online</h3>
+    <ol>
+      <!-- 1.inline -->
+      <li onclick="window.alert('inline')">inline 방식</li>
+      <li
+        onclick="a=function(){
+        alert('1234');
+      }();"
+      >
+        inline 방식
+      </li>
+      <li onclick="internerTest();">interner</li>
+      <!-- 2.interner -->
+      <script type="text/javascript">
+        function internerTest() {
+          let doc = document.getElementsByTagName('li')[1];
+          console.log(doc);
+          doc.style.color = 'red';
+        }
+      </script>
+      <!-- 3.externer -->
+      <li onclick="test();">externer</li>
+    </ol>
+  </body>
+</html>

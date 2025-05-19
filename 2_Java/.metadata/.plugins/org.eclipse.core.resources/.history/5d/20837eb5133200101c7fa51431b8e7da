@@ -1,0 +1,38 @@
+package com.test01;
+
+public class ArrayTest01 {
+	public void testArray1() {
+		/*
+		//배열 사용 하는 이유
+		int num1 = 10;
+		int num2 = 20;
+		int num3 = 30;
+		int num4 = 40;
+		int num5 = 50;
+		
+		int sum = 0;
+		sum += num1;
+		sum+=num2;
+		sum+=num3;
+		sum+=num4;
+		sum+=num5;
+		//하나씩 이렇게 작성해야 하는 불편함이 있음
+		 *
+		 */
+		int[] arr = new int[5]; //배열 선언
+		
+		//arr[0]=10; //배열에 값 저장
+		//arr[1] = 20;
+		//arr[2]=30;
+		
+		//for을 사용한 배열 초기화
+		for(int i=0;i<arr.length;i++) {
+			arr[i] = (i+1)*10;
+		}
+		int sum=0;
+		for(int i=0;i<arr.length;i++) {
+			sum+=arr[i];
+		}
+		
+	}
+}

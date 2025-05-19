@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            $("p:eq(0)").add("span").css("color","red");
+        //    console.log( $("p:eq(0)").add("span"));
+            $("div").children().click((e)=>{
+                if($(e.target).is("p")){
+                   $(e.target).css("background-color","skyblue");                     
+                }; //해당 태그가 p태그라면
+            })
+            $("div").children().click(function(){
+                if($(this).prop("tagName")=="SPAN"){ //is와 같은 역할이다.
+                    $(this).css("background-color","yellow");
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+     <div>
+        <p>add()</p>
+        <span>add(): 선택한 엘리먼트에 추가적으로 selector를 통해 표현식을 작성하고 추가한다.</span>
+        <p>is()</p>
+        <b>선택한 엘리먼트들 중에 원하는 엘리먼트가 있는지 확인</b>
+     </div>
+</body>
+</html>

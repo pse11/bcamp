@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        width: 1024px;
+      }
+      .logo > img {
+        width: 130px;
+      }
+      .logo {
+        float: left;
+      }
+      .login {
+        float: right;
+      }
+      .header > h1 {
+        float: left;
+        margin-left: 25%;
+      }
+      .menu {
+        clear: both;
+      }
+      ul {
+        list-style: none;
+      }
+      .menu li {
+        /*하위 선택자*/
+        display: inline-block;
+        margin-left: 10%;
+      }
+      .content {
+        background-color: gray;
+        height: 400px;
+      }
+      .footer {
+        background-color: skyblue;
+        height: 100px;
+        padding-top: 3%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAk1BMVEX///8AAADQ0NB+fn78/PxycnLu7u7g4OD39/fHx8dHR0e9vb1KSkqVlZURERGKiooWFhYuLi5lZWXo6Oi2trYeHh5dXV3z8/M4ODilpaWBgYH+awA+Pj5JSUlUVFTJycmdnZ3W1tYxMTH+XgAnJyd1dXWwsLD/2MP/+PP+dxv+lVn+tZD/5dX+YgD+ikT+yKv/0LcwZekEAAAEUUlEQVR4nO3Xa3eyOBSGYUBEFA9VVJRa0Nb27Zzn//+6SfYmEe3ZZZdruu7ri4BkmycJB4MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgp4l//bp2Fy4oCsOwc3zo+beHh9+v05vv8ErCP/66vX348zrd+QY+YW8yGvXl0E9N2DcbEzn0fPvw8PdVO3VRryQMnv/595pd+oo4Pt14wSeszcbovRpvlToceOer97t3pnp5E4arkamy3oTheDiXo9FqsNnajWIwGCx9wu1mZTb2dwNr6JNmlamx2R4yrAemVJUdOrm1tStzASedvSnQ7fmv8s7UHHjUA7n52VK2zE8Mbb10ZFq2a3/ZLFTj3bTZGqRBazEmNpFPOAmPLKREsnL7TaTa7d8neqDnDnQzt+VGx1cs3YkzOW67lGo/1GFMvqYbvjQ8TTh9K6H0M2/tP9kmWetAbg8Ur/yInuoH2FieJrxJD0Nj9s6bxZ00rgZNlVW1sB/zTye0g7GR3682bqTzptRePmyN0m7da23baCgfdqms9UDlhus0Ycd8LCbrTtOrM9geDwu3GNbmgunqaL6RME3tBE3iokiLR7M1CIK5bWkvk8gmqHRaxvaR+eT6JWeYT9siXJhB6N3oN6nMnZnnZKaZTxPasYjMXj1dTbdnJbwzFXZ2o6O90xW1eDOhXmP6tEg04bDpvpm8clKWsfRaasoMDXViZC5TPxVPWmWuJVxP1i8S2vHuRulZ2dTYVChaP6mlw+TthP2ThKkt0S65c2PV1EqlSVf2N2Fzx9hpErt8m7tTJiedJoyaq6f7VJyZMNQ7lo6m3t7sWss/nzBxE+TYSS6b7UpGK3NtZb4lYU+vha6fbqmzfJGwuVDdMr9kwrqdcPVOQrlPtktGvpNa66OEtZ6qs3qUcGHvnsW6GofuLnHJhH6tNX3xCSO/5Jrr8N586Kt4nCdJLoe1pq6xjxI+ak8epQO28b3dTXXpqCSy324um1Cmxnam1EXnEybuC5dwZNeTHFiGcpOyF1tlhz/ffyahzs1cy8aLZrzWesKdvFAFesO4bEK5hMbl1vba/uTh/6G8wFS5T6iP89m2lMdd1jx5bjrb5mXiw4ThYDSSB6JdnvLka9qutcEyKnZ2f3/hhJG/xGV5HBLqK9nOJzx6hZH12wnbPk7YGNvbZesFyV6G/db3kwsnlNWn8qOE+kUroa6wQ8BWxM/caZy9vOC1islNtvS70/OeiraptDx+HsqPZfoe9ihPovrQ/yBa+oRyVwhy7emw78rWsur29UpqzX3bVTvhUBNOZNkvtq7tTl/hZho4yPQV72Z05p+LOHZ/vtobrljSz3atM1vt8vj4zGCX1UdjnNZZz5/xSm3d0udh3u8f/XEo6iyKj0r18/PiXZ9NGF27E9+KhP9/Pz/h7McnBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBt/wHhzjTS/uorrgAAAABJRU5ErkJggg=="
+        />
+      </div>
+      <h1>MYMain</h1>
+      <div class="login">
+        <form>
+          <table>
+            <tr>
+              <td>아이디</td>
+              <td><input type="text" name="id" /></td>
+            </tr>
+            <tr>
+              <td>패스워드</td>
+              <td><input type="password" name="pw" /></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <input type="submit" value="로그인" />
+                <input type="reset" value="취소" />
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <div class="menu">
+        <ul>
+          <li>메인</li>
+          <li>공지사항</li>
+          <li>자유게시판</li>
+          <li>갤러리</li>
+          <li>회원관리</li>
+          <li>채팅하기</li>
+        </ul>
+      </div>
+    </div>
+    <div class="content">content 내용</div>
+    <div class="footer">
+      <p align="center">
+        Copyright &copy; 1998-2019 multi Info Educational Insitute All Right
+        Reserved
+      </p>
+    </div>
+  </body>
+</html>

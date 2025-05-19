@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 300px;
+            height: 300px;
+            vertical-align: middle;
+        }
+        a{
+            font-size: 30px;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        //document.querySelectorAll("a")[0].onclick=()=>{alert("tea")}; //이거 실행하면 오류. 왜? 아직 a태그 읽기 전. 다른 수업 코드들은 함수를 작성해서 함수있는거 읽은 후에 태그 읽어서 오류가 나지 않음.
+        //해결 방법
+        window.onload=function(){ //페이지가 로드 된 후 태그 다 읽고 나서 이 함수를 실행하자는 의미. body내에서 함수를 사용하지 않고 script에서 작성하는 방법이다.
+            //태그들 가져오기
+            let count = 1; //보여지는 이미지의 넘버
+            let aTags = document.querySelectorAll("a"); 
+            //이미지 태그
+            let img = document.querySelector("img");
+            
+            //왼쪽 a태그
+            aTags[0].onclick=()=>{
+                let imgAlt = img.getAttribute("alt"); //alt에 저장된 값. : 현재 보이는 이미지 이름
+                if(imgAlt=='img01'){
+                    count=3;
+                    img.setAttribute("alt","img03");
+                    img.setAttribute("src","../1_html/samplee/images/img03.png")
+                }else{
+                    img.setAttribute("alt","img0"+(--count));
+                    img.setAttribute("src","../1_html/samplee/images/img0"+count+".png");
+                }
+
+                
+            }
+            //오른쪽 a태그
+            aTags[1].onclick=()=>{
+                let imgAlt = img.getAttribute("alt");
+                if(imgAlt=='img03'){
+                    count=1;
+                    img.setAttribute("alt","img01");
+                    img.setAttribute("src","../1_html/samplee/images/img01.png")
+                }else{
+                    img.setAttribute("alt","img0"+(++count)); //alt 값 : 없는 이미지 대신 텍스트로 대체하겠다는 것.
+                    img.setAttribute("src","../1_html/samplee/images/img0"+count+".png");
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <a id="lt" href="#"> ⏪ </a>
+        <img alt="img01" src="../1_html/samplee/images/img01.png">
+        <a id="rt" href="#"> ⏩ </a>
+    </div> 
+</body>
+</html>

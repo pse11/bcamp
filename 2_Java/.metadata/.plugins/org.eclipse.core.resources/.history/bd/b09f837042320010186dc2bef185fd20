@@ -1,0 +1,9 @@
+package com.silsub1;
+
+public class Main {
+	public static void main(String[] args) {
+		ForWhile fw = new ForWhile();
+		//fw.printStar1();
+		fw.printStar2();
+	}
+}

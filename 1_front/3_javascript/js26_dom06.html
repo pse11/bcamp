@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function tableVal(){
+            let doc = document.forms[0];
+            //console.log(doc.pw); //name값이 pw인것
+            let vals = [doc.id.value, //value 값들 꺼내오기
+                        doc.pw.value,
+                        doc.addr.value,
+                        doc.phone.value];//여러개의 데이터를 한번에 묶어서 관리 (객체, 배열)
+            
+            console.log(vals);
+
+            //선택이긴 하지만 이 작업해줘도 좋음
+            // -> val가 유효한지 확인
+            for(let i=0; i<vals.length;i++){
+                if(vals[i]==""|| vals[i]==null){
+                    alert("모두 다 입력해주세요!!");
+                    return; //함수 종료
+                    //break; 반복문 종료, 분기문
+                }
+            }
+            let row = createRow(vals);
+            document.getElementById("addtr").appendChild(row);
+
+        }
+        function createRow(vals){
+            var tr = document.createElement("tr");
+
+            for(let i=0; i<vals.length;i++){
+                let td = document.createElement("td");
+                td.textContent=vals[i];
+                tr.appendChild(td);
+            }
+            let delTd = document.createElement("td");
+            delTd.innerHTML = "<input type='button' value='삭제' "
+                            + "onclick='delRow(this);' >"; //현재 발생한 이벤트 위치 this
+            tr.appendChild(delTd);
+            return tr;
+        }
+        function delRow(ele){ //한줄 삭제
+           // console.log(ele.parentNode.parentNode);
+
+           document.getElementById("addtr").removeChild(ele.parentNode.parentNode);
+        }
+        function delVal(){
+            //document.getElementById("addtr").remove(); tr만 삭제하고 싶기때문에 해당 코드는 주석처리!
+            let tbody = document.getElementById("addtr");
+            
+            console.log(tbody.firstChild); //부모만 알고 있으면 값을 가져오기 수월하다!
+            //console.log(tbody.lastChild);
+            //자식태그를 더이상 없을때까지 반복해서 삭제
+
+            //반복문
+            while(tbody.firstChild!=null){
+                //tbody.firstChild.remove();
+                //removeChild를 이용하여 삭제
+                tbody.removeChild(tbody.lastChild);
+            }
+
+            //sibling(형제요소) : 특정 엘리먼트 기준으로 해서 앞에 있는 형제 .previousSibling, 다음에 있는 형제 .nextSibling
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <table id="intable">
+            <tr>
+                <td>아이디 : </td>
+                <td><input type="text" name="id"></td>
+            </tr>
+            <tr>
+                <td>비밀번호 : </td>
+                <td><input type="text" name="pw"></td>
+            </tr>
+            <tr>
+                <td>주소 : </td>
+                <td><input type="text" name="addr"></td>
+            </tr>
+            <tr>
+                <td>전화번호 : </td>
+                <td><input type="text" name="phone"></td>
+            </tr>
+        </table>
+        <input type="button" value="추가" onclick="tableVal();">
+        <input type="button" value="삭제" onclick="delVal()">
+    </form>
+    <hr>
+    <div id="addtable">
+        <table border="1" id="ctb">
+            <col width="100px"><col width="100px">
+            <col width="300px"><col width="100px">
+            <col width="100px"> 
+            <thead>
+                <tr>
+                    <th>아이디</th>
+                    <th>비밀번호</th>
+                    <th>주소</th>
+                    <th>전화번호</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody id="addtr"></tbody>  
+        </table>
+    </div>
+</body>
+</html>

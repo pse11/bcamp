@@ -1,0 +1,12 @@
+package com.silsub1;
+
+public class SilsubMain {
+	public static void main(String[] args) {
+		Munjae mj = new Munjae();
+		//mj.test1();
+		//mj.test2();
+		//mj.test3();
+		//mj.test4();
+		mj.test5();
+	}
+}

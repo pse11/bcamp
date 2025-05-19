@@ -1,0 +1,106 @@
+/* 타입 선택자 */
+pre {
+  text-align: center;
+}
+h1 {
+  text-align: right;
+  color: blue;
+}
+
+/* id 선택자 */
+#sid01 {
+  color: green;
+}
+#sid02 {
+  color: blueviolet;
+}
+#sid03 {
+  color: brown;
+}
+
+/* class 선택자 */
+.scls {
+  color: pink;
+}
+
+.scls01 {
+  background-color: black;
+}
+
+#sclsid {
+  color: black;
+}
+
+/* 전체 선택자 */
+/* * {
+  text-align: right;
+  margin: 0;
+  padding: 0;
+} */
+
+/* 자식 선택자 */
+/* > */
+#at > p {
+  color: orange;
+}
+
+/* 인접 선택자(동위 선택자) */
+/* 선택자 + 선택자 */
+h3 + b {
+  background-color: black;
+  color: white;
+}
+
+span + b {
+  background-color: yellow;
+  color: magenta;
+}
+
+/* 속성 선택자 */
+/* [] */
+p[name] {
+  color: skyblue;
+}
+p[name='b'] {
+  background-color: black;
+}
+
+/* 가상클래스 선택자 */
+a:link {
+  color: pink;
+  font-size: 20pt;
+}
+a:hover {
+  background-color: purple;
+}
+a:active {
+  /*클릭했을 때*/
+  color: red;
+}
+
+input:checked {
+  width: 200px;
+  height: 200px;
+}
+
+/* 종속선택자 */
+li.acls01 {
+  background-color: green;
+}
+li.acls02#sidli {
+  font-size: 30pt;
+}
+
+/* 하위 선택자 */
+/* 한칸 띄어쓰기 */
+div span {
+  background-color: brown;
+}
+
+/* 그룹선택자 */
+/* , */
+p,
+pre,
+strong {
+  color: lime;
+}

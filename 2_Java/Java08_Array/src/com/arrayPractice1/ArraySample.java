@@ -1,0 +1,96 @@
+package com.arrayPractice1;
+
+import java.util.Scanner;
+public class ArraySample {
+	public void test1() {
+//		1. 10개의 int 배열 선언하고 할당함
+//		2. 각 방에 1~100사이의 임의의 난수를 기록함
+//		3. 10개의 정수들의 합계를 구하여 출력함
+		int[] arr = new int[10];
+		int sum=0;
+		for(int i=0;i<10;i++) {
+			arr[i]=(int)(Math.random()*100)+1;
+			sum+=arr[i];
+		}
+		System.out.println("sum:"+sum);
+
+	}
+	public void test2() {
+//		1. 10개의 int[] 선언, 할당함
+//		2. 1~100사이의 임의의 정수를 발생시켜, 배열공간에 기록함
+//		  배열[인덱스] = (int)(Math.random() * 100) + 1;
+//		3. 기록된 10개의 값중 가장 큰 값과 가장 작은 값을 알아내어
+//		4. 출력확인
+		int[] arr = new int[10];
+		for(int i=0;i<10;i++) {
+			arr[i]=(int)(Math.random()*100)+1;
+		}
+		
+		int max = arr[0];
+		int min = arr[0];
+		for(int i=0;i<10;i++) {
+			if(max<arr[i]) {
+				max=arr[i];
+			}
+			if(min>arr[i]) {
+				min=arr[i];
+			}
+		}
+		System.out.println("min: "+min+", max: "+max);
+	}
+	public void test3() {
+//		1. 10개의 byte[] 선언, 할당함
+//		2. byte 자료형 범위에 속하는 임의의 난수를 발생시켜
+//		  각 변수방에 기록함 : Random 클래스의 메소드 사용함
+//		3. 기록된 10개의 값 중 짝수들의 합계만 구하여 출력함.
+		byte[] arr = new byte[10];
+		
+		int sum =0;
+		for(int i=0;i<10;i++) {
+			arr[i]=(byte)(Math.random());
+			if(arr[i]%2==0) {
+				sum+=arr[i];
+			}
+		}
+		System.out.println("sum: "+sum);
+
+	}
+	public void test4() {
+//		: 숫자로 된 문자열을 입력받아, 각 자리의 숫자들의 합을 구하여 출력
+//		 - 메소드명 : public void test4(){}
+//			ex>
+//			문자열 입력 : 12345 //String 클래스의 substring() 메소드 사용
+//			합계 : 15
+//		숫자로 바꾸는 과정: Integer 클래스
+		Scanner sc = new Scanner(System.in);
+		System.out.print("문자열 입력 :");
+		String str = sc.next();
+		int sum =0;
+		for(int i=0;i<str.length();i++) {
+			//System.out.println(str.substring(i,i+1)); //substring(시작인덱스, 끝인덱스): 시작인덱스부터 끝인덱스의 전까지 값을 가져온다. 
+			sum+=Integer.parseInt(str.substring(i,i+1)); //문자열을 숫자로 바꾸려면 Integer클래스를 이용해야하는 듯 하다.
+		}
+		System.out.println("sum:" +sum);
+		
+		
+
+	}
+	public void test5() {
+//		: 숫자로 된 문자열을 입력받아, 각 자리의 숫자들의 합을 구하여 출력
+//		 - 메소드명 : public void test5(){}
+//			ex>
+//			문자열 입력 : 12345 //String 클래스의 charAt() 메소드 사용
+//			합계 : 15
+		System.out.print("문자열입력: ");
+		Scanner sc = new Scanner(System.in);
+		String str = sc.next();
+		int sum =0;
+		for(int i=0;i<str.length();i++) {
+			sum+=(str.charAt(i)-'0'); //char to int 는 아스키 코드를 이용한다. 
+		}
+		System.out.println("sum:"+sum);
+		
+
+	}
+
+}

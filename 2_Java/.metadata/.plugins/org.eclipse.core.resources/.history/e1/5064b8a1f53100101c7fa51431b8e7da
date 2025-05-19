@@ -1,0 +1,12 @@
+package com.test01;
+
+public class ForTest02 {
+	public static void main(String[] args) {
+		
+	}
+	public static void testFor1() {
+		for(int i=0;i<10;i++) {
+			System.out.println(i);
+		}
+	}
+}

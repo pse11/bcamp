@@ -1,0 +1,22 @@
+package com.test01;
+
+public class ForTest01 {
+
+	public static void main(String[] args) {
+		ForTest01.testFor1();
+
+	}
+	public static void testFor1() {
+		//출력문을 반복하여 실행
+		int i=0;
+		while(i<10) {
+			System.out.println(i);
+			i++;
+		}
+		for(int j=0;j<10;j++) {
+			System.out.println("j: "+j);
+	
+		}
+	}
+
+}

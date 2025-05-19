@@ -1,0 +1,17 @@
+package com.test01;
+
+public class TestMain {
+	public static void main(String[] args) {
+		//준비
+		ArrayTest01 at = new ArrayTest01();
+		//실행
+		//at.testArray2();
+		//at.testArray3();
+		
+		ArrayTest03 at3 = new ArrayTest03();
+		//at3.shallowCopy();
+		//at3.deepCopy1();
+//		at3.deepCopy2();
+		at3.deepCopy3();
+	}
+}

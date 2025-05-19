@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function test01(){
+            let food = document.getElementsByName("food")[0];
+            
+            //selectedIndex : 선택한 option태그의 인덱스 반환
+            let idx = food.selectedIndex;
+            console.log(idx);
+
+            //options : select태그가 가지고 있는 option 태그들
+            //console.log(food.options);
+            let foodVal = food.options[idx].value;
+            alert(foodVal + " 저녁메뉴");
+        }
+        function  test02(){
+            var food = document.getElementsByName("food")[1];
+            console.log(food.options);
+            
+            let str = "";
+            for(let i=0;i<food.options.length;i++){
+                if(food.options[i].selected){
+                    str += food.options[i].value+" ";
+                }
+            }
+            alert("저녁 메뉴: " + str);
+        }
+    </script>
+</head>
+<body>
+    <h1>저녁 메뉴</h1>
+    <form>
+        <select name="food" onchange="test01()">
+            <option>--선택--</option>
+            <option value="스파게티">스파게티</option>
+            <option value="제육볶음">제육볶음</option>
+            <option value="서브웨이">서브웨이</option>
+            <option value="김치찜">김치찜</option>
+            <option value="피자">피자</option>
+        </select>
+        <br><hr><br>
+        <select name="food" multiple="multiple" size="5">
+            <option>--선택--</option>
+            <option value="스파게티">스파게티</option>
+            <option value="제육볶음">제육볶음</option>
+            <option value="서브웨이">서브웨이</option>
+            <option value="김치찜">김치찜</option>
+            <option value="피자">피자</option>
+        </select>
+        <input type="button" value="선택" onclick="test02();">
+    </form>
+</body>
+</html>

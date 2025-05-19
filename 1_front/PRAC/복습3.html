@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    let ids= ['abc','lcj','test','blue','b123'];
+    function confirmchk(){
+      let id = document.getElementsByName("id")[0].value;
+      let div = document.getElementsByTagName("div")[0];
+      if(ids.indexOf(id)!=-1){
+        div.innerHTML="<b>아이디가 존재합니다</b>"; 
+      }else{
+        div.innerHTML="사용할 수 있는 아이디 입니다.<input type='button' value='확인' onclick='insertId(\""+id+"\");'>";
+      }
+    }
+    function insertId(id){
+      let idinsert = opener.document.getElementsByName("userid")[0];
+      idinsert.value=id;
+      opener.document.getElementsByName("pw")[0].focus();
+      close();
+    }
+  </script>
+</head>
+<body>
+  <table>
+    <tr>
+      <td>아이디</td>
+      <td><input type="text" name="id"></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="button" value="중복확인" onclick="confirmchk();">
+        <input type="button" value="취소" onclick="self.close();">
+      </td>
+    </tr>
+  </table>  
+  <div></div>
+</body>
+</html>

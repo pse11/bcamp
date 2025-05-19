@@ -1,0 +1,42 @@
+package com.test01;
+
+public class ArrayTest02 {
+
+	public static void main(String[] args) {
+		//1. a~z 배열에 저장하여 그 배열을 출력
+		
+		//배열생성
+		char[] ch= new char[26];
+		char start ='a';
+		for(int i=0;i<ch.length;i++) {
+			ch[i]=start;
+			start++;
+		}
+		prn(ch);
+		//2. 1에서 만든 배열을 거꾸로 출력
+		reverse(ch);
+		
+		//3. 1에서 만든 배열을 대문자로 바꿔 출력
+		upper(ch);
+	}
+	
+	public static void reverse(char[] ch) {
+		for(int i=ch.length-1;i>=0;i--) {
+			System.out.println(ch[i]);
+		}
+	}
+	
+	public static void upper(char[] ch) {
+		for(int i=0;i<ch.length;i++) {
+			//ch[i]=(char)((int)ch[i]-32);
+			ch[i]=Character.toUpperCase(ch[i]);
+		}
+		prn(ch);
+	}
+	public static void prn(char[] ch) {
+		for(int i=0;i<ch.length;i++) {
+			System.out.print(ch[i] + " ");
+		}
+		System.out.println();
+	}
+}
