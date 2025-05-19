@@ -54,8 +54,12 @@
 		})
 		//7
 		//replace의 $("p").replaceWith("<b>replaceWith</b>");를 사용
+		//let row1 = $("table:eq(0) tr").eq(0);
+		//let row2 = $("table:eq(0) tr").eq(1);
 		$("button").eq(6).click(function(){
-			$("table:eq(0) tr").eq(0).replaceWith($("table:eq(0) tr").eq(1)); //사라지네..?
+			//$("table:eq(0) tr").eq(0).replaceWith(row2); //사라지네..?
+			//$("table:eq(0) tr").eq(1).replaceWith(row1);
+			$("table:eq(0) tbody").append($("table:eq(0) tr:eq(0)"));
 		})
 		//8
 		$("button").eq(7).click(function(){
