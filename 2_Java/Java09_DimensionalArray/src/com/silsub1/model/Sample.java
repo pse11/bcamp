@@ -89,13 +89,41 @@ public class Sample {
 				System.out.print(arr[i][j]+" ");
 				sum+=arr[i][j];
 			}
+			System.out.print("sum: "+sum);
 			System.out.println();
 			if(sum%5==0) {
 				System.out.println(i+"행");
 			}
 		}
 		/*
+		 * int arr[][] = new int[3][];
+		 * Scanner sc = new Scanner(System.in);
 		 * 
+		 * int[] sum = new int[arr.length];
+		 * 
+		 * for(int i=0;i<arr.length;i++){
+		 * 	System.out.print(i+"번째 1차원 배열 크기:");
+		 * 	arr[i]=new int[sc.nextInt());
+		 * 
+		 * 	for(int j=0;j<arr[i].length;j++){
+		 * 		arr[i][j]=(int)(Math.random()*100)+1;
+		 * 		sum[i]+=arr[i][j];
+		 * 	}
+		 * }
+		 * 
+		 * //전체 확인
+		 * for(int i=0;i<arr.length;i++){
+		 * 		if(sum[i]%5==0){
+		 * 
+			 * 		for(int j=0;j<arr[i].length;j++){
+			 * 			System.out.print(arr[i][j]+"\t");
+			 * 		}
+			 * 		System.out.print("sum:" +sum[i]+"\t");
+			 * 		System.out.println();
+		 * 		}
+		 * 	}
+		 * 
+		 
 		 */
 		
 	}
