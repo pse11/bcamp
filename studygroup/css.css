@@ -109,12 +109,15 @@
       display: inline-block;
     }
     #chgbtn{
-    
+      font-weight: bold;
       font-size: 15pt;
       float: right;
     }
     .dateinline >span {
-      font-size:13pt
+      font-size:15pt;
+    }
+    #date{
+      font-weight: bold;
     }
     /* #data_title{
       display:flex;
@@ -166,6 +169,14 @@
       width: 22px;
       height: 22px;
       font-size: 10pt;
+      font-weight: bold;
+    }
+    .changebox{
+      background-color: rgb(63, 61, 61);
+      font-size:15pt;
+      border-radius: 8px;
+    }
+    .emoji1:nth-child(1){
       font-weight: bold;
     }
   
