@@ -1,0 +1,171 @@
+*{
+      color:white;
+    }
+    body{
+      background-color: black;
+      margin: auto; 
+      margin-top: 50px;
+      width: 1250px;
+
+    }
+    img{
+      color: white;
+    }
+    #header_left{
+      float: left;
+    }
+    #header_right{
+      float:right;
+    }
+   
+    #pimg{
+      cursor: pointer;
+    }
+    a{
+      text-decoration: none;
+      font-size:20pt;
+    }
+    #header_left > img{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    #header{
+      height: 40px;
+    }
+    #pimg{
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: inline;
+    }
+    #profile{
+      margin-top: 20px;
+      height: 50px;
+    }
+    #pbtn{
+      margin-left: 10px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      background-color: gray;
+      opacity: 70%;
+      border: none;
+      box-shadow: none;
+    }
+    .ps{
+      width: 60px;
+      height: 60px;
+      float: left;
+      cursor: pointer;
+    }
+    .ps>p{
+      width: 50px;
+      color: white;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    #left_contents{
+      margin-top: 40px;
+      width: 50%;
+      
+    }
+    #right_contents{
+      border: 1px solid white;
+    }
+    #pimg2{
+      width: 60px;
+      height: 60px;
+      border-radius: 50px;
+    }
+    #profile{
+      display:flex;
+    }
+    .intro{
+      display:inline;
+      font-size:10pt;
+      padding-left: 10px;
+      }
+    #pintro{
+      opacity: 50%;
+    }
+    .pcl{
+      display: inline-block;
+      float: left;
+    }
+    #p3{
+      margin-top: 10px;
+      float:right;
+    }
+    #prof{
+      height: 70px;
+    }
+    .dateinline{
+      display: inline-block;
+    }
+    #chgbtn{
+    
+      font-size: 15pt;
+      float: right;
+    }
+    .dateinline >span {
+      font-size:13pt
+    }
+    /* #data_title{
+      display:flex;
+    } */
+    /* .day{
+      font-size: 13pt;
+      margin: 23px;
+    } */
+    /* .day:nth-child(6){
+      color: rgb(51, 119, 245);
+    }
+    .day:nth-child(7){
+      color: red;
+    } */
+    #date_header span{
+      cursor: pointer;
+    }
+    #calander{
+      width: 100%;
+    }
+    #ctitle{
+      width: 100%;
+    }
+    #ctitle td:nth-child(6){
+      color: rgb(51, 119, 245);
+    } 
+    #ctitle td:nth-child(7){
+      color: red;
+    } 
+    .pcl{
+      cursor: pointer;
+    }
+    #p3 > span{
+      font-size:23pt;
+    }
+    #ctitle,#calander{
+      text-align: center;
+    }
+    #calander td{
+      height: 60px;
+
+      cursor: pointer;
+    }
+    #calaner td span:nth-child(1){
+      font-size: 45pt;
+    }
+    .changecolor{
+      display:inline-block;
+      width: 22px;
+      height: 22px;
+      font-size: 10pt;
+      font-weight: bold;
+    }
+  

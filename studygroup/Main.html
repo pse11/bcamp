@@ -4,206 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-    *{
-      color:white;
-    }
-    body{
-      background-color: black;
-      margin: auto; 
-      margin-top: 50px;
-      width: 70%;
-
-    }
-    img{
-      color: white;
-    }
-    #header_left{
-      float: left;
-    }
-    #header_right{
-      float:right;
-    }
-   
-    #pimg{
-      cursor: pointer;
-    }
-    a{
-      text-decoration: none;
-      font-size:20pt;
-    }
-    #header_left > img{
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-    }
-    #header{
-      height: 40px;
-    }
-    #pimg{
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: inline;
-    }
-    #profile{
-      margin-top: 20px;
-      height: 50px;
-    }
-    #pbtn{
-      margin-left: 10px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      cursor: pointer;
-      background-color: gray;
-      opacity: 70%;
-    }
-    .ps{
-      width: 60px;
-      height: 60px;
-      float: left;
-      cursor: pointer;
-    }
-    .ps>p{
-      width: 50px;
-      color: white;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      font-size: 10px;
-      font-weight: bold;
-    }
-
-    #left_contents{
-      margin-top: 40px;
-      width: 50%;
-      
-    }
-    #right_contents{
-      border: 1px solid white;
-    }
-    #pimg2{
-      width: 60px;
-      height: 60px;
-      border-radius: 50px;
-    }
-    #profile{
-      display:flex;
-    }
-    .intro{
-      display:inline;
-      font-size:10pt;
-      padding-left: 10px;
-      }
-    #pintro{
-      opacity: 50%;
-    }
-    .pcl{
-      display: inline-block;
-      float: left;
-    }
-    #p3{
-      margin-top: 10px;
-      float:right;
-    }
-    #prof{
-      height: 70px;
-    }
-    .dateinline{
-      display: inline-block;
-    }
-    #chgbtn{
-    
-      font-size: 15pt;
-      float: right;
-    }
-    #date >span {
-      font-size:13pt
-    }
-    /* #data_title{
-      display:flex;
-    } */
-    /* .day{
-      font-size: 13pt;
-      margin: 23px;
-    } */
-    /* .day:nth-child(6){
-      color: rgb(51, 119, 245);
-    }
-    .day:nth-child(7){
-      color: red;
-    } */
-    #date_header span{
-      cursor: pointer;
-    }
-    #calander{
-      width: 100%;
-    }
-    #ctitle td:nth-child(6){
-      color: rgb(51, 119, 245);
-    } 
-    #ctitle td:nth-child(7){
-      color: red;
-    } 
-  </style>
-  <script>
-    window.onload=function(){ //페이지 로드될때 달력 불러와야됨
-      //date객체로 년 월 가져오기
-      //해당 월의 1일이 무슨 요일인지 확인
-      //그달이 며칠까지 있는지 계산
-      // 그 시작 요일부터 1일 넣기
-      let now = new Date(); //현재 날짜 구하기
-      let nowYear = now.getFullYear();
-      let nowMonth = now.getMonth();
-      let nowDate = now.getDate();
-      let firstDate = new Date(nowYear,nowMonth,1); //1일인 날짜 반환
-      let dayOfWeek = firstDate.getDay();// 일:0, ...토:6
-      let lastDate = new Date(nowYear,nowMonth+1,0).getDate();
-      let doc = document.getElementById("data_content");
-      let content = createTable(dayOfWeek,lastDate);
-      console.log(firstDate);
-      //doc.appendChild(content);
-    };
-
-    function createTable(dayOfWeek,lastDate){
-      let table = document.getElementById("calander");
-      //2차원 배열 선언 arr[6][7]
-      var arr = new Array(6);
-      let day = 1;
-      for(let i=0;i<arr.length;i++){
-        arr[i] = new Array(7);
-      }
-      for(let i=0;i<6;i++){
-        if(i==0){ //첫째줄
-          for(let j=dayOfWeek-1;j<7;j++){
-            arr[i][j]=day;
-            day++;
-          }
-        }else{ //그 아래줄들
-          for(let j=0;j<7;j++){
-            if(day==lastDate+1){
-              break;
-            }else{
-              arr[i][j]=day;
-              day++;
-            }
-          }
-        }
-      }
-      //table생성
-      for(let i=0;i<6;i++){
-        let tr = document.createElement("tr");
-        for(let j=0;j<7;j++){
-          let td = document.createElement("td");
-          td.textContent=arr[i][j];
-          tr.appendChild(td);
-        }
-        table.appendChild(tr); 
-      }
-      return table;
-    }
-  </script>
+  <link type="text/css" rel="stylesheet" href="./css.css" />
+  <script type="text/javascript" src="./script.js"></script>
 </head>
 <body>
   <div id="header">
@@ -234,26 +36,26 @@
           <p class="intro" id="pintro">프로필에 자기소개를 입력해보세요</p>
         </div>
         <!-- 화면 사이즈가 바뀔 때 배치가 변경되는 문제 발생 -->
-        <div id="p3" class="pcl"><a href="">&nbsp;😊&nbsp;</a></div>
+        <div id="p3" class="pcl"><span>&nbsp;😊&nbsp;<span></div>
       </div>
       <div id="all_calender">
         <div id="date_header">
-          <div id="date" class="dateinline">
-            <span>2025년 5월</span>
-            <span>☑️</span>
-            <span>0</span>
-            <span>☺️</span>
-            <span>0</span>
-            <span>❤️</span>
-            <span>0</span>
+          <div class="dateinline">
+            <span id="date" onclick="createDate()">2025년 5월</span>
+            <span class="emoji1" onclick="emoji()">☑️</span>
+            <span class="emoji1" onclick="emoji()">0</span>
+            <span class="emoji2" onclick="emoji()">☺️</span>
+            <span class="emoji2" onclick="emoji()">0</span>
+            <span class="emoji3" onclick="emoji()">❤️</span>
+            <span class="emoji3" onclick="emoji()">0</span>
           </div>
           <div id="chgbtn" class="dateinline">
-            <span>&nbsp;<&nbsp;</span>
-            <span>&nbsp;>&nbsp;</span>
+            <span onclick="before_month()">&nbsp;&nbsp;&nbsp;<&nbsp;&nbsp;&nbsp;</span>
+            <span onclick="after_month()">&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
           </div>
         </div>
-        <table id="calander">
-          <tr id="ctitle">
+        <table id="ctitle">
+          <tr>
             <td>월</td>
             <td>화</td>
             <td>수</td>
@@ -263,16 +65,8 @@
             <td>일</td>
           </tr>
         </table>
-        <!-- <div id="data_title">
-          <div class="day">월</div>
-          <div class="day">화</div>
-          <div class="day">수</div>
-          <div class="day">목</div>
-          <div class="day">금</div>
-          <div class="day">토</div>
-          <div class="day">일</div>
-        </div>
-        <div id="data_content"></div> -->
+        <table id="calander">
+        </table>
       </div>
     </div>
     <div id="right_contents">

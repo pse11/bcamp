@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.Character"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="com.test.chap05_method.test02.MethodTest"/>
+    <fullyQualifiedTypeName name="com.test.chap05_method.test02.StaticMethodTest"/>
+    <fullyQualifiedTypeName name="silsub1.model.vo.Member"/>
+    <fullyQualifiedTypeName name="silsub2.model.vo.Product"/>
+    <fullyQualifiedTypeName name="com.test01.model.Book"/>
+    <fullyQualifiedTypeName name="com.test.part00_test.aaa.AAA"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="com.test.part01_inheritTest.after.model.Television"/>
+    <fullyQualifiedTypeName name="com.test.part01_inheritTest.after.model.Desktop"/>
+    <fullyQualifiedTypeName name="com.test.part01_inheritTest.after.model.SmartPhone"/>
 </qualifiedTypeNameHistroy>
