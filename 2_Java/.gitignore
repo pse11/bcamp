@@ -1,1 +1,31 @@
-/.metadata/
+.metadata/
+# Java 빌드 결과물
+*.class
+
+# VSCode 설정
+.vscode/
+
+# 이클립스 관련 파일 (이클립스를 안 써도 괜히 들어갈 수 있음)
+*.log
+*.classpath
+*.project
+*.settings/
+
+# IntelliJ 관련 파일
+*.iml
+.idea/
+
+# OS별 임시 파일
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# 빌드 폴더
+/bin/
+/build/
+/out/
+
+# 라이브러리 관리 도구
+# (예: Maven, Gradle 사용하는 경우 자동으로 다운로드 되는 라이브러리는 제외)
+target/
+.gradle/
+*.jar
