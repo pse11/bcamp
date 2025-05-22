@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.lang.Character"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="com.test.chap05_method.test02.MethodTest"/>
     <fullyQualifiedTypeName name="com.test.chap05_method.test02.StaticMethodTest"/>
     <fullyQualifiedTypeName name="silsub1.model.vo.Member"/>
@@ -13,4 +12,10 @@
     <fullyQualifiedTypeName name="com.test.part01_inheritTest.after.model.Television"/>
     <fullyQualifiedTypeName name="com.test.part01_inheritTest.after.model.Desktop"/>
     <fullyQualifiedTypeName name="com.test.part01_inheritTest.after.model.SmartPhone"/>
+    <fullyQualifiedTypeName name="com.test.part02_OverridingTest.book.Book"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="com.poly.silsub1.shape.model.Shape"/>
+    <fullyQualifiedTypeName name="com.poly.silsub1.shape.model.Circle"/>
+    <fullyQualifiedTypeName name="com.poly.silsub1.shape.model.Triangle"/>
+    <fullyQualifiedTypeName name="com.poly.silsub1.shape.model.Rectangle"/>
 </qualifiedTypeNameHistroy>
