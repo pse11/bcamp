@@ -35,7 +35,12 @@ public class Run {
 			}
 		}
 		for(int i=0;i<sarr.length;i++) {
-			System.out.println(sarr[i].information());
+			if(sarr[i]!=null) { //이걸 안하면 null포인트 에러가 뜬다.
+				System.out.println(sarr[i].information());
+			}else {
+				break;
+			}
+			
 		}
 	}
 
