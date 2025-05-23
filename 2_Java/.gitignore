@@ -1,6 +1,7 @@
 .metadata/
 # Java 빌드 결과물
 *.class
+/.metadata/
 
 # VSCode 설정
 .vscode/
