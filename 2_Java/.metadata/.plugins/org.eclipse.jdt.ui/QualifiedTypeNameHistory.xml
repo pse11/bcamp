@@ -8,7 +8,6 @@
     <fullyQualifiedTypeName name="silsub2.model.vo.Product"/>
     <fullyQualifiedTypeName name="com.test01.model.Book"/>
     <fullyQualifiedTypeName name="com.test.part00_test.aaa.AAA"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="com.test.part01_inheritTest.after.model.Television"/>
     <fullyQualifiedTypeName name="com.test.part01_inheritTest.after.model.Desktop"/>
     <fullyQualifiedTypeName name="com.test.part01_inheritTest.after.model.SmartPhone"/>
@@ -18,4 +17,14 @@
     <fullyQualifiedTypeName name="com.poly.silsub1.shape.model.Circle"/>
     <fullyQualifiedTypeName name="com.poly.silsub1.shape.model.Triangle"/>
     <fullyQualifiedTypeName name="com.poly.silsub1.shape.model.Rectangle"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
+    <fullyQualifiedTypeName name="java.util.Calendar"/>
+    <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
+    <fullyQualifiedTypeName name="java.lang.ClassCastException"/>
+    <fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+    <fullyQualifiedTypeName name="java.lang.NegativeArraySizeException"/>
+    <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
 </qualifiedTypeNameHistroy>
