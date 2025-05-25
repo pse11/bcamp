@@ -5,9 +5,9 @@ import java.util.Scanner;
 import com.test3.model.vo.Product;
 
 public class ProductController {
-	Product[] pro = new Product[10];
+	private Product[] pro = new Product[10];
 	
-	private int count = 0;
+	public int count = 0;
 	Scanner sc = new Scanner(System.in);
 	
 	public void mainMenu() {
@@ -34,24 +34,24 @@ public class ProductController {
 	}
 	public void productInput() {
 		// 제품 추가
-		for(int i=0;i<10;i++) {
-			System.out.println("===제품 정보 추가===");
-			System.out.print("제품 번호: ");
-			int pId = sc.nextInt();
-			System.out.print("제품명:");
-			String pName = sc.next();
-			System.out.print("제품 가격: ");
-			int price = sc.nextInt();
-			System.out.print("제품 세금: ");
-			double tax = sc.nextDouble();
+		System.out.println("===제품 정보 추가===");
+		System.out.print("제품 번호: ");
+		int pId = sc.nextInt();
+		System.out.print("제품명:");
+		String pName = sc.next();
+		System.out.print("제품 가격: ");
+		int price = sc.nextInt();
+		System.out.print("제품 세금: ");
+		double tax = sc.nextDouble();
 			
-			pro[i] = new Product(pId, pName, price,tax);
-		}
+		pro[count] = new Product(pId, pName, price,tax);
+		count++;
+		
 	}
 	public void productPrint() {
 		//제품 출력
-		for(Product p: pro) {
-			System.out.println(p.information());
+		for(int i=0;i<pro.length;i++) {
+			System.out.println(pro[i].information());
 		}
 	}
 }

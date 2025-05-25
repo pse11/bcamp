@@ -5,31 +5,26 @@ let now = new Date();
   let lastDate;
   let nowDate= now.getDate();
   let firstDate;
-  let colorIdx=0;
     window.onload=function(){ //페이지 로드될때 달력 불러와야됨
       createDate();
      // console.log(firstDate);
-      clicktable();
-      
     };
     
     function clicktable(){  //달력 클릭했을 때 색 변하는 코드
         resetColor();
-        let tds = document.querySelectorAll("#calander td");
+        let spans = document.querySelectorAll("#calander span");
         let $changecolor=document.querySelectorAll(".changecolor");
         for(let i=0;i<$changecolor.length;i++){
           $changecolor[i].style.backgroundColor="black";
         }
-        console.log(colorIdx);
-        tds.forEach(function(el,i){
+        let clicked_id;
+        spans.forEach(function(el,i){
             el.addEventListener('click',(e)=>{
-            
-              console.log(typeof(e.target));
+              console.log(typeof(e.target.id));
               //클릭한 요소
-              colorIdx=i;
-              el.querySelector(".changecolor").style.backgroundColor="white";
-              el.querySelector(".changecolor").style.borderRadius="50%";
-              el.querySelector(".changecolor").style.color="black";
+              clicked_id=e.target.id;
+              // el.querySelector(".changecolor").style.borderRadius="50%";
+              // el.querySelector(".changecolor").style.color="black";
         })
       })
     }
@@ -68,7 +63,7 @@ let now = new Date();
       emoji3.style.fontWeight="normal";
       Array.from(document.getElementsByClassName("changecolor"));
 
-      alert(Array.findIndex((item)=>item.innerText===nowDate));
+     // alert(Array.findIndex((item)=>item.innerText===nowDate));
       
       //alert(document.getElementsByClassName("changecolor")[2].innerText);
 
@@ -119,7 +114,7 @@ let now = new Date();
         for(let j=0;j<7;j++){
           let td = document.createElement("td");
           if(arr[i][j]!=undefined){
-            td.innerHTML=`<span class="changebox">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br><span class="changecolor">${arr[i][j]}</span>`;
+            td.innerHTML=`<span class="changebox" id="${arr[i][j]}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br><span class="changecolor" id="${arr[i][j]}">${arr[i][j]}</span>`;
           }
           tr.appendChild(td);
         }

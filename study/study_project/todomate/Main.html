@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link type="text/css" rel="stylesheet" href="./css.css" />
-  <script type="text/javascript" src="./script.js"></script>
+  <script type="text/javascript" src="./calender(left).js"></script>
+  <script type="text/javascript" src="./categories(right).js"></script>
 </head>
 <body>
   <div id="header">
@@ -70,7 +71,17 @@
       </div>
     </div>
     <div id="right_contents">
-      <div id="categories"></div>
+      <div id="categories">
+        <div id="category1" class="cateButton" >
+          <span onclick="maketodo1()">🔒&nbsp;카테고리 1&nbsp;+</span>
+        </div>
+        <div id="category2" class="cateButton">
+          <span  onclick="maketodo2()">🔒&nbsp;카테고리 2&nbsp;+</span>
+        </div>
+        <div id="category3" class="cateButton">
+          <span onclick="maketodo3()">🔒&nbsp;카테고리 3&nbsp;+</span>
+        </div>
+      </div>
       <div id="todolistbtns">
         <div id="aibtn"></div>
         <div id="listbtn"></div>

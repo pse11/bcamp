@@ -3,7 +3,7 @@ package com.test01;
 public class Variable01 {
 	public static void main(String[] args) {
 		//변수
-		//타입 변수명 = 값;
+		//타입 변수명 = 값; int a = 2;
 		//타입: 생성할 변수에 어떤 종류의 값을 저장할지 타입 지정.
 		//변수명: 변수의 이름
 		//값: 메모리에 저장할(변수에 넣을) 데이터
@@ -43,7 +43,7 @@ public class Variable01 {
 		fnum = 4.0f; //숫자만 넣으면 double타입으로 인식한다. 그래서 꼭 뒤에 f를 작성해야한다.
 		dnum = 8.0;
 		
-		isTrue = false; // true of false 값만 저장된다.
+		isTrue = false; // true or false 값만 저장된다.
 		
 		ch = 'A'; //문자
 		

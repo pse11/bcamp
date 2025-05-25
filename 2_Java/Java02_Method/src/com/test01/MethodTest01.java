@@ -30,7 +30,7 @@ public class MethodTest01 {
 		System.out.println("protected method");
 	}
 	
-	//같은 패키지 안에서 접근, 참조 가능하다. (default)
+	//같은 패키지 안에서만 접근, 참조 가능하다. (default)
 	static void defaultMethod() {
 		System.out.println("defaultMethod");
 	}

@@ -23,4 +23,3 @@ public class KindsOfVariable {//클래스 영역의 시작
 	}
 	
 }//클래스 영역의 끝
-
