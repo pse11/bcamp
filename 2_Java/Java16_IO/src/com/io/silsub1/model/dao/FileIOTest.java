@@ -24,11 +24,14 @@ public class FileIOTest {
 //						화면에 "파일에 성공적으로 저장되었습니다." 출력하고
 //					=> 파일출력 스트림을 닫음.
 
+		//new 보조스트림(new 보조스트림(기반스트림));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("파일명 입력:");
 		FileWriter fw=null;
 		try {
 			String fileName = br.readLine();
+			
+			//new 기반스트림("외부자원");
 			fw = new FileWriter(fileName+".txt",true);
 			while(true) {
 				System.out.println("파일에 저장할 내용을 입력하시오.");
@@ -37,15 +40,15 @@ public class FileIOTest {
 					break;
 				}
 				fw.write("\n"+fileContent);
+				//fw.write(fileContent.toCharArray());
 			}
-			
-		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally {
 			try {
 				System.out.println("파일에 성공적으로 저장되었습니다.");
 				fw.close();
+				br.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -79,6 +82,7 @@ public class FileIOTest {
 		}finally {
 			try {
 				fr.close();
+				br.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
