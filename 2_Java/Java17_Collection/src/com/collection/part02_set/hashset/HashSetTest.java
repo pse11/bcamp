@@ -68,6 +68,7 @@ public class HashSetTest {
 		System.out.println(set);
 		
 		//hashcode, equals를 오버라이딩하면 중복이 안된다. Member클래스에서 hashcode,equals오버라이딩
+		//위 test()에서 따로 hashcode, equals 작성안한 이유는 String, Integer 타입이기 때문에 자동으로 hashcode, equals에 대해 오버라이딩 되어있다.
 	}
 }
 

@@ -1,10 +1,10 @@
-package com.collection.silsub2.view;
+package com.collection.silsub3.view;
 
 import java.util.Iterator;
 import java.util.Scanner;
 
-import com.collection.silsub2.controller.BookManager;
-import com.collection.silsub2.model.vo.Book;
+import com.collection.silsub3.controller.BookManager;
+import com.collection.silsub3.model.vo.Book;
 
 public class BookMenu {
 	private Scanner sc = new Scanner(System.in);
@@ -33,23 +33,25 @@ public class BookMenu {
 				break;
 			case 3:
 				//삭제할 도서 번호 입력
-				int result = bm.deleteBook(inputBookNo());
-				if(result==0) {
-					System.out.println("성공적으로 삭제");
-				}else if(result==1) {
+				String result = bm.deleteBook(inputBookNo());
+				if(result==null) {
 					System.out.println("삭제할 글이 존재하지 않음");
+				}else{
+					System.out.println("성공적으로 삭제");
 				}
 				break;
 			case 4:
-				int result2 = bm.searchBook(inputBookTitle());
-				if(result2==-1) {
+				String key = bm.searchBook(inputBookTitle());
+				if(key==null) {
 					System.out.println("조회한 글이 존재하지 않음");
 				}else {
 					// selectBook(index) 출력
-					System.out.println(bm.selectBook(result2));
+					System.out.println(bm.selectBook(key));
 				}
 				break;
 			case 5:
+				// 결과 map 리턴 받아 비어있을 경우 “없습니다.”
+				//아닐 경우 Iterator, keySet()을 이용하여 전체 출력
 				if(bm.selectAll().isEmpty()) {
 					System.out.println("없습니다.");
 				}else {
@@ -80,9 +82,9 @@ public class BookMenu {
 		Book b = new Book(category,title,author);
 		return b;
 	}
-	public int inputBookNo() {
+	public String inputBookNo() {
 		System.out.print("삭제할 도서번호 입력: ");
-		int bNo = sc.nextInt();
+		String bNo = sc.nextLine();
 		return bNo;
 	}
 	public String inputBookTitle() {

@@ -32,13 +32,13 @@
     <fullyQualifiedTypeName name="java.io.IOException"/>
     <fullyQualifiedTypeName name="java.io.EOFException"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="com.collection.part03_map.hashmap.HashMapTest"/>
     <fullyQualifiedTypeName name="com.collection.part03_map.hashmap.PropertiesTest"/>
     <fullyQualifiedTypeName name="java.util.Properties"/>
-    <fullyQualifiedTypeName name="java.util.Iterator"/>
-    <fullyQualifiedTypeName name="java.util.Map.Entry"/>
     <fullyQualifiedTypeName name="com.collection.part04_generics.controller.GenericsTest"/>
     <fullyQualifiedTypeName name="com.collection.part04_generics.controller.GenericsTest2"/>
     <fullyQualifiedTypeName name="com.collection.silsub2.model.vo.Book"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.util.Map.Entry"/>
 </qualifiedTypeNameHistroy>

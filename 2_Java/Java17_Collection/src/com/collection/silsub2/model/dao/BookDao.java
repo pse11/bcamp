@@ -43,7 +43,6 @@ public class BookDao {
 		return bookList.get(index);
 	}
 	public ArrayList<Book> selectAll(){
-		
 		return bookList;
 	}
 	public ArrayList<Book> sortedBookList(){
