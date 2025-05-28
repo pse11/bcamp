@@ -49,7 +49,7 @@ public class BoardDao {
 	}
 	
 	//게시글 전체 확인용
-	public /*ArrayList<Board>*/List displayAll() { //제너릭 해주면 편리하다. 나중에 형변환 해줄 필요가 없어서.
+	public ArrayList<Board> displayAll() { //제너릭 해주면 편리하다. 나중에 형변환 해줄 필요가 없어서.
 		return list;
 	}
 	
@@ -74,6 +74,56 @@ public class BoardDao {
 	public Board displayOne(int no) {
 		//매개변수로 넘어온 게시글 번호와
 		//일치 하는 게시글 찾기
-		return list.get(no-1);
+		//return list.get(no-1);
+		
+		Board board = null;
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).getBoardNo()==no) {
+				board = list.get(i);
+				break;
+			}
+		}
+		return board;
+	}
+	
+	//제목 수정
+	public void updateTitle(int no, String title) {
+		//매개변수로 넘어오는
+		//no와 일치하는 게시글의 제목을 title로 변경
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).getBoardNo()==no) {
+				list.get(i).setBoardTitle(title);
+				break;
+			}
+		}
+	}
+	
+	public void updateContent(int no, String content) {
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).getBoardNo()==no) {
+				list.get(i).setBoardContent(content);
+				break;
+			}
+		}
+	}
+	
+	public void delete(int no) {
+//		list.remove(no-1);
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).getBoardNo()==no) {
+				list.remove(i);
+			}
+		}
+	}
+	
+	public ArrayList<Board> search(String title){
+		//검색 결과 여러개일수도있으니 리스트로 리턴
+		ArrayList<Board> res = new ArrayList<>();
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i).getBoardTitle().contains(title)) {//제목 포함인지
+				res.add(list.get(i));
+			}
+		}
+		return res; //만약 제목 일치하는게 없으면 리스트가 있지만 size가 0일뿐이다.
 	}
 }

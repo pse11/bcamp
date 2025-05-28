@@ -212,4 +212,12 @@ a{
 #todo_input:focus{
   outline:none;
 }
-
+#c_todo_input{
+  display: inline-block;
+  width: 80%;
+  background-color: black;
+  border: none;
+  height: 40px;
+  border-bottom: none;
+  font-size: 12pt;
+}
