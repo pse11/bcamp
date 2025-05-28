@@ -12,9 +12,9 @@ public class Controller {
 		list.add(new Score("김상은",50));
 		list.add(new Score("이상은",80));
 		
-		list.add(new Score("정상은",99));
-		list.add(new Score("최상은",50));
-		list.add(new Score("양상은",80));
+		list.add(new Score("정상은",66));
+		list.add(new Score("최상은",33));
+		list.add(new Score("양상은",22));
 		
 		System.out.println("list: "+list);
 		

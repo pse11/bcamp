@@ -42,14 +42,14 @@ public class Member {
 	}
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (this == obj)  //주소가 같으면 true
+			return true;  
+		if (obj == null)  //null이면 false
 			return false;
-		if (getClass() != obj.getClass())
+		if (getClass() != obj.getClass())   //클래스 타입 다르면 false
 			return false;
-		Member other = (Member) obj;
-		return age == other.age && Objects.equals(name, other.name) && Objects.equals(phone, other.phone);
+		Member other = (Member) obj;      //형변환
+		return age == other.age && Objects.equals(name, other.name) && Objects.equals(phone, other.phone); //멤버변수값 비교
 	}
 	
 }

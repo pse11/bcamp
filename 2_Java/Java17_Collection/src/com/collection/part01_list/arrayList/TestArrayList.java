@@ -99,8 +99,10 @@ public class TestArrayList {
 		ArrayList descList = new ArrayList();
 		
 		while(dIter.hasNext()) {
-			descList.add(dIter.hashCode());
+			descList.add(dIter.next());
 		}
+		System.out.println("descList:"+descList);
+		
 		
 		//내림차순
 		
