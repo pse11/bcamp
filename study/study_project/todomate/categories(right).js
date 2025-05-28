@@ -10,11 +10,18 @@ function maketodo1(){
   <span>📌</span>`;
   categorydiv.appendChild(newtodo);
   document.getElementById("todo_input").focus();
+  let content = document.getElementById("todo_input").value;
+  if(value==null||value==""){
+    maketodo1();
+  }
+  
 }
 
 //할일 입력하고 확정시켜 입력란 대신 입력한 할일 띄우기
 function confirmTodo(){
   let todoContent = document.getElementById("todo_input").value; //입력한 값 가져오기
-  
-  
+  let confirmtodo = document.getElementById("todolist");
+  confirmtodo.innerHTML = `<span id="check">⭐</span>
+  <div id="c_todo_input">${todoContent}</div>
+  <span>📌</span>`;
 }
