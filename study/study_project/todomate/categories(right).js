@@ -25,3 +25,8 @@ function confirmTodo(){
   <div id="c_todo_input">${todoContent}</div>
   <span>📌</span>`;
 }
+
+function pluscategory(){
+  let menu = document.getElementById("plus"); 
+  menu.classList.toggle("show");
+}

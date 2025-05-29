@@ -19,12 +19,28 @@ img{
 #header_right{
   float:right;
 }
+.list_group{
+  background-color: rgb(61, 57, 57);
+  margin-left: 0px;
+  font-size: 15pt;
+  list-style: none;
+  padding-inline-start: 0px;
+  display: none;
+}
+.list_group.show{
+  display: block;
+}
+.list_item{
+  padding: 10px;
+  border: 0.2px solid rgba(255, 255, 255, 0.329);
+}
 #pimg{
   cursor: pointer;
 }
-a{
+.hbtns{
   text-decoration: none;
   font-size:20pt;
+  cursor: pointer;
 }
 #header_left > img{
   width: 40px;
