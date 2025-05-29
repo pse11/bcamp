@@ -1,12 +1,13 @@
 package com.collection.silsub3.model.dao;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.collection.silsub2.model.comparator.AscCategory;
 import com.collection.silsub3.model.vo.Book;
 
 public class BookDao {
@@ -37,15 +38,16 @@ public class BookDao {
 	public Book deleteBook(String key) {
 		//keySet()을 이용하여 전달받은 도서 번호와 일치하는 도서
 		//bookMap에서 삭제, 삭제한 객	체 리턴
+		Book b =null;
 		Set keys = bookMap.keySet();
 		Iterator keysIt = keys.iterator();
 		while(keysIt.hasNext()) {
 			if(keysIt.next().equals(key)) {
-				//Map.Entry entry = (Map.Entry)
+				b= bookMap.get(keysIt);
 				bookMap.remove(keysIt);
 			}
 		}
-		return 
+		return b;
 	}
 	public String searchBook(String title) {
 //		entrySet()을 이용하여 전달받은
@@ -63,15 +65,26 @@ public class BookDao {
 		}
 		return res;
 	}
-	public Book selectBook(int index) {
-		return bookMap.get(index);
+	public Book selectBook(String key) {
+		return bookMap.get(key);
 	}
 	public HashMap<String,Book> selectAll(){
 		return bookMap;
 	}
 	public ArrayList<Book> sortedBookList(){
-		bookMap.sort(new AscCategory());
-		return bookMap;
+//		entrySet()을 이용하여
+//		ArrayList<Book>을 가져오고
+//		Collections.sort()를 이용하여
+//		리스트 정렬 후 리턴
+		Set entrys = bookMap.entrySet();
+		Iterator entryIt = entrys.iterator();
+		ArrayList<Book> booklist = new ArrayList<Book>();
+		while(entryIt.hasNext()) {
+			Map.Entry entry = (Map.Entry)entryIt.next();
+			booklist.add((Book)entry.getValue());
+		}
+		Collections.sort(booklist);
+		return booklist;
 	}
 	
 }
