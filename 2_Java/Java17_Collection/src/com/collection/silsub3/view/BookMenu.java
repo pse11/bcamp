@@ -2,6 +2,7 @@ package com.collection.silsub3.view;
 
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 
 import com.collection.silsub3.controller.BookManager;
 import com.collection.silsub3.model.vo.Book;
@@ -32,8 +33,9 @@ public class BookMenu {
 				bm.printBookList(bm.sortedBookList());
 				break;
 			case 3:
-				//삭제할 도서 번호 입력
-				String result = bm.deleteBook(inputBookNo());
+//				Book 리턴 받아 null이 아닐 경우 “성공적으로 삭제”
+//				null일 경우 “삭제할 글이 존재하지 않음”
+				Book result = bm.deleteBook(inputBookNo());
 				if(result==null) {
 					System.out.println("삭제할 글이 존재하지 않음");
 				}else{
@@ -41,6 +43,9 @@ public class BookMenu {
 				}
 				break;
 			case 4:
+//				key 리턴 받아 null일 경우 “조회한 글이 존재하지 않음”
+//				null이 아닐 경우 selectBook(key) 출력
+
 				String key = bm.searchBook(inputBookTitle());
 				if(key==null) {
 					System.out.println("조회한 글이 존재하지 않음");
@@ -56,7 +61,8 @@ public class BookMenu {
 					System.out.println("없습니다.");
 				}else {
 					//iterator이용하여 전체 출력
-					Iterator bookIt = bm.selectAll().iterator();
+					Set<String> keyset = bm.selectAll().keySet();
+					Iterator bookIt = keyset.iterator();
 					while(bookIt.hasNext()) {
 						Book b = (Book)bookIt.next();
 						System.out.println(b);
