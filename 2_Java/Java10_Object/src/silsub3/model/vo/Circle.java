@@ -1,8 +1,8 @@
 package silsub3.model.vo;
 
 public class Circle {
-	public final double PI=3.14;
-	private int radius;
+	public static final double PI=3.14;
+	private static int radius;
 
 	public Circle() {}
 
@@ -18,6 +18,6 @@ public class Circle {
 		this.radius = radius;
 	}
 	public void incrementRadius() {
-		this.radius=radius++;
+		this.radius++;
 	}
 }
