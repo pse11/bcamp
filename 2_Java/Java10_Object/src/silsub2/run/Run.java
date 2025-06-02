@@ -6,13 +6,9 @@ public class Run {
 
 	public static void main(String[] args) {
 		Product pd = new Product();
-		
-		pd.setPName("iphone");
-		pd.setPrice(100);
 		pd.setBrand("apple");
-		
+		pd.setpName("iphone");
+		pd.setPrice(200);
 		System.out.println(pd.information());
-		
 	}
-
 }

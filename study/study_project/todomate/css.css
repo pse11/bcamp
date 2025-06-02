@@ -217,7 +217,7 @@ img{
   margin: 10px;
   font-size: 20pt;
 }
-#todo_input{
+.todo2{
   width: 80%;
   background-color: black;
   border: none;
@@ -225,10 +225,10 @@ img{
   border-bottom: 2px solid red;
   font-size: 12pt;
 }
-#todo_input:focus{
+.todo2:focus{
   outline:none;
 }
-#c_todo_input{
+.c_todo_input{
   display: inline-block;
   width: 80%;
   background-color: black;

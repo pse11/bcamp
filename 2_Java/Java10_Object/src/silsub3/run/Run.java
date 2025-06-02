@@ -5,10 +5,10 @@ public class Run {
 
 	public static void main(String[] args) {
 		Circle cl = new Circle();
-		cl.setRadius(5);
-		int r= cl.getRadius();
-		System.out.println("원의 둘레 : "+(2*cl.PI*r)+", 넓이: "+r*r*cl.PI);
+		cl.setRadius(4);
+		System.out.println("원둘레:" +2*cl.PI*cl.getRadius()+"원 넓이: "+cl.PI*cl.getRadius()*cl.getRadius());
 		cl.incrementRadius();
+		System.out.println("원둘레:" +2*cl.PI*cl.getRadius()+"원 넓이: "+cl.PI*cl.getRadius()*cl.getRadius());
 	}
 
 }
