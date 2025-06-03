@@ -8051,7 +8051,11 @@ Binding(ALT+SHIFT+R,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
+<<<<<<< HEAD
 !SESSION 2025-06-01 18:49:00.220 -----------------------------------------------
+=======
+!SESSION 2025-06-02 09:58:42.015 -----------------------------------------------
+>>>>>>> 23b59646a7237a76c6f731fcce3d00261e4cb786
 eclipse.buildId=4.24.0.I20220607-0700
 java.version=17.0.3
 java.vendor=Eclipse Adoptium
@@ -8059,15 +8063,25 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
 Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.jface 2 0 2025-06-01 19:10:41.533
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
 !SUBENTRY 1 org.eclipse.jface 2 0 2025-06-01 19:10:41.533
+=======
+!ENTRY org.eclipse.jface 2 0 2025-06-02 09:59:28.302
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2025-06-02 09:59:28.302
+>>>>>>> 23b59646a7237a76c6f731fcce3d00261e4cb786
 !MESSAGE A conflict occurred for CTRL+SHIFT+T:
 Binding(CTRL+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
 		Open a type in a Java editor,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3fed0c04,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@55465bfc,
+>>>>>>> 23b59646a7237a76c6f731fcce3d00261e4cb786
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
@@ -8075,17 +8089,29 @@ Binding(CTRL+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
 		,
 		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@563bd6a4,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2025-06-01 19:10:41.533
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5625ba2,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2025-06-02 09:59:28.302
+>>>>>>> 23b59646a7237a76c6f731fcce3d00261e4cb786
 !MESSAGE A conflict occurred for ALT+SHIFT+R:
 Binding(ALT+SHIFT+R,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
 		Rename the selected element,
 		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3549c070,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@47bbf44d,
+>>>>>>> 23b59646a7237a76c6f731fcce3d00261e4cb786
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
@@ -8093,6 +8119,7 @@ Binding(ALT+SHIFT+R,
 	ParameterizedCommand(Command(org.eclipse.ui.edit.rename,Rename,
 		Rename the selected item,
 		Category(org.eclipse.ui.category.file,File,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@235dacd7,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
@@ -8670,6 +8697,13 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/Java20_Lambda
 !SUBENTRY 2 org.eclipse.core.filebuffers 4 0 2025-06-01 19:10:47.937
 !MESSAGE Cannot determine URI for '/Java20_Lambda/src/com/test04/MTest_Stream.java'.
 !SESSION 2025-06-02 00:21:26.830 -----------------------------------------------
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@35c9f527,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SESSION 2025-06-02 10:55:38.478 -----------------------------------------------
+>>>>>>> 23b59646a7237a76c6f731fcce3d00261e4cb786
 eclipse.buildId=4.24.0.I20220607-0700
 java.version=17.0.3
 java.vendor=Eclipse Adoptium
@@ -8677,15 +8711,28 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
 Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.jface 2 0 2025-06-02 00:21:37.022
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
 !SUBENTRY 1 org.eclipse.jface 2 0 2025-06-02 00:21:37.022
+=======
+!ENTRY org.eclipse.core.resources 2 10035 2025-06-02 10:56:17.952
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jface 2 0 2025-06-02 10:56:19.869
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2025-06-02 10:56:19.869
+>>>>>>> 23b59646a7237a76c6f731fcce3d00261e4cb786
 !MESSAGE A conflict occurred for CTRL+SHIFT+T:
 Binding(CTRL+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
 		Open a type in a Java editor,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@79a92277,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6afb240d,
+>>>>>>> 23b59646a7237a76c6f731fcce3d00261e4cb786
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
@@ -8693,17 +8740,29 @@ Binding(CTRL+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
 		,
 		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7712df76,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2025-06-02 00:21:37.022
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@272f5373,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2025-06-02 10:56:19.869
+>>>>>>> 23b59646a7237a76c6f731fcce3d00261e4cb786
 !MESSAGE A conflict occurred for ALT+SHIFT+R:
 Binding(ALT+SHIFT+R,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
 		Rename the selected element,
 		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@e98adb2,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@799557c8,
+>>>>>>> 23b59646a7237a76c6f731fcce3d00261e4cb786
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
@@ -8711,6 +8770,7 @@ Binding(ALT+SHIFT+R,
 	ParameterizedCommand(Command(org.eclipse.ui.edit.rename,Rename,
 		Rename the selected item,
 		Category(org.eclipse.ui.category.file,File,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2c3d0ff8,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
@@ -8851,6 +8911,9 @@ Binding(ALT+SHIFT+R,
 		Rename the selected item,
 		Category(org.eclipse.ui.category.file,File,null,true),
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@40b678b3,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1f05d08c,
+>>>>>>> 23b59646a7237a76c6f731fcce3d00261e4cb786
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)

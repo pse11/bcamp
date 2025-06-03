@@ -8,7 +8,13 @@ public class Student {
 	private char gender;
 	
 	public Student() {}
-	
+	{
+		grade=3;
+		classroom=2;
+		name="pse";
+		height=160;
+		gender='f';
+	}
 	public void setGrade(int grade) {
 		this.grade=grade;
 	}

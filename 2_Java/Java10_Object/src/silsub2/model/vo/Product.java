@@ -5,31 +5,32 @@ public class Product {
 	private int price;
 	private String brand;
 	
-	public Product () {}
-	
-	public void setPName(String pName) {
-		this.pName = pName;
-	}
-	public String getPName() {
+	public Product() {}
+
+	public String getpName() {
 		return pName;
 	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
+
 	public int getPrice() {
 		return price;
 	}
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
+
 	public String getBrand() {
 		return brand;
 	}
+
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
 	public String information() {
-		String result = "";
-		result+=pName +",";
-		result+=price +"만원,";
-		result+=brand;
-		return result;
+		return "pName:"+pName+"price:"+price+"brand:"+brand;
 	}
 }
