@@ -17,22 +17,37 @@ img{
   float: left;
 }
 #header_right{
-  float:right;
+  float: right;
+  height: 50px;
+  line-height: 50px;
+  margin: 0 auto;
+  text-align: center;
 }
-.list_group{
-  background-color: rgb(61, 57, 57);
-  margin-left: 0px;
-  font-size: 15pt;
-  list-style: none;
-  padding-inline-start: 0px;
+#header_right>ul>li{
+  float: left;
+  width: 100px;
+  display:inline-block;
+  font-size:10pt;
+}
+#header ul{
+
+  padding-left: 0;
+}
+#header_right > ul>li>ul{
+  width: 150px;
   display: none;
+  position: absolute;
+  font-size: 10pt;
+  background: rgb(61, 58, 58);
 }
-.list_group.show{
-  display: block;
+.sub_menu{
+    border: 1px solid white;
 }
-.list_item{
-  padding: 10px;
-  border: 0.2px solid rgba(255, 255, 255, 0.329);
+ul li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
 }
 #pimg{
   cursor: pointer;
@@ -213,7 +228,7 @@ img{
 #textd{
   margin: 8px;
 }
-#todolist{
+#todolist, .c_todolist{
   margin: 10px;
   font-size: 20pt;
 }
@@ -235,5 +250,65 @@ img{
   border: none;
   height: 40px;
   border-bottom: none;
-  font-size: 12pt;
+  font-size: 11pt;
+}
+
+/* 수정, 삭제 팝업*/
+#deletepopup{
+  background-color: rgb(51, 48, 48);  
+  width:500px;
+  height: 100%;
+  position: absolute;
+  top: 100px;
+  left: 35%;
+}
+#clickcontent{
+  text-align: center;
+  padding: 15px;
+  height: 50px;
+}
+#deletepopup{
+   border-radius: 30px 30px 0px 0px;
+}
+#topcontent{
+  height: 100px;
+
+}
+#deletepopup{
+  display: none;
+}
+#correction{
+  text-align: center;
+  border-radius: 20px;
+  display: inline-block;
+  background-color: gray;
+  margin-left: 50px;
+  width: 37%;
+  height: 90px;
+  margin-right: 5%;
+  vertical-align: middle;
+}
+#delete{
+  text-align: center;
+  border-radius: 20px;
+  float: right;
+  display: inline-block;
+  background-color: gray;
+  margin-right: 50px;
+  width: 37%;
+  height: 90%;
+}
+#otherlist{
+  font-size:15pt;
+}
+#otherlist li{
+  padding:10px;
+}
+#otherlist span{
+  background-color: rgb(15, 109, 190);
+  border-radius: 50px;
+  margin-right: 10px;
+}
+.c_todolist >span, div{
+  cursor: pointer;
 }
