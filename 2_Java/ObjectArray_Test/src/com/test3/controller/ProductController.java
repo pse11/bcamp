@@ -7,7 +7,7 @@ import com.test3.model.vo.Product;
 public class ProductController {
 	private Product[] pro = new Product[10];
 	
-	public int count = 0;
+	public static int count = 0;
 	Scanner sc = new Scanner(System.in);
 	
 	public void mainMenu() {
@@ -24,7 +24,7 @@ public class ProductController {
 			case 2:
 				productPrint();
 				break;
-			case 3:
+			case 9:
 				return;
 			default:
 				System.out.println("다시 입력하세요");
@@ -45,12 +45,11 @@ public class ProductController {
 		double tax = sc.nextDouble();
 			
 		pro[count] = new Product(pId, pName, price,tax);
-		count++;
 		
 	}
 	public void productPrint() {
 		//제품 출력
-		for(int i=0;i<pro.length;i++) {
+		for(int i=0;i<count;i++) {
 			System.out.println(pro[i].information());
 		}
 	}

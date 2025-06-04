@@ -8,7 +8,9 @@ public class Member {
 	private char gender;
 	private String email;
 	
-	public Member() {}
+	public Member() {
+		
+	}
 
 	public Member(String userId, String userPwd, String name, int age, char gender, String email) {
 		super();
@@ -19,7 +21,7 @@ public class Member {
 		this.gender = gender;
 		this.email = email;
 	}
-	
+
 	public String getUserId() {
 		return userId;
 	}
@@ -72,6 +74,4 @@ public class Member {
 		return "userId=" + userId + ", userPwd=" + userPwd + ", name=" + name + ", age=" + age + ", gender="
 				+ gender + ", email=" + email;
 	}
-
-	
 }
