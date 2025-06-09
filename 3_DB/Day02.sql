@@ -618,6 +618,8 @@ SELECT EMP_ID 사번,
 	   HIRE_DATE 입사일
 FROM EMPLOYEE
 WHERE (DEPT_CODE='D5' OR DEPT_CODE='D9') AND EXTRACT(YEAR FROM HIRE_DATE )=2004;
+-- WHERE DEPT_CODE IN('D5','D9')
+--	 AND SUBSTR(HIRE_DATE,1,2)=04;
 
 
 --7. 직원명, 부서코드, 생년월일, 나이(만) 조회
@@ -629,10 +631,16 @@ SELECT * FROM EMPLOYEE;
 SELECT EMP_NAME 직원명,
 	   DEPT_CODE 부서코드,
 	   CONCAT(CONCAT(SUBSTR(EMP_NO, 1,2)||'년 ',SUBSTR(EMP_NO, 3,2)||'월 '), SUBSTR(EMP_NO, 5,2)||'일') 생년월일
-	   
 FROM EMPLOYEE;
-	   
-	   
+-- SELECT EMP_NAME 직원명,
+--	   DEPT_CODE 부서코드,
+--	   SUBSTR(EMP_NO,1,2)||'년' ||
+--	   SUBSTR(EMP_NO,3,2)||'월'||
+--	   SUBSTR(EMP_NO,5,2)||'일' 생년월일,
+--	   EXTRACT(YEAR FROM SYSDATE)-EXTRACT(YEAR FROM TO_DATE(SUBSTR(EMP_NO,1,6),'RRMMDD'))나이
+-- FROM EMPLOYEE
+-- WHERE EMP_ID IN()
+
 
 --8. 직원들의 입사일로 부터 년도만 가지고, 각 년도별 입사인원수를 구하시오.
 --  아래의 년도에 입사한 인원수를 조회하시오.
@@ -641,14 +649,37 @@ FROM EMPLOYEE;
 --	-------------------------------------------------------------
 --	전체직원수   2001년   2002년   2003년   2004년
 --	-------------------------------------------------------------
+SELECT * FROM EMPLOYEE;
+SELECT COUNT(EMP_ID) 전체 직원 수,
+		COUNT(DECODE(SUBSTR(HIRE_DATE,1,4),2001
+FROM EMPLOYEE;
 
-
+SELECT COUNT(*)전체,
+	   COUNT(DECODE(TO_CHAR(EXTRACT(YEAR FROM HIRE_DATE)), '2001',1))"2001년",
+	   COUNT(DECODE(TO_CHAR(EXTRACT(YEAR FROM HIRE_DATE)), '2002',1))"2002년",
+	   COUNT(DECODE(TO_CHAR(EXTRACT(YEAR FROM HIRE_DATE)), '2003',1))"2003년",
+	   COUNT(DECODE(TO_CHAR(EXTRACT(YEAR FROM HIRE_DATE)), '2004',1))"2004년"
+FROM EMPLOYEE;
 
 --9.  부서코드가 D5이면 총무부, D6이면 기획부, D9이면 영업부로 처리하시오.
 --   단, 부서코드가 D5, D6, D9 인 직원의 정보만 조회함
 --  => case 사용
 --   부서코드 기준 오름차순 정렬함.
-
+-- CASE
+-- WHEN 조건1 THEN 결과1
+-- WHEN 조건2 THEN 결과2
+-- ELSE 결과3
+-- END
+SELECT EMP_NAME 사원명, DEPT_CODE 부서코드,
+	   CASE
+	   	WHEN DEPT_CODE='D5' THEN '총무부'
+	   	WHEN DEPT_CODE='D6' THEN '기획부'
+	   	WHEN DEPT_CODE='D9' THEN '영업부'
+	   END "부서명"
+FROM EMPLOYEE
+WHERE DEPT_CODE IN('D5','D6','D9')
+ORDER BY 2;
+	   
 
 
 

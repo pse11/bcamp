@@ -1,17 +1,20 @@
 package com.test3.model.vo;
 
+import com.test3.controller.ProductController;
+
 public class Product {
 	private int pId;
 	private String pName;
 	private int price;
 	private double tax;
 	
-	public Product() {}
+	public Product() {ProductController.count++;}
 	public Product(int pId,String pName,int price,double tax) {
 		this.pId =pId;
 		this.pName=pName;
 		this.price=price;
 		this.tax=tax;
+		ProductController.count++;
 	}
 	
 	public int getpId() {

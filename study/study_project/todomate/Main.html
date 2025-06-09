@@ -14,16 +14,17 @@
         <img src="./logo.png" alt="mini_logo">
     </div>
     <div id="header_right">
-        <span class="hbtns">&nbsp;📅&nbsp;</span>
-        <span class="hbtns">&nbsp;✈️&nbsp;</span>
-        <span class="hbtns"  onclick="pluscategory()">&nbsp;➕&nbsp;
-          <ul class="list_group" id="plus">
-            <li class="list_item">카테고리 등록 <span>➕</span></li>
-            <li class="list_item">카테고리 관리</li>
-            <li class="list_item">루틴 관리</li>
-            <li class="list_item">리마인더 관리</li>
-          </ul>
-        </span>
+      <ul>
+        <li><a href="#">📅</a></li>
+        <li><a href="#">✈️</a></li>
+        <li onclick="showmenu()"><a href="#" >➕</a>
+          <ul id="sub_menus">
+            <li class="sub_menu" onclick="regist()"><a href="#">카테고리 등록 ➕</a></li>
+            <li class="sub_menu"><a href="#">카테고리 관리</a></li>
+            <li class="sub_menu"><a href="#">루틴 관리</a></li>
+            <li class="sub_menu"><a href="#">리마인더 관리</a></li>
+          </ul></li>
+      </ul>
     </div>
   </div>
   <div id="profile">
@@ -80,18 +81,36 @@
     <div id="right_contents">
       <div id="categories">
         <div id="category1" class="cateButton" >
-          <span onclick="maketodo1()">🔒&nbsp;카테고리 1&nbsp;+</span>
+          <span onclick="maketodo(1)">🔒&nbsp;카테고리 1&nbsp;+</span>
         </div>
         <div id="category2" class="cateButton">
-          <span  onclick="maketodo2()">🔒&nbsp;카테고리 2&nbsp;+</span>
+          <span  onclick="maketodo(2)">🔒&nbsp;카테고리 2&nbsp;+</span>
         </div>
         <div id="category3" class="cateButton">
-          <span onclick="maketodo3()">🔒&nbsp;카테고리 3&nbsp;+</span>
+          <span onclick="maketodo(3)">🔒&nbsp;카테고리 3&nbsp;+</span>
         </div>
       </div>
       <div id="todolistbtns">
         <div id="aibtn"></div>
         <div id="listbtn"></div>
+      </div>
+    </div>
+    <div id="deletepopup">
+      <div id="clickcontent">할일</div>
+      <div id="topcontent">
+        <div id="correction"><p>✏️</p>수정하기</div>
+        <div id="delete"><p>🗑️</p>삭제하기</div>
+      </div>
+      <div id="otherlist">
+        <ul>
+          <li><span>📝</span>메모</li>
+          <li><span>⏰</span>시간 알림</li>
+          <li><span>⏳</span>타이머 열기</li>
+          <li><span>➡️</span>내일 하기</li>
+          <li><span>↪️</span>날짜 바꾸기</li>
+          <li><span>✅</span>루틴 등록하기</li>
+          <li><span>🗂️</span>보관함으로 이동</li>
+        </ul>
       </div>
     </div>
   </div>

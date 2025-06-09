@@ -1,13 +1,9 @@
 package practice;
 
 public class Test {
-	static double pi =3.141592;
-	
-	static int plus(int x, int y) {
-		return x+y;
-	}
-	
-	static int minus(int x, int y) {
-		return x-y;
+	public static void main(String[] args) {
+		Singleton s1 = Singleton.getInstance();
+		Singleton s2 = Singleton.getInstance();
+		System.out.println(s1==s2); //true
 	}
 }
