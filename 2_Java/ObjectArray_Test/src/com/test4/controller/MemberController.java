@@ -86,10 +86,30 @@ public class MemberController /*implements Comparable<Member>*/{
 		}
 	}
 	public Member[] sortIdAsc() {
+		/* 강사님 설명
+		 * Member[] oA = new Member[10]; 복사한 배열
+		 * Member[] tmp = new Member[10]; 바꿔 넣을 빈 배열, Member가 아닌 변수여도 돌아갈 것
+		 * 
+		 * for(int i=0;i<memberCount-1;i++){
+		 * 	for(int j=i+1;j<memberCount;j++){
+		 * 		int res = oA[i].getId().compareTo(oA[j].getId());
+		 * 		if(res==1){
+		 * 			tmp[0]=oA[i];
+		 * 			oA[i]=oA[j];
+		 * 			oA[j]=tmp[0];
+		 * 		}
+		 * 	}
+		 * }
+		 * 
+		 * i==0
+		 * j==1~memberCount-1
+		 */
 		Member copy[] = new Member[memberCount];
 		System.arraycopy(mem, 0, copy, 0, memberCount);
 		for(int i=0;i<memberCount;i++) {
-			
+			for(int j=i+1;j<memberCount;j++) {
+				int res = 
+			}
 		}
 		return null;
 	}
@@ -105,6 +125,4 @@ public class MemberController /*implements Comparable<Member>*/{
 	public Member[] sortGenderDesc() {
 		return null;
 	}
-	
-	
 }

@@ -1,6 +1,6 @@
 package com.test4.model.vo;
 
-public class Member implements Comparable<Member>{
+public class Member {
 	private String userId;
 	private String userPwd;
 	private String name;
@@ -75,8 +75,4 @@ public class Member implements Comparable<Member>{
 				+ gender + ", email=" + email;
 	}
 
-	@Override
-	public int compareTo(Member o) {
-		return 0;
-	}
 }
