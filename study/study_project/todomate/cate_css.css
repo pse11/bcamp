@@ -1,0 +1,35 @@
+*{
+      color:white;
+}
+body{
+  background-color: black;
+  margin: auto; 
+  margin-top: 50px;
+  width: 1250px;
+}
+#header{
+  font-size:20pt;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+}
+#right_btn, #left_btn{
+  cursor: pointer;
+  font-size: 30;
+}
+a{
+  text-decoration: none;
+}
+.cateButton {
+  margin:5px;
+}
+.cateButton > span{
+  background-color: rgb(36, 34, 34);
+  display: inline-block;
+  margin: 8px;
+  font-size: 12pt;
+  padding: 10px;
+  border-radius: 30px;
+  cursor: pointer;
+}

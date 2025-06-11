@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.test.part00_test.aaa.AAA"/>
-    <fullyQualifiedTypeName name="com.test.part01_inheritTest.after.model.Television"/>
     <fullyQualifiedTypeName name="com.test.part01_inheritTest.after.model.Desktop"/>
     <fullyQualifiedTypeName name="com.test.part01_inheritTest.after.model.SmartPhone"/>
     <fullyQualifiedTypeName name="com.test.part02_OverridingTest.book.Book"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
     <fullyQualifiedTypeName name="com.test3.controller.ProductController"/>
     <fullyQualifiedTypeName name="com.test4.model.vo.Member"/>
+    <fullyQualifiedTypeName name="com.poly.silsub2.salary.model.vo.Salary"/>
+    <fullyQualifiedTypeName name="com.poly.silsub2.salary.view.Outputlmpl"/>
 </qualifiedTypeNameHistroy>

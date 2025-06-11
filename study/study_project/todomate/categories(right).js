@@ -77,19 +77,17 @@ function deleteitem(icount){
 function correctitem(icount){
   let popup = document.getElementById("deletepopup");
   popup.style.display="none";
-  let confirm = document.getElementById(`cid_todolist`);
+  let confirm = document.getElementById(`cid_todolist${icount}`);
+  let content = document.getElementById(`c_todo${icount}`).innerText;
   let newtodo = document.createElement("div");
-  let valuediv = document.getElementById(`cid_todolist${count}`);
+  let valuediv = document.getElementById(`cid_todolist${icount}`);
   newtodo.setAttribute("id","todolist");
-  let categorydiv = document.getElementById(`category${number}`);
   newtodo.innerHTML=`<span>⭐</span>
-  <input type=text name="todocontent" class="todo2" id="todo_input${icount}" value="${confirm.innerText}"
+  <input type=text name="todocontent" class="todo2" id="todo_input${icount}" value="${content}"
   onchange="confirmTodo(${icount},this.value)">
-  <span>📌</span>`;
-  categorydiv.appendChild(newtodo);
+  <span>📌</span>`; 
+  confirm.parentNode.replaceChild(newtodo,confirm);
   document.getElementById(`todo_input${icount}`).focus();
-  // input태그 자리에 div 태그 넣기 (gpt 참고)
-  confirm.parentNode.replaceChild(valuediv,confirm);
 }
 //카테고리 추가 등록
 function regist(){
@@ -105,3 +103,6 @@ function regist(){
   </div>`;
   div.appendChild(item);
 }
+
+
+//카테고리 관리 페이지
