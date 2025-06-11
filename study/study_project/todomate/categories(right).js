@@ -45,6 +45,8 @@ function deletelist(icount){
   }
   let $delete = document.getElementById("delete");
   $delete.setAttribute("onclick",`deleteitem(${icount})`);
+  let $correct = document.getElementById("correction");
+  $correct.setAttribute("onclick",`correctitem(${icount})`);
 }
 // 상단바 카테고리 등록 팝업(toggle)
 function showmenu(){
@@ -71,7 +73,24 @@ function deleteitem(icount){
   popup.style.display="none";
   document.getElementById(`cid_todolist${icount}`).remove();
 }
-
+//할일 수정하기
+function correctitem(icount){
+  let popup = document.getElementById("deletepopup");
+  popup.style.display="none";
+  let confirm = document.getElementById(`cid_todolist`);
+  let newtodo = document.createElement("div");
+  let valuediv = document.getElementById(`cid_todolist${count}`);
+  newtodo.setAttribute("id","todolist");
+  let categorydiv = document.getElementById(`category${number}`);
+  newtodo.innerHTML=`<span>⭐</span>
+  <input type=text name="todocontent" class="todo2" id="todo_input${icount}" value="${confirm.innerText}"
+  onchange="confirmTodo(${icount},this.value)">
+  <span>📌</span>`;
+  categorydiv.appendChild(newtodo);
+  document.getElementById(`todo_input${icount}`).focus();
+  // input태그 자리에 div 태그 넣기 (gpt 참고)
+  confirm.parentNode.replaceChild(valuediv,confirm);
+}
 //카테고리 추가 등록
 function regist(){
   //현재 등록되어있는 카테고리 버튼들의 개수세기

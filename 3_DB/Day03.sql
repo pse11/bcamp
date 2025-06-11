@@ -49,7 +49,7 @@ SELECT * FROM V$NLS_PARAMETERS;
 SELECT * FROM TABS;
 -- 현재 설정된 정보를 테이블 형태로 보관 -> 이러한 테이블을 '데이터 사전(데이터딕셔너리)'
 
--- LAST_DAY() : 마지막 일(DAY)을 조회
+-- LAST_DAY() : 월의 마지막 일(DAY)을 조회
 SELECT LAST_DAY(SYSDATE)
 FROM DUAL;
 
@@ -78,7 +78,7 @@ SELECT TO_CHAR(TO_DATE('190325','YYMMDD'),'YYYY') "결과1",
 	   TO_CHAR(TO_DATE('800325','RRMMDD'),'RRRR') "결과4"
 FROM DUAL;
 
-SELECT TO_DATE('800325','YYMMDD'), TO_DATE('800325','YYMMDD') FROM DUAL;
+SELECT TO_DATE('800325','RRMMDD'), TO_DATE('800325','YYMMDD') FROM DUAL;
 -- 4자리 한번에 입력 받는 경우는 문제X
 -- 2자리 입력 받을 경우
 -- YY => 현 세기 기준으로 값을 추가
