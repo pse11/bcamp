@@ -7,7 +7,6 @@
   <link type="text/css" rel="stylesheet" href="./css.css" />
   <script type="text/javascript" src="./calender(left).js"></script>
   <script type="text/javascript" src="./categories(right).js"></script>
-  <script type="text/javascript" src="./manage_cate.js"></script>
 </head>
 <body>
   <div id="header">
@@ -27,6 +26,16 @@
           </ul></li>
       </ul>
     </div>
+    <div id="n_details">
+    <div id="n_header">
+      <div id="n_left_btn" onclick="hide_detail()"><span><</span></div>
+      <div id="n_title"><span>카테고리 등록</span></div>
+      <div id="n_right_btn" onclick="n_confirm_detail()"><span>완료</span></div>
+    </div>
+    <div id="n_content">
+      <input type=text name="newcatecontent" class="newcatecontent" id="newcateinput" placeholder="카테고리 입력">
+    </div>
+  </div>
   </div>
   <div id="profile">
     <div class="ps">

@@ -1,0 +1,338 @@
+--DAY06
+
+--시퀀스 옵션 CYCLE/CACHE
+--CYCLE : 시퀀스 값이 최대값 OR 최소값에 도달했을 때 반대의 값부터 시작하는 옵션
+CREATE SEQUENCE SEQ_CYCLE
+START WITH 200
+INCREMENT BY 10
+MAXVALUE 230
+MINVALUE 15
+CYCLE
+NOCACHE;
+
+SELECT SEQ_CYCLE.NEXTVAL FROM DUAL; --200
+SELECT SEQ_CYCLE.NEXTVAL FROM DUAL; --210
+SELECT SEQ_CYCLE.NEXTVAL FROM DUAL; --220
+SELECT SEQ_CYCLE.NEXTVAL FROM DUAL; --230 , 최대값 도달
+SELECT SEQ_CYCLE.NEXTVAL FROM DUAL; --15
+
+SELECT * FROM USER_SEQUENCES; --CYCLE_FLAG : Y
+
+--CACHE/NOCACHE 
+--컴퓨터가 다음값에 대한 연산들을 미리 계산해 놓은것.
+
+CREATE SEQUENCE SEQ_CACHE
+START WITH 100
+CACHE 20
+NOCYCLE;
+
+CREATE SEQUENCE SEQ_NOCACHE
+START WITH 100
+NOCACHE
+NOCYCLE;
+
+SELECT * FROM USER_SEQUENCES WHERE SEQUENCE_NAME LIKE '%CACHE';
+
+SELECT SEQ_CACHE.NEXTVAL, SEQ_NOCACHE.NEXTVAL
+FROM DUAL;
+
+--INDEX--
+--SQL 명령어 조회처리속도를 향상시키기위한 객체
+
+--장점 : 검색속도 향상
+--단점: 만약 테이블 내용이 자주 변경 되는 테이블이라면
+-- 	   변경될때마다 인덱스를 다시 계산하여 만들어야 한다.
+--     성능이 저하될 수 있다.
+
+SELECT * FROM USER_IND_COLUMNS;
+
+SELECT ROWID, EMP_ID, EMP_NAME
+FROM EMPLOYEE;
+--ROWID
+-- 데이터의 순번. 오라클에서 테이블 생성, 데이터 추가시에 해당 객체들을 관리하기 위한 순번.
+
+--인덱스 생성
+--SQL Error [1408] [72000]: ORA-01408: 열 목록에는 이미 인덱스가 작성되어 있습니다
+CREATE UNIQUE INDEX IDX_EMP_NO
+ON EMPLOYEE(EMP_NO);
+
+--고유 인덱스
+--인덱스 생성시 고유갑(유니크값)을 기준으로 생성하는 인덱스
+--오라클에서 자동으로 생성하는 인덱스.
+--해당 컬럼을 SELECT문으로 조회할때 포함시키면
+--조회할때 고유인덱스를 이용해서 검색속도를 향상시킨다.
+
+
+--비고유 인덱스(NOUNIQUE INDEX)
+--내가 자주 사용하는 컬럼을 인덱스로 구성
+
+SELECT EMP_NAME, DEPT_CODE, JOB_CODE
+FROM EMPLOYEE
+WHERE DEPT_CODE='D6';
+
+CREATE INDEX IDX_DEPT_CODE
+ON EMPLOYEE(DEPT_CODE);
+
+--결합인덱스(COMPSITE INDEX)
+CREATE INDEX IDX_DEPT
+ON DEPARTMENT(DEPT_ID, DEPT_TITLE);
+
+SELECT * FROM DEPARTMENT;
+
+--인덱스 새로고침
+ALTER INDEX IDX_DEPT REBUILD;
+
+--삭제
+DROP INDEX IDX_DEPT;
+
+
+-----------------------------------------------------------------
+
+/*
+ * ORACLE
+ * DBMS
+ * 데이터를 효율적으로 관리하기 위한 시스템
+ * 
+ * SQL
+ * 	[DDL : 데이터 정의어]
+ *  	CREATE, ALTER, DROP
+ * 
+ *  [DML : 데이터 조작어]
+ * 	 	CRUD
+ * 		  CREATE : INSERT 
+ * 		  READ 	 : SELECT
+ * 	 	  UPDATE : UPDATE
+ * 	  	  DELETE : DELETE
+ * 
+ *  [DCL : 데이터 제어어]
+ *  	GRANT, REVOKE, COMMIT, ROLLBACK
+ * 	 	
+ * 	[SET OPERATOR]
+ * 	    UNION, UNION ALL, INTERSECT, MINUS
+ *  
+ *  [JOIN]
+ * 		INNER JOIN : 두 개 이상의 테이블에서 같은 값끼리 묶어서 결과셋을 만드는 방식
+ * 					작성된 조건이 일치하는 것만 처리.
+ * 
+ * 		OUTER JOIN : 서로 다른 값도 포함하기 위해서 사용.
+ * 			LEFT, RIGHT, FULL
+ * 
+ *  [ORACLE 객체]
+ * 		USER, TABLE, VIEW, SEQUENCE, INDEX
+ * 			TABLE : 직사각형 표의 형태로 데이터를 저장하고 표현하는 데이터베이스 객체
+ * 			VIEW : SELECT쿼리를 저장하여, 필요시 가져다 사용하는 가상의 테이블(편리성, 보안성)
+ * 			SEQUENCE : 1,2,3,4... 순서를 자동으로 증감시키는 데이터베이스 객체
+ * 			INDEX : 테이블에서 데이터 검색시 빠르게 검색하기 위한 객체
+ */ 
+
+-- PL/SQL --
+--[구성]
+--DECLARE
+--BEGIN
+--EXCEPTION
+--END;
+--/
+ 
+--프로시저 : PL/SQL을 미리 저장해 놓았다가 호출하여 함수처럼 동작시키는 객체
+--[사용형식]
+--CREATE [OR REPLACE] PROCEDURE 프로시저명(매개변수1 [IN/OUT/IN OUT] 자료형, ...)
+-- 										  IN : 외부에서 값을 받아올때 사용하는 모드
+--										  OUT: 프로시저 실행 결과를 외부로 추출(RETURN)
+--										  IN OUT은 둘다지만 많이 사용하지 않음.
+--IS
+--   변수 선언									  
+--BEGIN
+--   실행할 스크립트;
+--END;
+--/
+
+--[호출방식]
+--EXEC 프로시저명[(전달값...)]
+
+--[삭제]
+--DROP PROCEDURE 프로시저명;
+
+--예시 (실행안되니까 하지말것)
+--PL/SQL
+DECLARE
+	DUP_EMP_ID EXCEPTION;
+BEGIN
+	UPDATE EMPLOYEE
+	SET EMP_ID='200'
+	WHERE EMP_ID='201'
+EXCEPTION --예외처리
+	WHEN DUP_EMP_ID THEN DBMS_OUTPUT.PUT_LIE('이미 존재');
+END;
+/
+
+
+CREATE TABLE EMP_TMP
+AS SELECT * FROM EMPLOYEE;
+
+SELECT * FROM EMP_TMP;
+-- 프로시저 생성
+
+CREATE OR REPLACE PROCEDURE DEL_ALL_EMP
+IS --(변수선언 안해도 적어놔야함)
+	--변수선언... 
+BEGIN
+	DELETE FROM EMP_TMP;
+END;
+
+SELECT COUNT(*) FROM EMP_TMP;
+--실행
+BEGIN
+	DEL_ALL_EMP;
+END;
+
+--EXAC DEL_ALL_EMP;
+
+SELECT OBJECT_NAME, OBJECT_TYPE
+FROM USER_OBJECTS
+WHERE OBJECT_NAME = 'DEL_ALL_EMP';
+
+--
+CREATE OR REPLACE FUNCTION BONUS_CALC(V_EMP_ID IN EMPLOYEE.EMP_ID%TYPE) --IN : 값을 받아온다. %TYPE : 타입 똑같이
+RETURN NUMBER
+IS
+	V_SAL NUMBER;
+	V_BONUS NUMBER;
+	RES NUMBER;
+BEGIN
+	SELECT SALARY, NVL(BONUS,0)
+	INTO V_SAL, V_BONUS
+	FROM EMPLOYEE
+	WHERE EMP_ID = V_EMP_ID;
+	
+	RES := V_SAL*V_BONUS;
+	RETURN RES;
+END;
+
+SELECT EMP_NAME, BONUS_CALC(EMP_ID)
+FROM EMPLOYEE; 
+
+SELECT EMP_NAME, SALARY, (BONUS+BONUS_CALC(EMP_ID))*12 연봉
+FROM EMPLOYEE;
+
+--TRRIGER(트리거)--
+-- 특정 테이블에 DML을 통해서 데이터 변환이 일어날때 
+-- 그 시점을 감지하여 자동으로 동작
+
+--테이블 생성
+CREATE TABLE PRODUCT(
+	PCODE NUMBER PRIMARY KEY,
+	PNAME VARCHAR2(30),
+	BRAND VARCHAR2(30),
+	PRICE NUMBER,
+	STOCK NUMBER DEFAULT 0
+);
+
+--제품 입,출고 내역 테이블
+CREATE TABLE PRODUCT_DETAIL(
+	DCODE NUMBER PRIMARY KEY,
+	PCODE NUMBER NOT NULL, --외래키 참조하기 때문에 PRODUCT 테이블에 없는 PCODE 값은 INSERT할 수 없다.
+	PDATE DATE DEFAULT SYSDATE,
+	AMOUNT NUMBER, --얼마만큼 입고출고됐는지
+	STATUS CHAR(6) CHECK(STATUS IN('입고','출고')),
+	CONSTRAINT FK_PRODUCT FOREIGN KEY(PCODE) REFERENCES PRODUCT
+);
+
+SELECT * FROM PRODUCT;
+SELECT * FROM PRODUCT_DETAIL;
+
+CREATE SEQUENCE SEQ_PRODUCT NOCACHE;
+CREATE SEQUENCE SEQ_DETAIL NOCACHE;
+--제품 등록
+INSERT INTO PRODUCT 
+VALUES(SEQ_PRODUCT.NEXTVAL, '노트북','apple',2000000,DEFAULT);
+
+INSERT INTO PRODUCT 
+VALUES(SEQ_PRODUCT.NEXTVAL, '휴대폰','삼성',1500000,DEFAULT);
+
+INSERT INTO PRODUCT 
+VALUES(SEQ_PRODUCT.NEXTVAL, 'TV','LG',2500000,DEFAULT);
+
+INSERT INTO PRODUCT 
+VALUES(SEQ_PRODUCT.NEXTVAL, '모나미볼펜','모나미',1000,DEFAULT);
+
+SELECT * FROM PRODUCT;
+
+-- 제품 입출고 관련 재고 증감 트리거
+-- DETAIL에 입/출고가 된다면
+-- PRODUCT에 재고값을 자동으로 증감시킨다.
+
+CREATE OR REPLACE TRIGGER TRG_01
+AFTER INSERT ON PRODUCT_DETAIL --해당 테이블에서 INSERT 후에 실행한다.
+FOR EACH ROW
+BEGIN
+	IF :NEW.STATUS = '입고' --새로운 INSERT하는 데이터 => NEW
+	THEN 
+		UPDATE PRODUCT
+		SET STOCK = STOCK + :NEW.AMOUNT
+		WHERE PCODE= :NEW.PCODE; -- 방금 새롭게 추가된 PCODE와 일치하는 PCODE의 STOCK를 바꾼다.
+	END IF; --IF 시작하면 END IF로 끝내줘야함
+	IF :NEW.STATUS='출고'
+	THEN 
+		UPDATE PRODUCT
+		SET STOCK = STOCK - :NEW.AMOUNT
+		WHERE PCODE= :NEW.PCODE;
+	END IF;
+END;
+
+--입고
+INSERT INTO PRODUCT_DETAIL
+VALUES(SEQ_DETAIL.NEXTVAL, 1, SYSDATE, 3,'입고'); --1번 제품이 3개가 입고
+
+INSERT INTO PRODUCT_DETAIL
+VALUES(SEQ_DETAIL.NEXTVAL,2,SYSDATE,10,'입고');
+
+--출고
+INSERT INTO PRODUCT_DETAIL
+VALUES(SEQ_DETAIL.NEXTVAL,2,SYSDATE,3,'출고');
+SELECT * FROM PRODUCT_DETAIL;
+SELECT * FROM PRODUCT;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

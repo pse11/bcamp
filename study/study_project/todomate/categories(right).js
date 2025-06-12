@@ -1,5 +1,6 @@
 
 let count=0; 
+let categorycount;
 //입력창 생성 함수
 function maketodo(number){
   //input태그가 존재하면 새로 만들지 않음
@@ -92,7 +93,7 @@ function correctitem(icount){
 //카테고리 추가 등록
 function regist(){
   //현재 등록되어있는 카테고리 버튼들의 개수세기
-  let categorycount = document.getElementsByClassName("cateButton").length;
+  categorycount = document.getElementsByClassName("cateButton").length;
   categorycount++;
   let div = document.getElementById("categories");
   let item = document.createElement("div");
@@ -104,5 +105,20 @@ function regist(){
   div.appendChild(item);
 }
 
-
-//카테고리 관리 페이지
+// function hide_detail(){
+//    let hidedetail2=document.getElementById("n_details");
+//    hidedetail2.style.display="none";
+// }
+// function n_confirm_detail(){
+//     categorycount = document.getElementsByClassName("cateButton").length;
+//      categorycount++;
+//     let $div = document.getElementById("m_categories");
+//     let newdiv = document.createElement("div");
+//     let input = document.getElementById("newcateinput").value;
+//     newdiv.setAttribute("id",`cate${categorycount}`);
+//     newdiv.setAttribute("class","cateButton");
+//     newdiv.setAttribute("onclick",`details(${categorycount})`);
+//     newdiv.innerHTML = `<span id="t_cate${categorycount}">${input}</span>`
+//     $div.appendChild(newdiv);
+//     hide_detail();
+// }

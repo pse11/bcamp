@@ -5,28 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link type="text/css" rel="stylesheet" href="./cate_css.css" />
-  <script type="text/javascript" src="./categories(right).js"></script>
   <script type="text/javascript" src="./manage_cate.js"></script>
 </head>
 <body>
-  <div id="header">
+  <div id="m_header">
     <a href="Main.html"><div id="left_btn"><span><</span></div></a>
    
     <div id="title"><span>카테고리 관리</span></div>
     <div id="right_btn" onclick="plus()"><span>+</span></div>
   </div>
-  <div id="content">
-    <div id="categories">
-        <div id="category1" class="cateButton" >
-          <span onclick="">카테고리 1</span>
+  <div id="m_content">
+    <div id="m_categories">
+        <div id="cate1" class="cateButton" onclick="details(1)">
+          <span id="t_cate1" >카테고리 1</span>
         </div>
-        <div id="category2" class="cateButton">
-          <span  onclick="">카테고리 2</span>
+        <div id="cate2" class="cateButton" onclick="details(2)">
+          <span id="t_cate2" >카테고리 2</span>
         </div>
-        <div id="category3" class="cateButton">
-          <span onclick="">카테고리 3</span>
+        <div id="cate3" class="cateButton" onclick="details(3)">
+          <span id="t_cate3">카테고리 3</span>
         </div>
       </div>
+  </div>
+  <div id="m_details">
+    <div id="d_header">
+      <div id="d_left_btn" onclick="hide_detail()"><span><</span></div>
+      <div id="d_title"><span>카테고리</span></div>
+      <div id="d_right_btn" onclick="confirm_detail()"><span>확인</span></div>
+    </div>
+    <div id="d_content">
+      <input type=text name="catecontent" class="catecontent" id="cateinput">
+      <div>공개설정</div>
+      <div>색상</div>
+    </div>
+    <div id="d_btns">
+      <div>종료하기</div>
+      <div id="d_deletebtn" onclick="delete_cate()">삭제</div>
+    </div>
+  </div>
+  <div id="n_details">
+    <div id="n_header">
+      <div id="n_left_btn" onclick="hide_detail()"><span><</span></div>
+      <div id="n_title"><span>카테고리 등록</span></div>
+      <div id="n_right_btn" onclick="n_confirm_detail()"><span>완료</span></div>
+    </div>
+    <div id="n_content">
+      <input type=text name="newcatecontent" class="newcatecontent" id="newcateinput" placeholder="카테고리 입력">
+    </div>
   </div>
 </body>
 </html>
