@@ -650,8 +650,8 @@ FROM EMPLOYEE;
 --	전체직원수   2001년   2002년   2003년   2004년
 --	-------------------------------------------------------------
 SELECT * FROM EMPLOYEE;
-SELECT COUNT(EMP_ID) 전체 직원 수,
-		COUNT(DECODE(SUBSTR(HIRE_DATE,1,4),2001
+SELECT COUNT(EMP_ID) 전체직원수,
+		COUNT(DECODE(SUBSTR(HIRE_DATE,1,4),2001))
 FROM EMPLOYEE;
 
 SELECT COUNT(*)전체,

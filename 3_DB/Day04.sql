@@ -72,7 +72,7 @@ SELECT ROWNUM, EMP_NAME, SALARY
 FROM EMPLOYEE
 WHERE ROWNUM <6;
 
--- 급여 기준으로 가장 높은 급여를 받는 사워
+-- 급여 기준으로 가장 높은 급여를 받는 사원
 -- 상위 5명 조회.
 -- 사번, 사원명, 급여
 SELECT ROWNUM, EMP_ID, EMP_NAME, SALARY
@@ -109,7 +109,7 @@ FROM (SELECT DEPT_CODE, DEPT_TITLE, TRUNC(AVG(SALARY), -3) "평균"
 WHERE ROWNUM < 4;
 
 -- RANK() 함수, DENSE_RANK()함수
--- RANK() :동일 순번 있을 경우 이후 순번에 영향 0
+-- RANK() :동일 순번 있을 경우 이후 순번에 영향 O
 -- 1
 -- 2
 -- 2
@@ -206,7 +206,7 @@ WHERE SALARY>(
 
 -- DDL - CREATE --
 /*
- * CREATE : 데이터베이스에서 객체를 생성한는 DDL
+ * CREATE : 데이터베이스에서 객체를 생성하는 DDL
  * 
  * CREATE 객체종류 객체명 (생성시관련내용)
  * 
@@ -269,7 +269,7 @@ CREATE TABLE USER_NONCONS(
 	GENDER VARCHAR(3)
 );
 
-SELECT * FROM USER_NONCONS;ALTER 
+SELECT * FROM USER_NONCONS; 
 
 -- 테이블에 값 추가, DML에서 INSERT
 INSERT INTO USER_NONCONS(NO, ID, PW, NAME, GENDER)

@@ -25,7 +25,7 @@ public class JDBCTest03 {
 		rs = stmt.executeQuery(sql);
 		
 		while(rs.next()) {
-			System.out.println(rs.getString(1)+"\t"+rs.getString(2)+"\t["+rs.getString(3)+"");
+			System.out.println(rs.getString(1)+"\t"+rs.getString(2)+"\t["+rs.getString(3)+"]");
 		}
 		
 		//해제
