@@ -46,6 +46,7 @@ public class ProductService {
 	public int delete(String id) {
 		Connection con = getConnection();
 		int res =dao.delete(con, id);
+
 		if(res>0) {
 			commit(con);
 		}else {
