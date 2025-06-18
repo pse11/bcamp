@@ -104,9 +104,7 @@ public class TestByteStream {
 			fin.read(barr);
 			for(int i=0;i<barr.length;i++) {
 				System.out.println((char)barr[i]);
-			}
-			
-			
+			}	
 		}catch(FileNotFoundException e) {
 			e.printStackTrace();
 		}catch(IOException e1) {
