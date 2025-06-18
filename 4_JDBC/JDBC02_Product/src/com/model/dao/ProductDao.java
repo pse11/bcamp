@@ -81,7 +81,9 @@ public class ProductDao {
 			pstm = con.prepareStatement(sql);
 			pstm.setInt(1, dto.getPrice());
 			pstm.setString(2, dto.getPid());
+			
 			res = pstm.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("[Error]update 에러");
