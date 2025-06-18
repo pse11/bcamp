@@ -3,6 +3,24 @@ INDEX VERSION 1.131+C:\bcamp\2_Java\.metadata\.plugins\org.eclipse.jdt.core
 374579239.index
 802482299.index
 2861214470.index
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+346132506.index
+25849890.index
+577997469.index
+3686227405.index
+374579239.index
+4286337436.index
+3070956200.index
+808569090.index
+328485514.index
+1755401707.index
+2236474143.index
+2697823467.index
+=======
+3299454460.index
+>>>>>>> 8bf31075c729f0f95e058a8b95c7f37cf652396a
 2301626574.index
 595169490.index
 3070956200.index
@@ -18,6 +36,7 @@ INDEX VERSION 1.131+C:\bcamp\2_Java\.metadata\.plugins\org.eclipse.jdt.core
 4251184754.index
 1755401707.index
 2236474143.index
+>>>>>>> 689dfe048c97cdb3243e5195560acd4a5de05e64
 1739427902.index
 328485514.index
 577997469.index

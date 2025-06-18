@@ -62,7 +62,7 @@ public class Run {
 		
 		//primitive => String
 		String str = b+"";
-		str = ((Integer)i).toString();
+		str = ((Integer)i).toString(); //toString은 객체의 메소드이기 때문에 박싱 후 메소드 적용
 		str = Integer.valueOf(1).toString();
 		System.out.println(str);
 		

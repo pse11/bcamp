@@ -10,6 +10,5 @@ public abstract class AreaImpl implements Area{
 	
 	public void setResult(String result) {
 		this.result=result;
-	}
-	
+	}	
 }

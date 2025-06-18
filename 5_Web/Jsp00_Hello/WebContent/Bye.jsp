@@ -1,10 +1,9 @@
-<%@page import="javax.swing.plaf.metal.MetalBorders.Flush3DBorder"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
@@ -13,7 +12,7 @@
 	<%
 	for(int i=0;i<5;i++){
 	%>
-		<h3>ë°˜ë³µ í•©ì‹œë‹¤</h3>
+		<h3>¹İº¹ ÇÕ½Ã´Ù</h3>
 	<%
 	}
 	%>
@@ -21,7 +20,7 @@
 	<%
 	if(10>5){
 	%>
-		<h1>ifë¬¸ ì¡°ê±´ì´ true</h1>
+		<h1>if¹® Á¶°ÇÀÌ true</h1>
 	<%
 	}
 	%>

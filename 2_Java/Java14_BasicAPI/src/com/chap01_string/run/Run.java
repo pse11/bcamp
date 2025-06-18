@@ -42,7 +42,7 @@ public class Run {
 		System.out.println("str3: "+System.identityHashCode(str3));
 		//안에 들어있는 값이 같은지 상관안하는 고유의 해시코드 값
 		
-		System.out.println(str == str1); //true   안의 문자열이 아닌
+		System.out.println(str == str1); //true   안의 문자열이 아닌 리터럴은 같은 값이면 같은 공간
 		System.out.println(str2 == str3);//false  공간이 같은지 비교하는 것.
 		
 		String s1 = new String("ABC");
