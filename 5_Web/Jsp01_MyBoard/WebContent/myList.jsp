@@ -7,9 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<%//자바코드 작성할 수 있는 %
+<%//자바코드 작성할 수 있는
 	MyBoardDao dao = new MyBoardDao();
 	List<MyBoard> list = dao.selectAll();
 %>

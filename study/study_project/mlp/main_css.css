@@ -6,11 +6,13 @@
 #header{
     background-color: rgb(101, 148, 105);
     height: 120px;
+    position: sticky;
+    top:0px
 }
 #topmenu{
     padding: 10px;
     display: flex;
-    height: 60px;
+    height: 50%;
     margin-left: 15%;
     margin-right: 15%;
 }
@@ -33,28 +35,162 @@
     padding-left: 20px;
 }
 #icons{
-    float: right;
-    display: flex;
+    text-align: right;
+    width: 33%;
+}
+#icons span{
+    margin-top: 10px;
+    font-size: 17pt;
+    padding: 10px;
 }
 #menubar{
-    height: 60px;
+    height: 50%;
     margin-left: 15%;
     margin-right: 15%;
 }
 #leftContent{
     margin: 30px;
     margin-left: 15%;
-    border: 1px solid rgba(236, 235, 235, 0.808);
     width: 25%;
+    overflow-y: auto; /*스크롤바 만들기*/
+}
+/* 스크롤바 숨김 */
+#leftContent::-webkit-scrollbar{
+    display: none;
+}
+#profile{
+     border: 1px solid rgba(183, 177, 177, 0.808);   
     background-color: rgb(253, 255, 245);
     border-radius: 30px;
+    height: 30%;
+
+}
+#feed{
+    margin-top: 5%;
+     border: 1px solid rgba(183, 177, 177, 0.808);   
+    background-color: rgb(253, 255, 245);
+    border-radius: 30px;
+    height: 45%; 
+}
+#recommend{
+    margin-top:5%;
+ border: 1px solid rgba(183, 177, 177, 0.808);   
+    background-color: rgb(253, 255, 245);
+    border-radius: 30px;
+    height: 30%; 
 }
 #rightContent{
+    
     margin: 30px;
-    border: 1px solid rgba(236, 235, 235, 0.808);
     margin-right: 15%;
     width: 45%;
+    padding-left: 15px;
+    overflow-y: auto;
+}
+#feedContent{
+    border-radius: 30px;
+    border: 1px solid rgba(183, 177, 177, 0.808);   
+    background-color: rgb(253, 255, 245);
+    padding: 10px;
+}
+#feedSearch{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+     border: 1px solid rgba(183, 177, 177, 0.808);   
+    height: 50px;
     background-color: rgb(253, 255, 245);
     border-radius: 30px;
-    padding-left: 15px;
+    padding-left: 12px;
+}
+#leftContent::-webkit-scrollbar{
+    display: none;
+}
+#feedContent img{
+    width: 100%;
+}
+.nav_menu{
+    margin: 0px;
+    display: flex;
+    list-style: none;
+    padding-left: 0px;
+    
+}
+.nav_menu a{
+    text-decoration: none;
+    color: black;
+    padding-right: 30px;
+    font-size: 15pt;
+}
+#profile{
+    padding: 10px;
+}
+#ptop{
+    height: 150px;
+    display: flex;
+    border-bottom: 1px solid rgb(213, 212, 212);
+}
+#pimg{
+    text-align: center;
+    padding-top: 20px;
+    font-size: 40pt;
+    margin-right: 20px;
+}
+#pbottom{
+    padding: 15px;
+    height: 50%;
+}
+#pbottom button{
+    float: right;
+}
+#pbottom span{
+    font-size: 20pt;
+}
+
+#feed > ul{
+    list-style: none;
+    padding: 0px;
+}
+#feed li{
+    padding: 10px;
+    padding-left: 20px;
+    font-size: 16pt;
+    border-bottom: 1px solid rgb(215, 215, 215);
+}
+
+#rtop{
+    height: 30px;
+    border-bottom: 1px solid rgb(215, 215, 215);
+    padding: 15px;
+}
+
+#rtop span{
+    font-size:15pt;
+    
+}
+#rtop span:nth-child(2),#rtop span:nth-child(3){
+    float: right;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#feedheader button{
+    float: right;
+    background-color: rgb(101, 148, 105);
+    color: white;
+    border: none;
+    font-size: 14pt;
+}
+
+#feedSearch input{
+    width: 50%;
+    margin: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: rgb(253, 255, 245);
+    padding: 5px;
+}
+#feedSearch select{
+    margin: 16px;
+    float: right;
 }
