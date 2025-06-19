@@ -80,12 +80,14 @@
     height: 30%; 
 }
 #rightContent{
-    
     margin: 30px;
     margin-right: 15%;
     width: 45%;
     padding-left: 15px;
     overflow-y: auto;
+}
+#rightContent::-webkit-scrollbar{
+    display: none;
 }
 #feedContent{
     border-radius: 30px;
