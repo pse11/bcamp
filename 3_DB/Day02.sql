@@ -679,3 +679,36 @@ SELECT EMP_NAME 사원명, DEPT_CODE 부서코드,
 FROM EMPLOYEE
 WHERE DEPT_CODE IN('D5','D6','D9')
 ORDER BY 2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

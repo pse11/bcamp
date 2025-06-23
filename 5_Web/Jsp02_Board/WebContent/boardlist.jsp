@@ -26,6 +26,9 @@
 	BoardDao dao = new BoardDao();
 	List<BoardDto> list = dao.selectAll();
 %>
+
+<%@ include file="./form/header.jsp" %>
+
 <h1>List</h1>
 <form action="muldel.jsp" method="post" id="muldelform">
 	<table>
@@ -53,7 +56,7 @@
 			<td><input type="checkbox" name="chk" value="<%=dto.getSeq()%>"></td>
 			<td><%=dto.getSeq() %></td>
 			<td><%=dto.getWriter() %></td>
-			<td><a href="boarddetail.jsp?seq=<%=dto.getSeq()%>"><%=dto.getTitle() %></td>
+			<td><a href="boarddetail.jsp?seq=<%=dto.getSeq()%>"><%=dto.getTitle() %></a></td>
 			<td><%=dto.getRegdate() %></td>
 		</tr>
 	<%
@@ -68,5 +71,6 @@
 		</tr>
 	</table>
 </form>
+<%@ include file="./form/footer.jsp" %>
 </body>
 </html>
