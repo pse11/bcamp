@@ -11,7 +11,7 @@ import java.util.Set;
 import com.collection.silsub3.model.vo.Book;
 
 public class BookDao {
-	//private ArrayList<Book> bookList = new ArrayList<>();
+
 	private HashMap<String,Book> bookMap = new HashMap<String,Book>();
 	
 	public BookDao() {}
