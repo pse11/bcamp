@@ -89,12 +89,12 @@
 #rightContent::-webkit-scrollbar{
     display: none;
 }
-#feedContent{
+/* #feedContent{
     border-radius: 30px;
     border: 1px solid rgba(183, 177, 177, 0.808);   
     background-color: rgb(253, 255, 245);
     padding: 10px;
-}
+} */
 #feedSearch{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -196,10 +196,13 @@
     padding: 5px;
 }
 #feedSearch select{
-    margin: 16px;
-    float: right;
+    margin-left: 60px;   
 }
-
+#feedSearch img{
+    margin-left: 20px;
+    margin-top: 0px;
+    cursor: pointer;
+}
 /* 왼쪽 북마크, top 버튼 */
 #rightbtns{
     position: fixed;
@@ -228,7 +231,7 @@
 
 /* 피드 작성란 */
 #createFeed{
-  
+    display : none;
     position: absolute;
     top: 20%;
     left: 30%;
@@ -269,6 +272,7 @@ input:focus, textarea:focus{
     width: 90%;
     height: 250px;
     font-size: 15pt;
+    border-bottom: 1px solid rgb(231, 228, 228);
 }
 #btns{
     margin: 10px;
@@ -280,4 +284,84 @@ input:focus, textarea:focus{
     padding: 10px;
     display: flex;
     justify-content: space-between;
+}
+#btns{
+    margin-left:30px;
+    padding: 10px;
+    font-size: 20pt;
+}
+#btns span{
+    cursor: pointer;
+}
+#feedsubmit{
+    margin: 40px;
+    padding: 10px;
+}
+#feedsubmit input{
+    width: 100px;
+    height: 40px;
+    background-color: rgb(253, 255, 245) ;
+    border: none;
+    font-size: 16pt;
+}
+#feedsubmit select{
+    width: 300px;
+    background-color: rgb(253, 255, 245) ;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 16pt;
+}
+#feedsubmit input[type="submit"]{
+    color: rgb(53, 75, 43);
+}
+
+/* 피드 구성 */
+.content{
+    border-radius: 30px;
+    border: 1px solid rgba(183, 177, 177, 0.808);   
+    background-color: rgb(253, 255, 245);
+    padding: 30px;
+    margin-top: 10px;
+    height: 500px;
+}
+
+#writer{
+    display: flex;
+    height: 20%;
+    border-bottom: 1px solid rgb(158, 153, 153);
+}
+#wimg{
+    font-size: 30pt;
+}
+#wname{
+    display: inline-block;
+    padding-left: 10px;
+}
+#wname p{
+    margin: 0;
+}
+#wname p:nth-child(2){
+    color: gray;
+}
+#srange{
+    padding: 10px;
+    color: gray;
+}
+#stitle{
+    padding: 10px;
+    font-weight: bold;
+    font-size: 22pt;
+    height: 30px;
+    margin: 10px;
+}
+#scontent{
+    padding: 10px;
+    margin: 20px;
+    height: 50px;
+}
+#skeyword{
+    padding: 10px;
+    margin: 10px;
+    display: inline;
+    background-color: rgba(207, 223, 177, 0.795);
 }
