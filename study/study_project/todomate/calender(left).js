@@ -53,7 +53,7 @@ let now = new Date();
       console.log(nowDate);
       clicktable();
       let date = document.getElementById("date");
-      date.textContent=`${nowYear}년 ${nowMonth+1}월`;
+      date.textContent=`${nowYear}년 ${nowMonth+1}월 ${nowDate}`;
       console.log(date);
       let emoji = document.getElementsByClassName("emoji1")[1];
       let emoji2 = document.getElementsByClassName("emoji2")[1];
@@ -61,16 +61,10 @@ let now = new Date();
       emoji.style.fontWeight="bold";
       emoji2.style.fontWeight="normal";
       emoji3.style.fontWeight="normal";
-      Array.from(document.getElementsByClassName("changecolor"));
-
-     // alert(Array.findIndex((item)=>item.innerText===nowDate));
-      
-      //alert(document.getElementsByClassName("changecolor")[2].innerText);
-
-      //document.querySelector(".changecolor").indexOf(nowDate).style.backgroundColor="white";
-     // el.querySelector(".changecolor").style.borderRadius="50%";
-      //el.querySelector(".changecolor").style.color="black";
-      //console.log(nowMonth,nowYear);
+      let todayday = document.getElementById(`${nowDate}`);
+      todayday.style.color="black";
+      todayday.style.borderRadius="50px";
+      todayday.style.backgroundColor="white";
     }
 
     function createTable(dayOfWeek,lastDate){ //달력 내부 만드는 코드
@@ -114,7 +108,7 @@ let now = new Date();
         for(let j=0;j<7;j++){
           let td = document.createElement("td");
           if(arr[i][j]!=undefined){
-            td.innerHTML=`<span class="changebox" id="${arr[i][j]}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br><span class="changecolor" id="${arr[i][j]}">${arr[i][j]}</span>`;
+            td.innerHTML=`<span class="changebox" id="s${arr[i][j]}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br><span class="changecolor" id="${arr[i][j]}">${arr[i][j]}</span>`;
           }
           tr.appendChild(td);
         }

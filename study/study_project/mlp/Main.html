@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link type="text/css" rel="stylesheet" href="./main_css.css" />
+    <script type="text/javascript" src="./main.js"></script>
 </head>
 <body>
     <div id="header">
@@ -70,7 +71,7 @@
         <div id="rightContent">
             <div id="feedheader">
                 <span><b>전체 피드</b></span>
-                <button>+ 피드작성</button>
+                <button onclick="createFeed()">+ 피드작성</button>
                 <div id="feedSearch">
                     <input type="search" name="feedsearch" placeholder="검색어를 입력해주세요.">
                     <select name="orderby">
@@ -88,6 +89,35 @@
                 <img src="feed.png" alt="feed">
             </div>
         </div>
+    </div>
+    <div id="rightbtns">
+        <div id="bookmark" onclick="location.href='bookmark.html'">
+            <img src="bookmark.png" alt="bookmark">
+        </div>
+        <div id="toTop" onclick="movetoTop();">
+            <span>^</span><br>
+            <span>TOP</span>
+        </div>
+    </div>
+    <div id="createFeed">
+        <form>
+            <input id="ititle" type="text" name="title" placeholder="제목을 입력해주세요.">
+            <input id="ikey" type="text" name="keyword" placeholder="키워드를 입력해 주세요.(엔터로 여러 키워드 등록 가능)">
+            <textarea placeholder="타인의 저작물을 무단 인용하는 경우 저작권 침해에 해당할 수 있으니, 저작권 준수를 부탁드립니다."></textarea>
+            <div id="btns"><span>🖼️</span><span>📎</span><span>▶️</span></div>
+            <div id="feedsubmit">
+                <select name="range" id="range" value="공개범위를 선택해주세요">
+                    <option value="f">팔로워공개</option>
+                    <option value="c">사용자 지정 공개</option>
+                    <option value="n">비공개</option>
+                    <option value="m">우리회사 공개</option>
+                </select>
+                <div id="rbtns">
+                    <input type="button" value="취소" onclick="cancel();">
+                    <input type="submit" value="등록">
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>

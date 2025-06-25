@@ -9,6 +9,37 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	function updateRole(no){
+		//이 방식은 get방식으로 보내는것
+		//location.href="logincontroller.jsp?command=updateroleform&myno="+myno;
+		
+		//post방식으로 보내기
+		//form 태그 생성
+		let form = document.createElement('form');
+		form.method='POST';
+		form.action='logincontroller.jsp';
+		//<form action='logincontroller.jsp' method='POST'></form>
+		
+		//input 태그 생성
+		let command = document.createElement('input');
+		command.type='hidden';
+		command.name='command';
+		command.value='updateroleform';
+		
+		let myno = document.createElement('input');
+		myno.type='hidden';
+		myno.name='myno';
+		myno.value=no;
+		
+		form.appendChild(command);
+		form.appendChild(myno);
+		
+		//body에 생성한 form태그 추가 후 submit 실행
+		document.body.appendChild(form);
+		form.submit();
+	}
+</script>
 </head>
 <body>
 <%
@@ -18,7 +49,7 @@
 <h1>회원정보조회(All)</h1>
 <table>
 	<tr>
-	<col width="50"><col width="100"><col width="100"><col width="100"><col width="500"><col width="200"><col width="200"><col width="100"><col width="100">
+	<col width="50"><col width="100"><col width="100"><col width="100"><col width="500"><col width="200"><col width="200"><col width="100"><col width="100"><col width="100">
 		<th>번호</th>
 		<th>아이디</th>
 		<th>비밀번호</th>
@@ -28,6 +59,7 @@
 		<th>이메일</th>
 		<th>가입여부</th>
 		<th>등급</th>
+		<th>등급변경</th>
 	</tr>
 <%
 	for(MyMemberDto dto : list){
@@ -41,7 +73,8 @@
 			<td><%=dto.getMyphone() %></td>
 			<td><%=dto.getMyemail() %></td>
 			<td><%=dto.getMyenabled().equals("Y")?"가입":"탈퇴" %></td>
-			<td><%=dto.getMyrole() %></td>			
+			<td><%=dto.getMyrole() %></td>
+			<td><button onclick="updateRole(<%=dto.getMyno()%>)">변경</button></td>		
 		</tr>
 <%
 	}

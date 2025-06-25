@@ -56,12 +56,15 @@
 		request.setAttribute("msg","로그아웃");
 		request.setAttribute("url","index.jsp");
 		pageContext.forward("result.jsp");
+		
 	}else if(command.equals("userlistall")){
 		List<MyMemberDto> list = dao.selectAll();
 		request.setAttribute("list",list);
 		pageContext.forward("userlistall.jsp");
+		
 	}else if(command.equals("registform")){
 		response.sendRedirect("registform.jsp");
+		
 	}else if(command.equals("idchk")){
 		String myid = request.getParameter("id");
 		String res = dao.idChk(myid);
@@ -107,7 +110,89 @@
 		request.setAttribute("msg",msg);
 		request.setAttribute("url",url);
 		pageContext.forward("result.jsp");
+		
+	}else if(command.equals("userinfo")){
+		int myno = Integer.parseInt(request.getParameter("myno"));
+		
+		//현재 로그인된 회원의 정보
+		//MyMemberDto log = (MyMemberDto)session.getAttribute("dto");
+		//log.getMyno();
+		
+		MyMemberDto dto = dao.selectMember(myno);
+		
+		request.setAttribute("dto",dto);
+		pageContext.forward("userinfo.jsp");
+		
+	}else if(command.equals("updateform")){
+		//int myno = Integer.parseInt(request.getParameter("myno"));
+		//MyMemberDto dto = dao.selectMember(myno);
+		
+		//로그인한 회원의 정보
+		MyMemberDto login = (MyMemberDto)session.getAttribute("dto");
+		
+		//로그인한 회원의 정보 중에 myno를 꺼내 selectOne한다.
+		MyMemberDto dto = dao.selectMember(login.getMyno());
+		
+		request.setAttribute("dto",dto);
+		pageContext.forward("updateuser.jsp");
+	}else if(command.equals("updateuser")){
+		String myaddr = request.getParameter("myaddr");
+		String myphone = request.getParameter("myphone");
+		String myemail = request.getParameter("myemail");
+		int myno = Integer.parseInt(request.getParameter("myno"));
+		
+		MyMemberDto dto = new MyMemberDto();
+		dto.setMyaddr(myaddr);
+		dto.setMyphone(myphone);
+		dto.setMyemail(myemail);
+		dto.setMyno(myno);
+		
+		boolean res = dao.updateMember(dto);
+		
+		if(res){
+			request.setAttribute("msg","내 정보 수정 성공");
+			request.setAttribute("url","usermain.jsp");
+		}else{
+			request.setAttribute("msg","내 정보 수정 실패");
+			request.setAttribute("url","logincontroller.jsp?command=userinfo&myno="+myno);
+		}
+		pageContext.forward("result.jsp");
+		
+	}else if(command.equals("deleteuser")){
+		int myno = ((MyMemberDto)session.getAttribute("dto")).getMyno();
+		boolean res = dao.deleteMember(myno);
+		if(res){
+			request.setAttribute("msg","탈퇴 성공");
+			request.setAttribute("url","logincontroller.jsp?command=logout");
+		}else{
+			request.setAttribute("msg","탈퇴 실패");
+			request.setAttribute("url","usermain.jsp");
+		}
+		pageContext.forward("result.jsp");
+		
+	}else if(command.equals("updateroleform")){
+		int myno = Integer.parseInt(request.getParameter("myno"));
+	
+		MyMemberDto dto = dao.selectMember(myno);
+		
+		request.setAttribute("selectOne",dto);
+		pageContext.forward("updateroleform.jsp");
+		
+	}else if(command.equals("updaterole")){
+		int myno = Integer.parseInt(request.getParameter("myno")); 
+		String myrole = request.getParameter("myrole");
+		
+		boolean res = dao.updateRole(myno, myrole);
+		if(res){
+			request.setAttribute("msg", "회원 등급 변경 성공");
+			request.setAttribute("url", "logincontroller.jsp?command=userlistall");
+		}else{
+			request.setAttribute("msg", "회원 등급 변경 실패");
+			request.setAttribute("url", "logincontroller.jsp?command=userlistall");
+		}
+		pageContext.forward("result.jsp");
 	}
+	
 %>
 </body>
 </html>
