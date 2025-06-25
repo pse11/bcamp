@@ -250,7 +250,7 @@ input:focus, textarea:focus{
     margin: 10px;
     padding: 10px;
     width: 90%;
-    height: 60px;
+    height: 30px;
     border: none;
     font-size: 20pt;
 }
@@ -260,7 +260,7 @@ input:focus, textarea:focus{
     margin: 10px;
     padding: 10px;
     width: 90%;
-    height: 60px;
+    height: 20px;
     font-size: 15pt;
     border-bottom: 1px solid rgb(173, 171, 171);
 }
@@ -270,32 +270,24 @@ input:focus, textarea:focus{
     margin: 10px;
     padding: 10px;
     width: 90%;
-    height: 250px;
+    height: 150px;
     font-size: 15pt;
     border-bottom: 1px solid rgb(231, 228, 228);
 }
 #btns{
-    margin: 10px;
     padding: 10px;
     text-align: left;
+    margin-left:30px;
+    font-size: 15pt;
 }
 #feedsubmit{
-    margin: 10px;
+    margin-left: 30px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
 }
-#btns{
-    margin-left:30px;
-    padding: 10px;
-    font-size: 20pt;
-}
 #btns span{
     cursor: pointer;
-}
-#feedsubmit{
-    margin: 40px;
-    padding: 10px;
 }
 #feedsubmit input{
     width: 100px;
@@ -303,6 +295,7 @@ input:focus, textarea:focus{
     background-color: rgb(253, 255, 245) ;
     border: none;
     font-size: 16pt;
+    cursor: pointer;
 }
 #feedsubmit select{
     width: 300px;
