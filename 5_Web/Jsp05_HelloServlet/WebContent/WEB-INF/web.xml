@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>Jsp05_HelloServlet</display-name>
+
+  <!-- 웹 어플리케이션 실행 시 가장 먼저 보여줄 페이지를 정의, 시작페이지 -->
+  <welcome-file-list>
+    <welcome-file>home.html</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 어플리케이션 전체의 전역 파라미터 설정. -->
+  <context-param>
+  	<param-name>url</param-name>
+  	<param-value>localhost:8787/Jsp04_LoginBoard</param-value>
+  </context-param>
+  
+  <servlet>
+  	<servlet-name>helloServlet</servlet-name>
+  	<servlet-class>com.hello.controller.HelloController</servlet-class>
+  	
+  	<!--  init()메서드가 실행될때 값 사용하며 서블릿 객체 생성시 초기화에 활용 -->
+  	<init-param>
+  		<param-name>id</param-name>
+  		<param-value>ADMIN</param-value>
+  	</init-param>
+  	
+  	<load-on-startup>1</load-on-startup>
+  	<!-- 기본은 첫 요청시 서블릿 객체가 만들어 지지만, 해당 설정을 통해 서버 start시 서블릿 생성 -->
+  	
+  	
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>helloServlet</servlet-name>
+  	<url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  <!-- 
+  /hello라는 요청이 클라이언트로 부터 들어오게 되면 ws(web server)가 관리하는 내용중에서 mapping 처리된
+  HelloController 서블릿이 동작한다. 
+  -->
+  
+  <servlet>
+  	<servlet-name>byeServlet</servlet-name>
+  	<servlet-class>com.bye.controller.ByeController</servlet-class>
+  	<load-on-startup>5</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>byeServlet</servlet-name>
+  	<url-pattern>/bye</url-pattern>
+  </servlet-mapping>
+</web-app>
