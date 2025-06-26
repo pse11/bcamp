@@ -37,6 +37,11 @@
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
+		<tr>
+			<td colspan="4" align="right">
+				<input type="button" value="글쓰기" onclick="location.href='controller.do?command=writeform'">
+			</td>
+		</tr>
 	</table>
 </body>
 </html>
