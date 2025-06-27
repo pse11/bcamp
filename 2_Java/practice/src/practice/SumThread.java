@@ -1,18 +1,20 @@
 package practice;
 
 public class SumThread extends Thread{
-	private long sum;
+	public boolean work = true;
 	
-	public long getSum() {
-		return sum;
+	public SumThread(String name) {
+		setName(name);
 	}
-	public void setSum(long sum) {
-		this.sum=sum;
-	}
+	
 	@Override
 	public void run() {
-		for(int i=1;i<=100;i++) {
-			sum+=i;
+		while(true) {
+			if(work) {
+				System.out.println(getName()+":작업처리");
+			}else {
+				Thread.yield();
+			}
 		}
 	}
 }
