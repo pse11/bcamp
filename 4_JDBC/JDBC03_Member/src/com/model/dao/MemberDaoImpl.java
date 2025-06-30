@@ -75,8 +75,25 @@ public class MemberDaoImpl implements Memberdao{
 
 	@Override
 	public int insert(Connection con, Member m) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pstm = null;
+		int res = 0;
+		try {
+			pstm = con.prepareStatement(insert);
+			pstm.setString(1, m.getM_name());
+			pstm.setInt(2, m.getM_age());
+			pstm.setString(3, m.getM_gender());
+			pstm.setString(4, m.getM_location());
+			pstm.setString(5, m.getM_job());
+			pstm.setString(6, m.getM_tel());
+			pstm.setString(7, m.getM_email());
+			
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		return res;
 	}
 
 	@Override

@@ -43,6 +43,13 @@ public class MemberView {
 				}
 				break;
 			case 3:
+				System.out.println("***추가***");
+				int res =controller.insert(insertMember());
+				if(res>0) {
+					System.out.println("insert 성공");
+				}else {
+					System.out.println("insert 실패");
+				}
 				break;
 			case 4:
 				break;
@@ -53,5 +60,24 @@ public class MemberView {
 				return;
 			}
 		}
+	}
+	public Member insertMember() {
+		System.out.println("추가할 이름: ");
+		String name = sc.next();
+		System.out.println("추가할 나이: ");
+		int age = sc.nextInt();
+		sc.nextLine();
+		System.out.println("추가할 성별: ");
+		String gender = sc.nextLine();
+		System.out.println("추가할 지역: ");
+		String location = sc.nextLine();
+		System.out.println("추가할 직업: ");
+		String job = sc.nextLine();
+		System.out.println("추가할 번호: ");
+		String tel = sc.nextLine();
+		System.out.println("추가할 이메일: ");
+		String email = sc.nextLine();
+		
+		return new Member(0,name,age,gender,location,job,tel,email);
 	}
 }

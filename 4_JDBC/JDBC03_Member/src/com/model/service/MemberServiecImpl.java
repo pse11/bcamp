@@ -28,8 +28,13 @@ public class MemberServiecImpl implements MemberService{
 
 	@Override
 	public int insert(Member m) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = getConnection();
+		int res = dao.insert(con, m);
+		if(res>0) {
+			commit(con);
+		}
+		close(con);
+		return res;
 	}
 
 	@Override

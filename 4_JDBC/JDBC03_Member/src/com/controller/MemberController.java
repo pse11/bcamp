@@ -14,4 +14,7 @@ public class MemberController {
 	public Member selectOne(int n) {
 		return service.selectOne(n);
 	}
+	public int insert(Member dto) {
+		return service.insert(dto);
+	}
 }

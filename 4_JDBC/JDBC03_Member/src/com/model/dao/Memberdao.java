@@ -8,11 +8,11 @@ import com.model.dto.Member;
 
 public interface Memberdao {
 	
-	String selectAll = "SELECT * FROM MEMBER";
-	String selectOne = "SELECT * FROM MEMBER WHERE M_NO=?";
-	String insert = "INSERT INTO MEMBER VALUES(SEQ_MEMBER.NEXTVAL, ?,?,?,?,?,?,?)";
-	String update = "UPDATE MEMBER SET M_LOCATION=?, M_JOB=?, M_TEL=? WHERE M_NO=?";
-	String delete = "DELETE FROM MEMBER WHERE M_NO=?";
+	String selectAll = "SELECT * FROM MEMBER_JDBC";
+	String selectOne = "SELECT * FROM MEMBER_JDBC WHERE M_NO=?";
+	String insert = "INSERT INTO MEMBER_JDBC VALUES(SEQ_MEMBER_JDBC.NEXTVAL, ?,?,?,?,?,?,?)";
+	String update = "UPDATE MEMBER_JDBC SET M_LOCATION=?, M_JOB=?, M_TEL=? WHERE M_NO=?";
+	String delete = "DELETE FROM MEMBER_JDBC WHERE M_NO=?";
 	
 	
 	public List<Member> selectAll(Connection con);

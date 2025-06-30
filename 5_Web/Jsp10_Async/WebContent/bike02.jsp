@@ -9,6 +9,10 @@
 <script type="text/javascript" src="./js/bike02.js"></script>
 </head>
 <body>
-	
+	<table>
+	<!-- bike02.js에서 가지고 있는 데이터 이용해서 테이블에 뿌려줌-->
+		<thead></thead>
+		<tbody></tbody>		
+	</table>
 </body>
 </html>
