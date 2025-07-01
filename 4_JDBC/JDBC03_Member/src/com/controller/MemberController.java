@@ -17,4 +17,10 @@ public class MemberController {
 	public int insert(Member dto) {
 		return service.insert(dto);
 	}
+	public int update(Member dto) {
+		return service.update(dto);
+	}
+	public int delete(int n) {
+		return service.delete(n);
+	}
 }

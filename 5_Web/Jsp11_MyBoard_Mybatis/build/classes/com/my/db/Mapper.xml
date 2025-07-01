@@ -26,4 +26,15 @@
 		VALUES(SEQ_MYBOARD.NEXTVAL,#{myname},#{mytitle},#{mycontent},SYSDATE)
 	</insert>
 	
+	<update id="myupdate" parameterType="MyBoardDto">
+		UPDATE MYBOARD
+		SET MYTITLE=#{mytitle}, MYCONTENT=#{mycontent}
+		WHERE MYNO=#{myno}
+	</update>
+	
+	<delete id="mydelete">
+		DELETE FROM MYBOARD
+		WHERE MYNO=#{myno}
+	</delete>
+	
 </mapper>
