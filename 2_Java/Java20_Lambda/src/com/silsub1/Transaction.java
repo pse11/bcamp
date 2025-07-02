@@ -1,6 +1,12 @@
 package com.silsub1;
 
 public class Transaction {
+	/*
+	 * -field : private Trader trader;
+		          private int year;
+		          private int value;
+		-method : 생성자(기본,매개변수), getter&setter, toString
+	 */
 	private Trader trader;
 	private int year;
 	private int value;

@@ -1,6 +1,9 @@
 package com.silsub1;
 
 public class Trader {
+	//-field : private String name;
+//    private String city;
+//-method : 생성자(기본,매개변수), getter, toString
 	private String name;
 	private String city;
 	public Trader() {}

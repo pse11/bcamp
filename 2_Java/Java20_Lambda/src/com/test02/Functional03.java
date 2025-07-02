@@ -7,6 +7,7 @@ public class Functional03 {
 
 	public static void main(String[] args) {
 		func01();
+		fun02();
 	}
 	//Function<T,R> T-매개변수, R-반환값
 	//apply() -매개변수 O, 반환값O
