@@ -39,14 +39,24 @@ public class MemberServiecImpl implements MemberService{
 
 	@Override
 	public int update(Member m) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = getConnection();
+		int res = dao.update(con, m);
+		if(res>0) {
+			commit(con);
+		}
+		close(con);
+		return res;
 	}
 
 	@Override
 	public int delete(int n) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = getConnection();
+		int res = dao.delete(con, n);
+		if(res>0) {
+			commit(con);
+		}
+		close(con);
+		return res;
 	}
 
 }

@@ -13,6 +13,7 @@
 </head>
 <body>
 <%
+
 	//command값 무엇인지 확인
 	String command = request.getParameter("command");
 	System.out.println("[command: "+command+"]");

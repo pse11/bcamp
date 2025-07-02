@@ -34,6 +34,13 @@
 			<th>내용</th>
 			<td><textarea rows="10" cols="40" readonly="readonly">${dto.mycontent }</textarea></td>
 		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="수정" onclick="location.href='myboard?command=updateform&myno=${dto.myno}'">
+				<input type="button" value="삭제" onclick="location.href='myboard?command=delete&myno=${dto.myno}'">
+				<!-- 삭제버튼 클릭 ->컨트롤러에서 요청을 받아 dao를 통해 해당 게시글 삭제 진행->index.html로 이동 -->
+			</td>
+		</tr>
 	</table>
 </body>
 </html>

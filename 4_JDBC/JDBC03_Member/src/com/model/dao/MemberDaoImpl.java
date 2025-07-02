@@ -98,14 +98,37 @@ public class MemberDaoImpl implements Memberdao{
 
 	@Override
 	public int update(Connection con, Member m) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pstm = null;
+		int res = 0;
+		try {
+			pstm = con.prepareStatement(update);
+			pstm.setString(1, m.getM_location());
+			pstm.setString(2, m.getM_job());
+			pstm.setString(3, m.getM_tel());
+			pstm.setInt(4, m.getM_no());
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		return res;
 	}
 
 	@Override
 	public int delete(Connection con, int n) {
-		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pstm = null;
+		int res = 0;
+		try {
+			pstm= con.prepareStatement(delete);
+			pstm.setInt(1, n);
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+		}
+		return res;
 	}
 
 }

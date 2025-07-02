@@ -52,8 +52,25 @@ public class MemberView {
 				}
 				break;
 			case 4:
+				System.out.println("***수정***");
+				int res2 =controller.update(updateMember());
+				if(res2>0) {
+					System.out.println("update 성공");
+				}else {
+					System.out.println("update 실패");
+				}
+				
 				break;
 			case 5:
+				System.out.println("***삭제***");
+				System.out.print("삭제할 번호 : ");
+				int rs = sc.nextInt();
+				int res3 = controller.delete(rs);
+				if(res3>0) {
+					System.out.println("delete 성공");
+				}else {
+					System.out.println("delete 실패");
+				}
 				break;
 			case 6:
 				System.out.println("\n[프로그램 종료]\n");
@@ -79,5 +96,19 @@ public class MemberView {
 		String email = sc.nextLine();
 		
 		return new Member(0,name,age,gender,location,job,tel,email);
+	}
+	
+	public Member updateMember() {
+		System.out.print("수정할 no:");
+		int no = sc.nextInt();
+		sc.nextLine();
+		System.out.println("수정할 지역: ");
+		String location = sc.nextLine();
+		System.out.println("수정할 직업: ");
+		String job = sc.nextLine();
+		System.out.println("수정할 번호: ");
+		String tel = sc.nextLine();
+		
+		return new Member(no,null,0,null,location,job,tel,null);
 	}
 }
