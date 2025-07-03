@@ -28,4 +28,15 @@ public class MemberDao extends SqlMapConfig{
 		session.close();
 		return res;
 	}
+	public MemberDto selectMember(int no) {
+		SqlSession session = null;
+		MemberDto res = null;
+		
+		session = getSqlSessionFactory().openSession(true);
+		res = session.selectOne("com.my.member.selectMember",no);
+		
+		session.close();
+		return res;
+		
+	}
 }

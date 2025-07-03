@@ -17,6 +17,8 @@ public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		String command = request.getParameter("command");
 		System.out.println("command: "+command);
 		HttpSession session = request.getSession();
@@ -56,7 +58,8 @@ public class MemberController extends HttpServlet {
 			int res = dao.updateProfile(dto);
 			if(res>0) {
 				System.out.println("프로필 수정 성공");
-				response.sendRedirect("login.jsp");
+				MemberDto mem = dao.selectMember(no);
+				response.sendRedirect("member?command=login&id="+mem.getId()+"&pw="+mem.getPw());
 			}else {
 				System.out.println("프로필 수정 실패");
 				response.sendRedirect("login.jsp");

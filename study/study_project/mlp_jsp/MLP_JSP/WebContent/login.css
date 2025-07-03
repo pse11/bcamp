@@ -35,8 +35,11 @@ input{
   width: 70%;
   margin: 15px;
   border-radius: 10px;
+  focus: none;
 }
-
+input:focus{
+    outline:none;
+}
 #submitbtn{
   background-color:  rgb(101, 148, 105);
   cursor: pointer;
