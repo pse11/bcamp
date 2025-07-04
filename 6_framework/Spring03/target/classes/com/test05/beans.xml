@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="kim" class="com.test05.Member">
+		<constructor-arg name="id" value="user1"></constructor-arg>
+		<constructor-arg name="pw" value="pass1"></constructor-arg>
+		<constructor-arg name="name" value="김상은"></constructor-arg>
+		<constructor-arg name="phone" value="010-1111-2222"></constructor-arg>
+	</bean>
+	<bean id="lee" class="com.test05.Member">
+		<constructor-arg name="id" value="user2"></constructor-arg>
+		<constructor-arg name="pw" value="pass2"></constructor-arg>
+		<constructor-arg name="name" value="이상은"></constructor-arg>
+		<constructor-arg name="phone" value="010-2222-3333"></constructor-arg>
+	</bean>
+	<bean id="park" class="com.test05.Member">
+		<constructor-arg name="id" value="user3"></constructor-arg>
+		<constructor-arg name="pw" value="pass3"></constructor-arg>
+		<constructor-arg name="name" value="박상은"></constructor-arg>
+		<constructor-arg name="phone" value="010-3333-4444"></constructor-arg>
+	</bean>
+	
+	<bean id="kboard" class="com.test05.Board">
+		<property name="writer" ref="kim"></property>
+		<property name="title" value="글1"></property>
+		<property name="content" value="내용1"></property>
+	</bean>
+	<bean id="lboard" class="com.test05.Board">
+		<property name="writer" ref="lee"></property>
+		<property name="title" value="글2"></property>
+		<property name="content" value="내용2"></property>
+	</bean>
+	<bean id="pboard" class="com.test05.Board">
+		<property name="writer" ref="park"></property>
+		<property name="title" value="글3"></property>
+		<property name="content" value="내용3"></property>
+	</bean>
+</beans>
