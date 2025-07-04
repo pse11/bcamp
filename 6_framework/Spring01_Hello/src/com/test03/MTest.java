@@ -6,6 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class MTest {
 
 	public static void main(String[] args) {
+		
+		//BeanFactory(지금은 거의 사용x)
 //		Resource res = new ClassPathResource("com/test03/beans.xml");
 //		BeanFactory factory = new XmlBeanFactory(res);
 		//getBean을 하는 순간 객체 생성
@@ -16,6 +18,8 @@ public class MTest {
 //		en 생성!
 //		Hello, spring
 		
+		//ApplicationContext
+		//beanfactory를 확장한 ioc 컨테이너. bean을 등록하고 관리
 		ApplicationContext factory = new ClassPathXmlApplicationContext("com/test03/beans.xml");
 		//applicationcontext를 초기화할때 객체(bean)미리 생성
 //		ko 생성!
