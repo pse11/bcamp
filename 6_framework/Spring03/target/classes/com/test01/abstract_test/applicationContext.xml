@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="test" class="com.test01.abstract_test.AbstractTest" factory-method="getInstance"/>
+	<!-- factory-method: 빈을 만들 때 호출할 메소드 이름을 지정하는 속성 -->
+</beans>

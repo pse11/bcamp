@@ -1,4 +1,4 @@
-package com.test02;
+package com.test02.Constructor_di;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -10,7 +10,7 @@ public class MTest {
 		//박창진, 경기도 수원시, 010-2222-2222
 		//위와 같은 값으로 초기화 된 빈을 생성하여 main에서 확인
 		
-		ApplicationContext factory = new ClassPathXmlApplicationContext("com/test02/applicationContext.xml");
+		ApplicationContext factory = new ClassPathXmlApplicationContext("com/test02/Constructor_di/applicationContext.xml");
 		
 		Address kim = (Address)factory.getBean("kim");
 		System.out.println(kim.toString());

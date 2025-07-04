@@ -1,4 +1,4 @@
-package com.test02;
+package com.test02.Constructor_di;
 
 public class Address {
 	private String name;
