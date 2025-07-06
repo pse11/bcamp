@@ -8,8 +8,8 @@
 	<!--c: constructor  -->
 	<bean id="lee" class="com.test06.Emp" c:name="이창진" c:salary="2000000"/>
 	<bean id="leech" class="com.test06.Developer" c:emp-ref="lee" c:dept="개발팀" ></bean>
-	
 	<!-- p:property -->
 	<bean id="kim" class="com.test06.Emp" p:name="김창진" p:salary="3000000"/>
 	<bean id="kimcj" class="com.test06.Engineer" p:emp-ref="kim" p:dept="기술팀"></bean>
+	
 </beans>
