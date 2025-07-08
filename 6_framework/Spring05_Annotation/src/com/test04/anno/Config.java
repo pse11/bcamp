@@ -8,11 +8,11 @@ public class Config {
 	
 	@Bean("emp1")
 	public Emp emp1() {
-		return new Emp("박상은",30);
+		return new Emp("홍길동",30);
 	}
 	
 	@Bean("emp2")
 	public Emp emp2() {
-		return new Emp("이상은",40);
+		return new Emp("김길동",40);
 	}
 }

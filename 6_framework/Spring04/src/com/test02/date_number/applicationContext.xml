@@ -7,8 +7,8 @@
 	
 	<!-- 이미 존재하는, 자바에서 존재하는, 자바외에 라이브러리에서 가져오는 빈도 가능 -->
 	<bean id="date" class="java.util.Date">
-		<property name="year" value="125"></property> <!-- 2025년 -->
-		<property name="month" value="9"></property>
+		<property name="year" value="125"></property> <!-- 1900+125 = 2025년 -->
+		<property name="month" value="9"></property> <!-- 10월 (0부터 시작) -->
 		<property name="date" value="1"></property>
 	</bean>
 	
@@ -31,10 +31,11 @@
 				<value>이상은</value>
 			</array>
 		</property>
+		
 		<!-- 6.public void setList(List<String> list) -->
 		<property name="list">
 			<list>
-				<value>봄</value>
+				<value>봄</value> <!-- value=> string 값 -->
 				<value>여름</value>
 				<value>가을</value>
 				<value>겨울</value>
@@ -61,7 +62,7 @@
 		
 		<!-- 9. public void setScore(List<Score> list)-->
 		<property name="score">
-			<list>
+			<list> <!-- list안에는 <bean> <value> <ref>를 넣을 수 있다. -->
 				<bean class="com.test02.date_number.Score">
 					<property name="name" value="박상은"/>
 					<property name="kor" value="70"></property>
@@ -74,7 +75,7 @@
 					<constructor-arg value="100"/>
 					<constructor-arg value="70"/>
 				</bean>
-				<ref bean="sc"/>
+				<ref bean="sc"/> <!-- 이미 정의된 bean -->
 			</list>
 		</property>
 	</bean>

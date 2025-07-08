@@ -8,4 +8,5 @@
 	<bean id="myNickName" class="com.test01.MyNickName">
 		<property name="nickName" ref="nickName"></property>
 	</bean>
+
 </beans>

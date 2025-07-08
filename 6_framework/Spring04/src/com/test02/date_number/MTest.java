@@ -9,7 +9,7 @@ public class MTest {
 		ApplicationContext factory = new ClassPathXmlApplicationContext("com/test02/date_number/applicationContext.xml");
 		
 		MyClass myClass = (MyClass)factory.getBean("myclass");
-		//myClass.prn();
+		myClass.prn();
 		
 		
 	}

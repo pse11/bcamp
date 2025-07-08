@@ -13,12 +13,13 @@
 		<constructor-arg value="5000"/>
 	</bean>
 	
-	<bean id="myFood" class="com.test03.MyFood" autowire="default"/>
+	<bean id="myFood" class="com.test03.MyFood" autowire="byName"/>
 	<!-- 
 	autowire=
 		byName: setter의 이름과 같은 bean을 찾아 주입
-		constructor : 생성자의 parameter 타입과 같은 bean을 찾아 주입
-		byType : setter의 파라미터 타입과 같은 bean을 찾아 주입
+		constructor : 생성자의 parameter 타입과 같은 bean을 찾아 주입(여러개인경우 순서에 맞게 자동 주입(타입, 이름 따져서))
+		byType : setter의 파라미터 타입과 같은 bean을 찾아 주입 (단, 동일한 타입의 bean이 2개이상일 경우 에러남)
+		예) Spring은 Food 타입의 bean을 찾아 setFavoriteFood()로 넣어준다.
 		default : 자동주입x, 기본값
 	 -->
 </beans>

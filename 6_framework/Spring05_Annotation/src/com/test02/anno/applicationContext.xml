@@ -8,14 +8,14 @@
 	<context:annotation-config/>
 	
 	<bean id="lee" class="com.test02.anno.Student">
-		<constructor-arg value="이창진"></constructor-arg>
+		<constructor-arg value="홍길동"></constructor-arg>
 		<constructor-arg value="서울시 강남구"></constructor-arg>
 		<constructor-arg value="20"></constructor-arg>
 	</bean>
 	
 	<bean id="kim" class="com.test02.anno.Student">
-		<constructor-arg value="김창진"></constructor-arg>
-		<constructor-arg value="서울시 강서구"></constructor-arg>
+		<constructor-arg value="김길동"></constructor-arg>
+		<constructor-arg value="서울시 서초구"></constructor-arg>
 		<constructor-arg value="22"></constructor-arg>
 	</bean>
 	

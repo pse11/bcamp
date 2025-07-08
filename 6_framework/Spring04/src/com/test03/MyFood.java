@@ -5,6 +5,11 @@ public class MyFood {
 	private Food unFavoriteFood;
 	public MyFood() {
 	}
+	public MyFood(Food favoriteFood, Food unFavoriteFood) {
+		super();
+		this.favoriteFood = favoriteFood;
+		this.unFavoriteFood = unFavoriteFood;
+	}
 	public Food getFavoriteFood() {
 		return favoriteFood;
 	}
@@ -17,11 +22,7 @@ public class MyFood {
 	public void setUnFavoriteFood(Food unFavoriteFood) {
 		this.unFavoriteFood = unFavoriteFood;
 	}
-	public MyFood(Food favoriteFood, Food unFavoriteFood) {
-		super();
-		this.favoriteFood = favoriteFood;
-		this.unFavoriteFood = unFavoriteFood;
-	}
+	
 	@Override
 	public String toString() {
 		return "favoriteFood=" + favoriteFood + "\nunFavoriteFood=" + unFavoriteFood;
