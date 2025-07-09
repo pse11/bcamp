@@ -37,6 +37,6 @@ public class MemberDao extends SqlMapConfig{
 		
 		session.close();
 		return res;
-		
 	}
+	
 }

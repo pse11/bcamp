@@ -16,8 +16,8 @@ public class MTest {
 		Person s = factory.getBean("student",Person.class);
 		Person t = factory.getBean("teacher",Person.class);
 		
-		s.classWork(); //이때 타겟 지정됨
-		System.out.println("------------------");
+		s.classWork();
+		System.out.println("------");
 		t.classWork();
 	}
 

@@ -24,8 +24,8 @@ public class MyAspect {
 		System.out.println("집에 간다.");
 	}
 	
-	@AfterReturning(pointcut="myClass()",returning="returnVal")
-	public void returning(Object returnVal) {
-		System.out.println(returnVal+" 공부하는 날입니다.");
+	@AfterReturning(pointcut="myClass()",returning="returnVal")//타겟이 리턴한 값을 returnVal 변수로 받아서
+	public void returning(Object returnVal) {   				//after-returning advice에 넣어라 => returnVal 파라미터에 주입
+		System.out.println(returnVal+" 공부하는 날입니다! ");
 	}
 }

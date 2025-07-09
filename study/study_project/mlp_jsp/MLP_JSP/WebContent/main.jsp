@@ -118,21 +118,23 @@
         </div>
     </div>
     <div id="createFeed">
-        <form id="feedform">
+        <form  id="feedform" method="post">
+        	<input type="hidden" name="command" value="createfeed">
+        	<input type="hidden" name="writer" value="${dto.name }">
             <input id="ititle" type="text" name="title" placeholder="제목을 입력해주세요.">
             <input id="ikey" type="text" name="keyword" placeholder="키워드를 입력해 주세요.(엔터로 여러 키워드 등록 가능)">
             <textarea name="content" placeholder="타인의 저작물을 무단 인용하는 경우 저작권 침해에 해당할 수 있으니, 저작권 준수를 부탁드립니다."></textarea>
             <div id="btns"><span>🖼️</span><span>📎</span><span>▶️</span></div>
             <div id="feedsubmit">
                 <select id="range">
-                    <option name="range"  value="팔로워공개">팔로워공개</option>
-                    <option name="range"  value="사용자 지정 공개">사용자 지정 공개</option>
-                    <option name="range"  value="비공개">비공개</option>
-                    <option name="range"  value="우리회사 공개">우리회사 공개</option>
+                    <option name="release"  value="팔로워공개">팔로워공개</option>
+                    <option name="release"  value="사용자 지정 공개">사용자 지정 공개</option>
+                    <option name="release"  value="비공개">비공개</option>
+                    <option name="release"  value="우리회사 공개">우리회사 공개</option>
                 </select>
                 <div id="rbtns">
                     <input type="button" value="취소" onclick="cancel();">
-                    <input type="button" value="등록" onclick="fsubmit();">
+                    <input type="submit" value="등록">
                 </div>
             </div>
         </form>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.mlp.dao.MemberDao;
+import com.mlp.dto.BoardDto;
 import com.mlp.dto.MemberDto;
 
 @WebServlet("/member")
