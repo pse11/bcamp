@@ -1,0 +1,8 @@
+SpringMVC03
+1. pom.xml : ojdbc, mybatis, mybatis-spring, commons-dbcp, spring-orm
+2. web.xml : filter: servlet 앞에 있음. spring mvc 요청 처리 과정에서 1,7번 사이에 filter위치
+3. ./WEB-INF/spring/sqls/sql.txt
+4. DTO, DAO, SERVICE, CONTROLLER
+5. src/main/resources/mybatis/board-mapper.xml
+6. /WEB-INF/spring/sqls/config.xml
+7. servlet-context.xml, applicationContext.xml

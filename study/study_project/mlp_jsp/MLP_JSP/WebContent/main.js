@@ -32,15 +32,17 @@ function createFeed(){
 function cancel(){
   document.getElementById("createFeed").style.display="none";
 }
+
 function getFeedParam(){
-	let writer = "writer="+document.getElementsByName("writer")[0].value;
-	let title = "title="+document.getElementById("ititle").value;
-	let keyword ="keyword="+document.getElementById("ikey").value;
-	let content = "content="+document.getElementsByName("content")[0].value;
-	let release = "release="+document.getElementById("range").value;
+	let writer = "writer="+encodeURIComponent(document.getElementsByName("writer")[0].value);
+	let title = "title="+encodeURIComponent(document.getElementById("ititle").value);
+	let keyword ="keyword="+encodeURIComponent(document.getElementById("ikey").value);
+	let content = "content="+encodeURIComponent(document.getElementsByName("content")[0].value);
+	let release = "release="+encodeURIComponent(document.getElementById("range").value);
 	
 	return "?"+writer+"&"+title+"&"+keyword+"&"+content+"&"+release;
 }
+/*
 window.onload=()=>{
 	document.getElementById("feedform").addEventListener("submit",async(e)=>{
 		e.preventDefault();
@@ -56,11 +58,15 @@ window.onload=()=>{
 		}
 	});
 }
-
-function addFeedToPage(writer, title, content, keyword, release){
-  let form = document.getElementById("feedform");
+*/
+function addFeedToPage(){
   let feeddiv = document.getElementById("feedContent");
   let icontent = document.createElement("div");
+  let writer = document.getElementsByName("writer")[0].value;
+	let title = document.getElementById("ititle").value;
+	let keyword =document.getElementById("ikey").value;
+	let content = document.getElementsByName("content")[0].value;
+	let release = document.getElementById("range").value;
   icontent.setAttribute("class","content");
   icontent.innerHTML=`<div id="writer">
                         <div id="wimg">👤</div>

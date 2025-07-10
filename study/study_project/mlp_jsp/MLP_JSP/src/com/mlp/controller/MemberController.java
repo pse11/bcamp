@@ -36,7 +36,7 @@ public class MemberController extends HttpServlet {
 					System.out.println("로그인 되었습니다.");
 					session.setAttribute("dto", res);
 					session.setMaxInactiveInterval(60*60);
-					response.sendRedirect("main.jsp");
+					response.sendRedirect("board?command=showfeeds");
 				}else {
 					System.out.println("비밀번호를 확인해 주세요.");
 					response.sendRedirect("login.jsp");

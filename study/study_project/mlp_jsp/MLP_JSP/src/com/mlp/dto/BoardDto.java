@@ -10,17 +10,9 @@ public class BoardDto {
 	private String keyword;
 	private String release;
 	private Date regDate;
+	private String id;
 	public BoardDto() {	}
-	public BoardDto(int no, String writer, String title, String content, String keyword, String release, Date regDate) {
-		super();
-		this.no = no;
-		this.writer = writer;
-		this.title = title;
-		this.content = content;
-		this.keyword = keyword;
-		this.release = release;
-		this.regDate = regDate;
-	}
+	
 	public int getNo() {
 		return no;
 	}
@@ -30,6 +22,27 @@ public class BoardDto {
 	public String getWriter() {
 		return writer;
 	}
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public BoardDto(int no, String writer, String title, String content, String keyword, String release, Date regDate,
+			String id) {
+		super();
+		this.no = no;
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
+		this.keyword = keyword;
+		this.release = release;
+		this.regDate = regDate;
+		this.id = id;
+	}
+
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}

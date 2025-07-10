@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,27 +90,33 @@
                 </div>
             </div>
             <div id="feedContent">
-                <div class="content">
-                    <div id="writer">
-                        <div id="wimg">👤</div>
-                        <div id="wname">
-                            <p>박상은</p>
-                            <p>[현대이지웰] Java 풀스택 개발자 아카데미 5회차</p>
-                        </div>
-                    </div>
-                    <div id="srange">비공개</div>
-                    <div id="stitle">제목</div>
-                    <div id="scontent">내용</div>
-                    <div id="skeyword">키워드</div>
-                </div>
-                <img id="3" src="./img/feed.png" alt="feed">
-                <img id="2" src="./img/feed.png" alt="feed">
-                <img id="1" src="./img/feed.png" alt="feed">
+            	<c:choose>
+            		<c:when test="${empty list }">
+            			<div>작성된 글이 없습니다.</div>
+            		</c:when>
+            		<c:otherwise>
+            			<c:forEach items="${list }" var="boarddto">
+            				<div class="content">
+			                    <div class="writer">
+			                        <div class="wimg">👤</div>
+			                        <div class="wname">
+			                            <p>${boarddto.writer }</p>
+			                            <p>[현대이지웰] Java 풀스택 개발자 아카데미 5회차</p>
+			                        </div>
+			                    </div>
+			                    <div class="srange">${boarddto.release }</div>
+			                    <div class="stitle">${boarddto.title }</div>
+			                    <div class="scontent">${boarddto.content }</div>
+			                    <div class="skeyword">${boarddto.keyword }</div>
+			                </div>
+            			</c:forEach>
+            		</c:otherwise>
+            	</c:choose>
             </div>
         </div>
     </div>
     <div id="rightbtns">
-        <div id="bookmark" onclick="location.href='bookmark.html'">
+        <div id="bookmark" onclick="location.href='board?command=bookmark'">
             <img src="./img/bookmark.png" alt="bookmark">
         </div>
         <div id="toTop" onclick="movetoTop();">
@@ -118,15 +125,16 @@
         </div>
     </div>
     <div id="createFeed">
-        <form  id="feedform" method="post">
+        <form action="board" method="post">
         	<input type="hidden" name="command" value="createfeed">
         	<input type="hidden" name="writer" value="${dto.name }">
+        	<input type="hidden" name="id" value="${dto.id }">
             <input id="ititle" type="text" name="title" placeholder="제목을 입력해주세요.">
             <input id="ikey" type="text" name="keyword" placeholder="키워드를 입력해 주세요.(엔터로 여러 키워드 등록 가능)">
             <textarea name="content" placeholder="타인의 저작물을 무단 인용하는 경우 저작권 침해에 해당할 수 있으니, 저작권 준수를 부탁드립니다."></textarea>
             <div id="btns"><span>🖼️</span><span>📎</span><span>▶️</span></div>
             <div id="feedsubmit">
-                <select id="range">
+                <select name="release" id="range">
                     <option name="release"  value="팔로워공개">팔로워공개</option>
                     <option name="release"  value="사용자 지정 공개">사용자 지정 공개</option>
                     <option name="release"  value="비공개">비공개</option>

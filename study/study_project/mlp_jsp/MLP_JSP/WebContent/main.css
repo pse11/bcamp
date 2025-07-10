@@ -4,6 +4,10 @@
     height: 100vh;
     display: flex;
 }
+a{
+	text-decoration : none;
+	color:black;
+}
 #header{
     background-color: rgb(101, 148, 105);
     height: 120px;
@@ -319,41 +323,41 @@ input:focus, textarea:focus{
     height: 500px;
 }
 
-#writer{
+.writer{
     display: flex;
     height: 20%;
     border-bottom: 1px solid rgb(158, 153, 153);
 }
-#wimg{
+.wimg{
     font-size: 30pt;
 }
-#wname{
+.wname{
     display: inline-block;
     padding-left: 10px;
 }
-#wname p{
+.wname p{
     margin: 0;
 }
-#wname p:nth-child(2){
+.wname p:nth-child(2){
     color: gray;
 }
-#srange{
+.srange{
     padding: 10px;
     color: gray;
 }
-#stitle{
+.stitle{
     padding: 10px;
     font-weight: bold;
     font-size: 22pt;
     height: 30px;
     margin: 10px;
 }
-#scontent{
+.scontent{
     padding: 10px;
     margin: 20px;
     height: 50px;
 }
-#skeyword{
+.skeyword{
     padding: 10px;
     margin: 10px;
     display: inline;

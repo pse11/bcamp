@@ -25,6 +25,7 @@ public class MessageBeanImpl implements MessageBean{
 		System.out.println("매개변수 생성자(fruit, cost, name)");
 		this.fruit=fruit+name;
 		this.cost=cost;
+		System.out.println();
 	}
 	
 	

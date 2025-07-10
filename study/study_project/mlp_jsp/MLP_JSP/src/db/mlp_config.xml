@@ -6,6 +6,7 @@
 	<properties resource="db/db.properties"/>
 	<typeAliases>
 		<typeAlias type="com.mlp.dto.MemberDto" alias="MemberDto"/>
+		<typeAlias type="com.mlp.dto.BoardDto" alias="BoardDto"/>
 	</typeAliases>
 	
 	<environments default="development">

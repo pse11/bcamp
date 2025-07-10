@@ -5,6 +5,10 @@
  
  <mapper namespace="com.my.board">
  	<insert id="insertFeed">
- 		INSERT INTO MLPBOARD VALUES(SEQ_MLPBOARD.NEXTVAL,#{writer},#{title},#{content},#{keyword},#{release},SYSDATE)
+ 		INSERT INTO MLPBOARD VALUES(SEQ_MLPBOARD.NEXTVAL,#{writer},#{id},#{title},#{content},#{keyword},#{release},SYSDATE)
  	</insert>
+ 	
+ 	<select id="selectAll" resultType="BoardDto">
+ 		SELECT * FROM MLPBOARD ORDER BY NO DESC
+ 	</select>
  </mapper>
