@@ -150,6 +150,13 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.38</version>
+		</dependency>
+		<!-- 설치한 lombok.jar버전과 맞추기 -->
 		<!-- ctrl + shift + f -->
 
 	</dependencies>
