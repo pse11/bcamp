@@ -1,4 +1,4 @@
-package com.test06;
+package com.test06.AOP_all_anno;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;

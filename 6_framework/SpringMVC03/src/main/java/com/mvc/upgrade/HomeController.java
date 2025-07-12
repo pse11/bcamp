@@ -70,7 +70,7 @@ public class HomeController {
 		logger.info("UPDATE");
 		
 		BoardDto dto = new BoardDto();
-		dto.setMyno(myno);;
+		dto.setMyno(myno);
 		dto.setMytitle(mytitle);
 		dto.setMycontent(mycontent);
 		

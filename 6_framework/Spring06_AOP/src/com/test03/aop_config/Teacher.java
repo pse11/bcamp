@@ -1,4 +1,4 @@
-package com.test03;
+package com.test03.aop_config;
 
 public class Teacher implements Person{
 

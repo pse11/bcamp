@@ -1,4 +1,4 @@
-package com.test03;
+package com.test03.aop_config;
 
 public class MyAspect {
 	//공통관심사항을 메소드 단위로 분리

@@ -1,4 +1,4 @@
-package com.test06;
+package com.test06.AOP_all_anno;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -11,7 +11,7 @@ public class MTest {
 		// 이때, bean 생성은 모두 어노테이션으로 처리한다.(주의, xml파일에 네임스페이스 잘 추가합시다)
 		// 마지막으로 메인메소드에서 타겟실행하여 aop 잘 적용되는 모습을 확인한다.
 		
-		ApplicationContext factory = new ClassPathXmlApplicationContext("com/test06/applicationContext.xml");
+		ApplicationContext factory = new ClassPathXmlApplicationContext("com/test06/AOP_all_anno/applicationContext.xml");
 		
 		Person s = factory.getBean("student",Person.class);
 		Person t = factory.getBean("teacher",Person.class);

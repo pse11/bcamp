@@ -1,4 +1,4 @@
-package com.test03;
+package com.test03.aop_config;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -7,7 +7,7 @@ public class MTest {
 
 	public static void main(String[] args) {
 		
-		ApplicationContext factory = new ClassPathXmlApplicationContext("com/test03/applicationContext.xml");
+		ApplicationContext factory = new ClassPathXmlApplicationContext("com/test03/aop_config/applicationContext.xml");
 		
 		Person s = factory.getBean("student",Person.class);
 		Person t = factory.getBean("teacher", Person.class);
@@ -23,9 +23,9 @@ public class MTest {
 //		Test test = new Test();
 //		test.classWork();
 		
-		Person test = factory.getBean("test",Person.class);
-		test.classWork();
-		((Test)test).test(); //proxy 가상의 객체 생성했기때문에 자바에서처럼 다형성으로 메소드 접근 불가능, test() 실행하고 싶으면 상속을 받지 말것 
+		//Person test = factory.getBean("test",Person.class);
+		//test.classWork();
+	//	((Test)test).test(); //proxy 가상의 객체 생성했기때문에 자바에서처럼 다형성으로 메소드 접근 불가능, test() 실행하고 싶으면 상속을 받지 말것 
 //		Test test = factory.getBean("test",Test.class);
 //		test.classWork();
 //		test.test();
