@@ -17,10 +17,10 @@ public class HelloController {
 	private HelloService service;
 	
 	@RequestMapping(value="/hello.do")
-	public String getHello(Model model) {
+	public String getHello(Model model) { //Model : 뷰에 데이터를 담아 전달하는 역할을 하는 인터페이스. 컨트롤러 메소드의 매개변수로 선언하면 스프링이 자동으로 전달해준다.
 		String res = service.getHello();
 		model.addAttribute("msg",res);
-		return "/WEB-INF/views/hello.jsp";
+		return "/WEB-INF/views/hello.jsp"; //실제 뷰 경로를 전달해줬기 때문에 viewresolver가 경로를 조립하지 않고 dispatcherservlet이 바로 forward
 	}
 	
 	/*@RequestMapping(value="/bye.do")

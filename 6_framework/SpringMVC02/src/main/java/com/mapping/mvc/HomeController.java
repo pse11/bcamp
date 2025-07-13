@@ -30,7 +30,8 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/command.do",method=RequestMethod.POST)
-	public String postCommand(Model model, @ModelAttribute AddressDto dto) {
+	public String postCommand(Model model, @ModelAttribute AddressDto dto) { //@ModelAttribute : 클라이언트가 보낸 요청 파라미터(폼 데이터, 쿼리스트링 등)를 자동으로 객체에 바인딩 해주는 역할.
+																			//즉, HTTP 요청에 포함된 데이터(name, addr, phone)를 AddressDto 객체 필드에 자동으로 채워서 넘겨줌.
 		
 		System.out.println(dto.getName());
 		System.out.println(dto.getAddr());

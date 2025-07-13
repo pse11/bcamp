@@ -10,6 +10,9 @@
 	<!-- mvc 관련 어노테이션, component 어노테이션 등 다양한 어노테이션 설정을 하는 곳 -->
 	<!-- dispatcher servlet이 읽어서 처리-->
 	<context:component-scan base-package="com.hello"/>
+	
+	<!-- 스프링 mvc 어노테이션 활성화 -->
+	<!-- @RequestMapping, @ResponseBody 와 같은 걸 쓰려면 이 설정이 필요 -->
 	<mvc:annotation-driven/>
 	
 </beans>

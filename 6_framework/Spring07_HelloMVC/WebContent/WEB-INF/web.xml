@@ -26,8 +26,8 @@
   
   <!-- servlet 어떤 요청을 받을지 -->
   <servlet-mapping>
-  	<servlet-name>hello</servlet-name>
-  	<url-pattern>*.do</url-pattern> 
+  	<servlet-name>hello</servlet-name> <!-- hello라는 이름의 서블릿에 -->
+  	<url-pattern>*.do</url-pattern>  <!--  URL 패턴이 *.do로 끝나느 요청을 전달하라는 의미 -->
   </servlet-mapping>
   <!-- 요청 넘어갔을 때 dispatcherservlet이 컨트롤러로 넘어가는 거 기본적 설정 끝 -->
 </web-app>

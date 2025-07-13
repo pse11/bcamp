@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.hello.dao.HelloDao;
 
-@Service
+@Service //자바는 클래스가 타입이기 때문에 HelloService타입의 빈이 service로 생성
 public class HelloService {
 	
 	//private HelloDao dao = new HelloDao();
