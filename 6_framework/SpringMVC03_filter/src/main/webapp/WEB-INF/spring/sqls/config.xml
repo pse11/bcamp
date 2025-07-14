@@ -10,5 +10,5 @@
 	<mappers>
 		<mapper resource="/mybatis/board-mapper.xml"/>
 	</mappers>
-</configuration> 
+</configuration>
  

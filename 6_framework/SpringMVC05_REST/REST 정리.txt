@@ -1,0 +1,18 @@
+REST -> RESTfull
+
+웹 기본원칙을 따라서 구현을 해라.
+: 서버로 요청을 보낼때 어떤 요청인지 정확한 작성해줘라.
+
+1. uri는 명사로만 이뤄진다.
+rest는 board/1
+http 요청을 명확히 구분하며 넘긴다. (GET,DELETE다)
+응답할때 데이터 응답.
+
+요청과 응답시에는 데이터를 넘긴다.
+보통 JSON데이터들이 왔다갔다 한다.
+
+컨트롤러에 @Controller가 아닌 @RestController를 적어준다.
+
+요청을 응답하면 적절한 데이터를 응답함. 페이지를 응답하던 (rest x) 때와 다름. 그래서 404가 아닌 빈 페이지가 뜬다.
+
+REST FULL 방식으로 : GET, POST, PUT, DELETE에 따라 CRUD 진행
