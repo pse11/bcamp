@@ -5,7 +5,7 @@ REST -> RESTfull
 
 1. uri는 명사로만 이뤄진다.
 rest는 board/1
-http 요청을 명확히 구분하며 넘긴다. (GET,DELETE다)
+http 요청을 명확히 구분하며 넘긴다. (GET,DELETE다) method=DELETE
 응답할때 데이터 응답.
 
 요청과 응답시에는 데이터를 넘긴다.
@@ -16,3 +16,8 @@ http 요청을 명확히 구분하며 넘긴다. (GET,DELETE다)
 요청을 응답하면 적절한 데이터를 응답함. 페이지를 응답하던 (rest x) 때와 다름. 그래서 404가 아닌 빈 페이지가 뜬다.
 
 REST FULL 방식으로 : GET, POST, PUT, DELETE에 따라 CRUD 진행
+
+Spring JDBC 사용
+jdbcTemplate.query(sql,rowMapper) 
+rowMapper : 한줄을 어떻게 Java 객체로 바꿀지 알려주는 것.
+익명함수나 람다식으로 작성

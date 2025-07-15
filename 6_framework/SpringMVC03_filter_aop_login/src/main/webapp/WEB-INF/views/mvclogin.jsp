@@ -19,7 +19,9 @@
 		if(memberid==""||memberpw==""){
 			alert("ID및 PW를 확인해 주세요")
 		}else{
-			$.ajax({
+			$.ajax({//ajax : 비동기 통신. (jquery에서 제공)
+				//ajax를 이용해 데이터를 json형식으로 서버에 요청. 
+				//서버는 전달받은 json데이터를 jackson을 사용해 자바 객체로 변환
 				url:"ajaxlogin.do",
 				type:"post",
 				data:JSON.stringify(loginVal),
@@ -27,7 +29,7 @@
 				dataType: "json",
 				success:function(msg){
 					console.log(msg);
-					if(msg.check==true){
+					if(msg.check==true){ //msg.check : 서버가 준 json데이터에서 check값
 						location.href="list.do";
 					}else{
 						$("#loginChk").html("ID 혹은 PW가 잘못입력되었습니다.")

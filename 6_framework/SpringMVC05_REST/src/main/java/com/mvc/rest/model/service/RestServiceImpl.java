@@ -16,27 +16,27 @@ public class RestServiceImpl implements RestService{
 	
 	@Override
 	public List<RestDto> selectList() {
-		return null;
+		return dao.selectList();
 	}
 
 	@Override
 	public RestDto selectOne(int restno) {
-		return null;
+		return dao.selectOne(restno);
 	}
 
 	@Override
 	public int insert(RestDto dto) {
-		return 0;
+		return dao.insert(dto);
 	}
 
 	@Override
 	public int update(RestDto dto) {
-		return 0;
+		return dao.update(dto);
 	}
 
 	@Override
 	public int delete(int restno) {
-		return 0;
+		return dao.delete(restno);
 	}
 
 }

@@ -19,7 +19,8 @@ _aop
 
 _login
 14. pom.xml : jackson-core, jackson-databind, jackson-annotations 추가(2.18.3) (json 데이터를 파싱해주는 역할.)
-15. WEB-INF/spring/sqls/sql.txt
+=>jackson : JSON문자열을 자바객체로 바꿔주고, 자바객체를 JSON 문자열로 바꿔줌
+15. WEB-INF/spring/sqls/sql.txt (MYMEMBER)
 16. dto, dao, service, controller 생성
 17. mybatis이므로 src/main/resources/mybatis/member-mapper.xml 추가
 18. WEB-INF/spring/sqls/config.xml -> typeAlias, mapper 등록
