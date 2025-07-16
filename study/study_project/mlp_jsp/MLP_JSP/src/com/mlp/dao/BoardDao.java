@@ -29,4 +29,27 @@ public class BoardDao extends SqlMapConfig{
 		session.close();
 		return res;
 	}
+	
+	public List<BoardDto> order(String orderby){
+		SqlSession session = null;
+		List<BoardDto> res = null;
+		System.out.println(orderby);
+		session = getSqlSessionFactory().openSession(true);
+		if(orderby.equals("DESC")) {
+			res = session.selectList("com.my.board.orderbyDesc");			
+		}else if(orderby.equals("ASC")) {
+			res = session.selectList("com.my.board.orderbyAsc");			
+		}
+		
+		session.close();
+		return res;
+	}
+	public BoardDto selectBoard(int boardno) {
+		SqlSession session = null;
+		BoardDto res = null;
+		session = getSqlSessionFactory().openSession(true);
+		res = session.selectOne("com.my.board.selectOne",boardno);
+		session.close();
+		return res;
+	}
 }

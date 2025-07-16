@@ -24,4 +24,16 @@ public class MemberDaoImpl implements MemberDao{
 		return res;
 	}
 
+	@Override
+	public int insert(MemberDto dto) {
+		int res = 0;
+		try {
+			res= sqlSession.insert("testmember.insert",dto);
+		}catch(Exception e) {
+			System.out.println("[error] regist");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 }

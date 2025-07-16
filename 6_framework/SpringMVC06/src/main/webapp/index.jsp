@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3><a href="loginform.do">login</a></h3>
+	<h1><a href="loginform.do">login</a></h1>
+	<h1><a href="test.do">transaction</a></h1>
 </body>
 </html>

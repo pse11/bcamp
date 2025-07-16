@@ -5,6 +5,10 @@
   
 <mapper namespace="testmember">
 	<select id="login" resultType="memberDto">
-		SELECT * FROM TESTMEMBER WHERE MEMID=#{memid} AND MEMPW=#{mempw}
+		SELECT * FROM TESTMEMBER WHERE MEMID=#{memid}
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO TESTMEMBER VALUES(SEQ_TMEMBER.NEXTVAL, #{memid},#{mempw},#{memname})
+	</insert>
 </mapper>

@@ -1,0 +1,27 @@
+인터셉터란?
+스프링mvc에서 Dispatcherservlet이 컨트롤러(핸들러)를 호출하기 전/후에 끼어들어 요청과 응답을 가로채서 처리할 수 있는 컴포넌트
+즉
+컨트롤러 호출 전에 검사하거나
+컨트롤러 호출 후 응답을 가공하거나
+요청-응답 흐름을 로그로 남기거나
+
+aop와의 차이
+위치 : interceptor는 dispatcherservlet과 컨트롤러 사이에서 동작. 
+	aop는 스프링 빈 내부의 메소드 실행 전/후
+
+주로 하는 일 : interceptor는 인증, 권한 검사, 로그인 여부 확인, 요청/응답 로깅
+			aop는 트랜잭션 처리, 공통 로직(로깅, 시간 측정)
+		
+적용 단위 : interceptor는 URL(HandlerMapping에 걸림)
+		메소드(Pointcut에 걸림)
+
+기술: interceptor :  HandlerInterceptor
+	aop : @Aspect + Pointcut
+	
+언제 사용하는가?
+로그인 안된사람은 특정 url 못들어가게 할때
+예. /mypage에는 로그인 안 하면 못들어오게
+공통적으로 요청/응답 로그 찍을때
+특정 요청에 대해 캐싱 처리할 때
+세션에서 인증 토큰 체크
+리다이렉트 같은 처리를 전역에서 할때

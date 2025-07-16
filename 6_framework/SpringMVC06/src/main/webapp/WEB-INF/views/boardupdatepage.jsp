@@ -10,6 +10,7 @@
 	<h1>게시글 수정 페이지</h1>
 	<form action="update.do" method="post">
 		<input type="hidden" name="testno" value="${dto.testno }">
+		<input type="hidden" name="testid" value="${dto.testid }">
 		<table>
 			<tr>
 				<th>TITLE</th>
@@ -17,7 +18,7 @@
 			</tr>
 			<tr>
 				<th>WRITER</th>
-				<td><input type="text" name="testname" value="${dto.testwriter }"></td>
+				<td>${dto.testname }</td>
 			</tr>
 			<tr>
 				<th>CONTENT</th>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,11 +79,11 @@
                 <button onclick="createFeed()">+ 피드작성</button>
                 <div id="feedSearch">
                     <input type="search" name="feedsearch" placeholder="검색어를 입력해주세요.">
-                    <select name="orderby">
-                        <option value="recent">최신순</option>
-                        <option value="check">조회순</option>
-                        <option value="like">좋아요순</option>
-                        <option value="comment">댓글순</option>
+                    <select id="orderby" name="orderby" onchange="location.href='board?command=boardorder&orderby='+this.value;">
+                    	<!-- select된 값이 asc만 값이 넘어오는 문제 발생.  
+                    	{param.orderby로 이전에 선택된 값을 가져와 selected해줌-->
+                        <option value="DESC" <c:if test="${param.orderby=='DESC' }">selected</c:if>>최신순</option>
+                        <option value="ASC"<c:if test="${param.orderby=='ASC' }">selected</c:if>>오래된순</option>                        
                     </select>
                     <img src="./img/1b.png" alt="1b">
                     <img src="./img/2w.png" alt="1b">
@@ -101,9 +102,10 @@
 			                        <div class="wimg">👤</div>
 			                        <div class="wname">
 			                            <p>${boarddto.writer }</p>
-			                            <p>[현대이지웰] Java 풀스택 개발자 아카데미 5회차</p>
 			                        </div>
+			                        <div class="updatebtn"><a href="location.href='board?command=updateform&boardno=${boarddto.no }&loginid=${dto.id}">🟰</a></div>
 			                    </div>
+			                    <div class="sdate"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${boarddto.regDate }"/></div>
 			                    <div class="srange">${boarddto.release }</div>
 			                    <div class="stitle">${boarddto.title }</div>
 			                    <div class="scontent">${boarddto.content }</div>

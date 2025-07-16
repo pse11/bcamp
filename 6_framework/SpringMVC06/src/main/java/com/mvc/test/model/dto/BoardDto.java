@@ -14,6 +14,7 @@ import lombok.Setter;
 public class BoardDto {
 	private int testno;
 	private String testname;
+	private String testid;
 	private String testtitle;
 	private String testcontent;
 	private Date testdate;

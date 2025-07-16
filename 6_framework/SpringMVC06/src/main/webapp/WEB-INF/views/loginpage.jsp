@@ -53,7 +53,10 @@
 				<td><input type="text" id="mempw"></td>
 			</tr>
 			<tr>	
-				<td colspan="2"><input type="button" value="login" onclick="login();"></td>
+				<td colspan="2">
+					<input type="button" value="로그인" onclick="login();">
+					<input type="button" value="회원가입" onclick="location.href='registform.do'">
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center" id="loginChk"></td>

@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mvc.test.model.dto.BoardDto;
+import com.mvc.test.model.dto.MemberDto;
 import com.mvc.test.model.service.BoardService;
 
 @Controller
@@ -55,16 +56,60 @@ public class BoardController {
 		}
 	}
 	@RequestMapping("updateform.do")
-	public String updateForm(int testno,Model model) {
+	public String updateForm(HttpSession session, int testno,Model model) {
 		logger.info("updateform");
+		MemberDto logindto = (MemberDto)session.getAttribute("login");
+		String loginid = logindto.getMemid();
 		BoardDto dto= service.selectOne(testno);
-		model.addAttribute("dto",dto);
-		return "boardupdatepage";
+		String boardid=dto.getTestid();
+		if(loginid.equals(boardid)||loginid.equals("admin")) {
+			model.addAttribute("dto",dto);
+			return "boardupdatepage";			
+		}else {
+			System.out.println("작성자 본인만 수정가능");
+			model.addAttribute("testno",testno);
+			model.addAttribute("check",true);
+			return "forward:detail.do";
+		}
 	}
 	
 	@RequestMapping("update.do")
 	public String update(BoardDto dto) {
 		logger.info("update");
+		int res = service.update(dto);
+		if(res>0) {
+			return "redirect:boardlist.do";
+		}else {
+			return "redirect:updateform.do";
+		}
 		
+	}
+	@RequestMapping("delete.do")
+	public String delete(HttpSession session, int testno,Model model) {
+		logger.info("delete");
+		MemberDto logindto = (MemberDto)session.getAttribute("login");
+		BoardDto boarddto = service.selectOne(testno);
+		String loginid=logindto.getMemid();
+		String boardid=boarddto.getTestid();
+		if(loginid.equals(boardid)||loginid.equals("admin")) {
+			int res = service.delete(testno);
+			if(res>0) {
+				return "redirect:boardlist.do";
+			}else {
+				return "redirect:detail.do";
+			}
+		}else {
+			System.out.println("작성자 본인만 삭제 가능");
+			model.addAttribute("testno",testno);
+			model.addAttribute("check",true);
+			return "forward:detail.do";
+		}
+	}
+	@RequestMapping("/test.do")
+	public String test() {
+		logger.info("TRANSACTION TEST");
+		service.test();
+		
+		return "redirect:boardlist.do";
 	}
 }

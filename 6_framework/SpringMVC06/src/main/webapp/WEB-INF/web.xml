@@ -12,7 +12,12 @@
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+      <param-value>
+      	/WEB-INF/spring/appServlet/servlet-context.xml
+      	/WEB-INF/spring/appServlet/aop-context.xml
+      	/WEB-INF/spring/appServlet/security-context.xml
+      </param-value>
+
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
@@ -32,14 +37,13 @@
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  <servlet>
-    <description></description>
-    <display-name>BoardController</display-name>
-    <servlet-name>BoardController</servlet-name>
-    <servlet-class>com.mvc.test.BoardController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>BoardController</servlet-name>
-    <url-pattern>/BoardController</url-pattern>
-  </servlet-mapping>
+  <filter>
+  	<filter-name>logFilter</filter-name>
+  	<filter-class>com.mvc.test.common.filter.LogFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>logFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
 </web-app>

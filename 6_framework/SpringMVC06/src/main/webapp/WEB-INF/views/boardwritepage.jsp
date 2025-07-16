@@ -10,6 +10,7 @@
 	<h1>게시물 작성 페이지</h1>
 	<form action="boardwrite.do" method="post">
 		<input type="hidden" name="testname" value="${logindto.memname }">
+		<input type="hidden" name="testid" value="${logindto.memid }">
 		<table>
 			<tr>
 				<th>WRITER</th>
