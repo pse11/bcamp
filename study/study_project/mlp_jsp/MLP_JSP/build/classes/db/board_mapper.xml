@@ -23,4 +23,17 @@
  	<select id="selectOne" resultType="BoardDto" parameterType="Integer">
  		SELECT * FROM MLPBOARD WHERE NO=#{boardno}
  	</select>
+ 	
+ 	<update id="update">
+ 		UPDATE FROM MLPBOARD SET TITLE=#{title}, CONTENT=#{content}, KEYWORD=#{keyword},RELEASE=#{release} WHERE NO=#{no}
+ 	</update>
+ 	
+ 	<select id="search" resultType="BoardDto" parameterType="String">
+ 		SELECT * FROM MLPBOARD
+ 		WHERE TITLE LIKE '%'||#{searchfeed}||'%' 
+ 		OR CONTENT LIKE '%'||#{searchfeed}||'%' 
+ 		OR KEYWORD LIKE '%'||#{searchfeed}||'%' 
+ 		OR WRITER LIKE '%'||#{searchfeed}||'%'
+ 		ORDER BY NO DESC
+ 	</select>
  </mapper>

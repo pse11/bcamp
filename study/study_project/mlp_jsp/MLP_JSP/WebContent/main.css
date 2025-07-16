@@ -192,7 +192,7 @@ a{
     cursor: pointer;
 }
 
-#feedSearch input{
+#feedSearch input:nth-child(1){
     width: 50%;
     margin: 10px;
     border: none;
@@ -201,12 +201,16 @@ a{
     padding: 5px;
 }
 #feedSearch select{
-    margin-left: 60px;   
+    margin-left: 30px;   
 }
 #feedSearch img{
     margin-left: 20px;
     margin-top: 0px;
     cursor: pointer;
+}
+#searchform{
+	display:inline;
+	width:300px;
 }
 /* 왼쪽 북마크, top 버튼 */
 #rightbtns{
@@ -235,7 +239,7 @@ a{
 }
 
 /* 피드 작성란 */
-#createFeed{
+#createFeed,#updateFeed{
     display : none;
     position: absolute;
     top: 20%;
@@ -269,7 +273,7 @@ input:focus, textarea:focus{
     font-size: 15pt;
     border-bottom: 1px solid rgb(173, 171, 171);
 }
-#createFeed textarea{
+#createFeed textarea,#updateFeed textarea{
     background-color:rgb(253, 255, 245) ;
     border: none;
     margin: 10px;

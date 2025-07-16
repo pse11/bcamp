@@ -26,11 +26,18 @@ function hide_profile(){
 function createFeed(){
   document.getElementById("createFeed").style.display="block";
   document.body.style.background="gray";
+  document.getElementById("createtext").textContent="작성중";
 
 }
-
+function updateFeed(no){
+		document.getElementById("updateFeed").style.display="block";
+		document.getElementById("createtext").textContent="수정중";
+		location.href="board?command=updateform&boardno="+no;
+}
 function cancel(){
   document.getElementById("createFeed").style.display="none";
+  document.getElementById("updateFeed").style.display="none";
+  document.getElementById("createtext").textContent="+ 피드작성";
 }
 
 function getFeedParam(){

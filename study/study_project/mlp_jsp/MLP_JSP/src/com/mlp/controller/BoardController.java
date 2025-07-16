@@ -81,11 +81,42 @@ public class BoardController extends HttpServlet {
 		}else if(command.equals("updateform")) {
 			int boardno = Integer.parseInt(request.getParameter("boardno"));
 			BoardDto res = dao.selectBoard(boardno);
-			String loginid= request.getParameter("loginid");
-			if(loginid.equals(res.getId())) {
-				request.setAttribute("boarddto", res);
-				RequestDispatcher dispatch = request.getRequestDispatcher("update.jsp");
+			//String loginid= request.getParameter("loginid");
+			//if(loginid.equals(res.getId())) {
+				request.setAttribute("updatedto", res);
+				RequestDispatcher dispatch = request.getRequestDispatcher("main.jsp");
+				dispatch.forward(request,response);
+			//}else {
+			//	request.setAttribute("check",true);
+			//	System.out.println("작성자 본인만 수정가능");
+//				RequestDispatcher dispatch = request.getRequestDispatcher("main.jsp");
+//				dispatch.forward(request,response);
+//			}
+			
+		}else if(command.equals("updatefeed")) {
+			String title = request.getParameter("title");
+			String keyword = request.getParameter("keyword");
+			String content = request.getParameter("content");
+			String release = request.getParameter("release");
+			int no = Integer.parseInt(request.getParameter("no"));
+			BoardDto dto = new BoardDto();
+			dto.setNo(no);
+			dto.setTitle(title);
+			dto.setKeyword(keyword);
+			dto.setContent(content);
+			dto.setRelease(release);
+			int res = dao.update(dto);
+			if(res>0) {
+				response.sendRedirect("board?command=showfeeds");
+			}else {
+				response.sendRedirect("board?command=showfeeds");
 			}
+		}else if(command.equals("search")) {
+			String feedsearch = request.getParameter("feedsearch");
+			List<BoardDto> dto = dao.search(feedsearch);
+			request.setAttribute("list", dto);
+			RequestDispatcher dispatch = request.getRequestDispatcher("main.jsp");
+			dispatch.forward(request, response);
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

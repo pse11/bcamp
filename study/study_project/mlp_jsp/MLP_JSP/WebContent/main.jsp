@@ -76,9 +76,14 @@
         <div id="rightContent">
             <div id="feedheader">
                 <span><b>전체 피드</b></span>
-                <button onclick="createFeed()">+ 피드작성</button>
+                <button onclick="createFeed()" id="createtext">+ 피드작성</button>
                 <div id="feedSearch">
-                    <input type="search" name="feedsearch" placeholder="검색어를 입력해주세요.">
+                	<form action="board" method="post" id="searchform">
+                		<input type="hidden" name="command" value="search">
+                    	<input type="search" name="feedsearch" placeholder="검색어를 입력해주세요.">
+						<input type="submit" value="🔍">                	
+                	</form>
+               
                     <select id="orderby" name="orderby" onchange="location.href='board?command=boardorder&orderby='+this.value;">
                     	<!-- select된 값이 asc만 값이 넘어오는 문제 발생.  
                     	{param.orderby로 이전에 선택된 값을 가져와 selected해줌-->
@@ -103,7 +108,10 @@
 			                        <div class="wname">
 			                            <p>${boarddto.writer }</p>
 			                        </div>
-			                        <div class="updatebtn"><a href="location.href='board?command=updateform&boardno=${boarddto.no }&loginid=${dto.id}">🟰</a></div>
+			                        <div class="updatebtn">
+			                        	<a onclick="updateFeed(${boarddto.no});" >수정</a>
+			                        	<a onclick="location.href='board?command=delete&no=${boarddto.no}'" >삭제</a>
+			                        </div>
 			                    </div>
 			                    <div class="sdate"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${boarddto.regDate }"/></div>
 			                    <div class="srange">${boarddto.release }</div>
@@ -144,7 +152,7 @@
                 </select>
                 <div id="rbtns">
                     <input type="button" value="취소" onclick="cancel();">
-                    <input type="submit" value="등록">
+                    <input type="submit" value="등록" onclick="cancel();">
                 </div>
             </div>
         </form>
@@ -186,6 +194,29 @@
             <div id="profilefooter">
                 <input type="button" value="취소" onclick="hide_profile()">
                 <input type="submit" value="수정">
+            </div>
+        </form>
+    </div>
+    <!-- 수정 팝업 -->
+    <div id="updateFeed">
+        <form action="board" method="post">
+        	<input type="hidden" name="command" value="updatefeed">
+        	<input type="hidden" name="no" value="${updatedto.no}">
+            <input id="ititle" type="text" name="title" value="${updatedto.title }">
+            <input id="ikey" type="text" name="keyword" value="${updatedto.keyword }">
+            <textarea name="content">${updatedto.content }</textarea>
+            <div id="btns"><span>🖼️</span><span>📎</span><span>▶️</span></div>
+            <div id="feedsubmit">
+                <select name="release" id="range">
+                    <option name="release"  value="팔로워공개">팔로워공개</option>
+                    <option name="release"  value="사용자 지정 공개">사용자 지정 공개</option>
+                    <option name="release"  value="비공개">비공개</option>
+                    <option name="release"  value="우리회사 공개">우리회사 공개</option>
+                </select>
+                <div id="rbtns">
+                    <input type="button" value="취소" onclick="cancel();">
+                    <input type="submit" value="수정" onclick="cancel();">
+                </div>
             </div>
         </form>
     </div>

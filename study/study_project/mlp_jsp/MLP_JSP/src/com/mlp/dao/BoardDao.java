@@ -52,4 +52,22 @@ public class BoardDao extends SqlMapConfig{
 		session.close();
 		return res;
 	}
+	
+	public int update(BoardDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		session = getSqlSessionFactory().openSession(true);
+		res = session.update("com.my.board.update",dto);
+		session.close();
+		return res;
+	}
+	
+	public List<BoardDto> search(String feedsearch){
+		SqlSession session = null;
+		List<BoardDto> res = null;
+		session = getSqlSessionFactory().openSession(true);
+		res = session.selectList("com.my.board.search",feedsearch);
+		session.close();
+		return res;
+	}
 }
