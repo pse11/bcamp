@@ -39,6 +39,8 @@ public class BoardDao extends SqlMapConfig{
 			res = session.selectList("com.my.board.orderbyDesc");			
 		}else if(orderby.equals("ASC")) {
 			res = session.selectList("com.my.board.orderbyAsc");			
+		}else if(orderby.equals("TITLE")) {
+			res = session.selectList("com.my.board.orderbyTitle");
 		}
 		
 		session.close();
@@ -67,6 +69,15 @@ public class BoardDao extends SqlMapConfig{
 		List<BoardDto> res = null;
 		session = getSqlSessionFactory().openSession(true);
 		res = session.selectList("com.my.board.search",feedsearch);
+		session.close();
+		return res;
+	}
+	
+	public int delete(int no) {
+		SqlSession session = null;
+		int res =0;
+		session = getSqlSessionFactory().openSession(true);
+		res = session.delete("com.my.board.delete",no);
 		session.close();
 		return res;
 	}

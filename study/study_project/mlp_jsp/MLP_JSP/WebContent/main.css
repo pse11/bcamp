@@ -239,9 +239,20 @@ a{
 }
 
 /* 피드 작성란 */
-#createFeed,#updateFeed{
+#createFeed{
     display : none;
     position: absolute;
+    top: 20%;
+    left: 30%;
+    height: 50%;
+    width: 40%;
+    background-color:rgb(253, 255, 245) ;
+    border-radius: 20px;
+    border: 1px solid gray;
+    text-align: center;
+}
+#updateFeed{
+	position: absolute;
     top: 20%;
     left: 30%;
     height: 50%;
@@ -338,13 +349,17 @@ input:focus, textarea:focus{
 .wname{
     display: inline-block;
     padding-left: 10px;
-    width:500px;
+    width:400px;
 }
 .wname p{
     margin: 0;
 }
 .wname p:nth-child(2){
     color: gray;
+}
+.feedbt{
+	padding:10px;
+	font-size:10pt;
 }
 .srange{
     padding: 10px;
@@ -371,7 +386,7 @@ input:focus, textarea:focus{
 .updatebtn{
 	display:flex;
 	justify-content:flex-end;
-	width:60px;
+	width:100px;
 }
 .updatebtn a{
 	margin-left:auto;

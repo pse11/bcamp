@@ -47,6 +47,7 @@
                     <p>팔로워 0 | 팔로잉 0</p>
                     <span>☺️👻</span>
                     <button onclick="openeditprofile()">프로필 수정</button>
+                    <button onclick="location.href='member?command=logout'">로그아웃</button>
                 </div>
             </div>
             <div id="feed">
@@ -88,7 +89,8 @@
                     	<!-- select된 값이 asc만 값이 넘어오는 문제 발생.  
                     	{param.orderby로 이전에 선택된 값을 가져와 selected해줌-->
                         <option value="DESC" <c:if test="${param.orderby=='DESC' }">selected</c:if>>최신순</option>
-                        <option value="ASC"<c:if test="${param.orderby=='ASC' }">selected</c:if>>오래된순</option>                        
+                        <option value="ASC"<c:if test="${param.orderby=='ASC' }">selected</c:if>>오래된순</option>    
+                        <option value="TITLE"<c:if test="${param.orderby=='TITLE' }">selected</c:if>>제목순</option>                        
                     </select>
                     <img src="./img/1b.png" alt="1b">
                     <img src="./img/2w.png" alt="1b">
@@ -109,8 +111,15 @@
 			                            <p>${boarddto.writer }</p>
 			                        </div>
 			                        <div class="updatebtn">
-			                        	<a onclick="updateFeed(${boarddto.no});" >수정</a>
-			                        	<a onclick="location.href='board?command=delete&no=${boarddto.no}'" >삭제</a>
+			                        <c:choose>
+			                        	<c:when test="${dto.id eq boarddto.id }">
+			                        		<a class="feedbt" href="board?command=updateform&no=${boarddto.no } " >수정</a>
+			                        		<a class="feedbt" href="board?command=delete&no=${boarddto.no}" >삭제</a>
+			                        	</c:when>
+			                        	<c:otherwise>
+			                        		<a class="feedbt" href="">신고</a>
+			                        	</c:otherwise>
+			                        </c:choose>
 			                        </div>
 			                    </div>
 			                    <div class="sdate"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${boarddto.regDate }"/></div>
@@ -198,27 +207,6 @@
         </form>
     </div>
     <!-- 수정 팝업 -->
-    <div id="updateFeed">
-        <form action="board" method="post">
-        	<input type="hidden" name="command" value="updatefeed">
-        	<input type="hidden" name="no" value="${updatedto.no}">
-            <input id="ititle" type="text" name="title" value="${updatedto.title }">
-            <input id="ikey" type="text" name="keyword" value="${updatedto.keyword }">
-            <textarea name="content">${updatedto.content }</textarea>
-            <div id="btns"><span>🖼️</span><span>📎</span><span>▶️</span></div>
-            <div id="feedsubmit">
-                <select name="release" id="range">
-                    <option name="release"  value="팔로워공개">팔로워공개</option>
-                    <option name="release"  value="사용자 지정 공개">사용자 지정 공개</option>
-                    <option name="release"  value="비공개">비공개</option>
-                    <option name="release"  value="우리회사 공개">우리회사 공개</option>
-                </select>
-                <div id="rbtns">
-                    <input type="button" value="취소" onclick="cancel();">
-                    <input type="submit" value="수정" onclick="cancel();">
-                </div>
-            </div>
-        </form>
-    </div>
+    
 </body>
 </html>

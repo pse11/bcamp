@@ -65,6 +65,12 @@ public class MemberController extends HttpServlet {
 				System.out.println("프로필 수정 실패");
 				response.sendRedirect("login.jsp");
 			}
+		}else if(command.equals("logout")) {
+			session = request.getSession(false);
+			if(session!=null) {
+				session.invalidate();
+			}
+			response.sendRedirect("login.jsp");
 		}
 	}
 

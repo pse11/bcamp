@@ -29,7 +29,7 @@ body{
 #insertIdPw{
   text-align: center;
 }
-input{
+input,#registbtn{
   border: none;
   height: 50px;
   width: 70%;
@@ -43,4 +43,8 @@ input:focus{
 #submitbtn{
   background-color:  rgb(101, 148, 105);
   cursor: pointer;
+}
+#registbtn{
+	background-color:  rgb(188, 203, 196);
+  	cursor: pointer;
 }

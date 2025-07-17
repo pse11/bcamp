@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mlp.dao.BoardDao;
 import com.mlp.dto.BoardDto;
@@ -79,13 +80,13 @@ public class BoardController extends HttpServlet {
 			//클라이언트는 URL이 안바뀌고, 서버안에서 main.jsp를 실행해서 HTML을 만들어 다시 브라우저로 보냄.
 			//즉, 서블릿->jsp로 넘어가서 뷰를 출력하는 동작.
 		}else if(command.equals("updateform")) {
-			int boardno = Integer.parseInt(request.getParameter("boardno"));
-			BoardDto res = dao.selectBoard(boardno);
+			int no = Integer.parseInt(request.getParameter("no"));
+			BoardDto res = dao.selectBoard(no);
 			//String loginid= request.getParameter("loginid");
 			//if(loginid.equals(res.getId())) {
-				request.setAttribute("updatedto", res);
-				RequestDispatcher dispatch = request.getRequestDispatcher("main.jsp");
-				dispatch.forward(request,response);
+			request.setAttribute("dto", res);
+			RequestDispatcher dispatch = request.getRequestDispatcher("update.jsp");
+			dispatch.forward(request,response);
 			//}else {
 			//	request.setAttribute("check",true);
 			//	System.out.println("작성자 본인만 수정가능");
@@ -117,6 +118,14 @@ public class BoardController extends HttpServlet {
 			request.setAttribute("list", dto);
 			RequestDispatcher dispatch = request.getRequestDispatcher("main.jsp");
 			dispatch.forward(request, response);
+		}else if(command.equals("delete")) {
+			int no = Integer.parseInt(request.getParameter("no"));
+			int res = dao.delete(no);
+			if(res>0) {
+				response.sendRedirect("board?command=showfeeds");
+			}else {
+				response.sendRedirect("board?command=showfeeds");
+			}
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

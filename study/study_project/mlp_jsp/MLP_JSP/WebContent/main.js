@@ -36,7 +36,6 @@ function updateFeed(no){
 }
 function cancel(){
   document.getElementById("createFeed").style.display="none";
-  document.getElementById("updateFeed").style.display="none";
   document.getElementById("createtext").textContent="+ 피드작성";
 }
 
