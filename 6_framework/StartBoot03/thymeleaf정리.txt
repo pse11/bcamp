@@ -1,0 +1,47 @@
+**jsp란?
+JSP는 자바웹에서 가장 오래되고 전통저인 뷰(vies) 템플릿 엔진.
+
+jsp의 핵심 특징:
+.jsp 파일은 HTML 안에 Java 코드를 직접 삽입할 수 있음.
+서버에서 JSP가 실행되면 Java 코드가 먼저 처리되고, 그 결과가 HTML로 클라이언트에게 전달.
+서블릿(Servlet)으로 변환된 다음 실행됨.
+<%
+	String name="은지";
+%>
+<p> 안녕하세요 <%=name%> 님</p>
+
+**Thymeleaf란?
+spring에서 많이 쓰이는 HTML 기반의 현대적인 템플릿 엔진
+html 파일을 그대로 브라우저에서 열 수 있어도 문제없어 보임(jsp는 안됨)
+
+thymeleaf 특징:
+html에 ${변수} 형태로 데이터를 넣어줌.
+브라우저에서 열어도 HTML로 보임(JSP는 에러나거나 이상하게 뜸)
+스프링 부트와 잘 통합됨.
+th:text, th:each, th:if 등 태그 속성으로 조작함(html 친화적)
+
+thymeleaf 기본 흐름
+1. 사용자가 요청을 보냄
+예. /hello로 접속
+
+2. 컨트롤러가 요청을 처리하고 모델 데이터를 준비함
+
+3. return "hello" ->templates/hello.html 파일을 찾아서 실행
+- spring boot는 기본적으로 resources/templates/아래의 .html파일을
+thymeleaf 템플릿으로 사용.
+- 그래서 return "hello"면 -> templates/hello.html을 thymeleaf가 렌더링해서 응답으로 돌려줌.
+
+4. thymeleaf가 모델 데이터를 html에 주입함
+
+jsp 동작 과정
+1. jsp 파일은 자바 서블릿으로 변환
+- 서버가 처음 jsp를 요청받으면, jsp 파일을 자바 서블릿 클래스(.java)로 변환.
+- 그리고 그 자바 파일을 컴파일해서 .class로 만듦.
+- 이 과정을 보통 한번만 발생하고, 그 뒤로는 컴파일된 서블릿을 바로 실행
+2. 서블릿이 실행될 때 html 생성
+- 변환된 서블릿은 내부에 out.write()같은 코드로 html, css, js를 출력하는 코드를 가짐
+- jsp 안에 쓴 자바 코드나 el도 이 서블릿에서 처리
+3. 서버가 생성한 html을 클라이언트에게 전달
+- 서블릿이 실행되면서 만들어낸 html이 http 응답으로 브라우저에 전송
+- 그래서 최종적으로 사용자가 보는 건 "html"임
+

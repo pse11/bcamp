@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>List.html</h1>
+	<table>	
+		<col width="50"><col width="100"><col width="200"><col width="100">
+		<tr>
+			<th>Myno</th>
+			<th>Myname</th>
+			<th>Mytitle</th>
+			<th>Mydate</th>
+		</tr>
+		<tr th:each="dto:${list}">
+			<td th:text="${dto.myno}">테스트 no</td>
+			<td th:text="${dto.myname}">테스트 name</td>
+			<td><a th:href="@{/myboard/detail(myno=${dto.myno})}" th:text="${dto.mytitle}">테스트 title</a></td>
+			<td th:text="${#dates.format(dto.mydate,'yyyy-MM-dd')}">테스트 date</td>
+		</tr>
+		<tr>
+			<td colspan="4" align="right">
+				<input type="button" value="글작성" onclick="location.href='/myboard/insertform'">
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,8 @@
+spring boot mybatis사용
+
+application.properties에  #datasource , #mybatis alias추가
+
+spring boot에서는
+config, mapper 생략된다. 
+대체할만한 인터페이스를 만든다.
+annotation @Mapper 붙여준다.
