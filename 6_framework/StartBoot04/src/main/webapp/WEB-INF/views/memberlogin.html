@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>login</h1>
+	<form action="/member/login" method="post">
+		<table>
+			<tr>
+				<th>ID</th>
+				<td><input type="text" name="memberid"></td>
+			</tr>
+			<tr>	
+				<th>PW</th>
+				<td><input type="text" name="memberpw"></td>
+			</tr>
+			<tr>	
+				<td colspan="2">
+					<input type="submit" value="로그인">
+					<input type="button" value="회원가입" onclick="location.href='/member/registform'">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

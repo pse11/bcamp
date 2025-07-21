@@ -6,6 +6,8 @@
 </head>
 <body>	
 	<h1>JPA list</h1>
+	<h3 th:text="${session.login.membername+'님'}"></h3>
+	<input type="button" value="마이페이지" onclick="location.href='/member/mypage'">
 	<div>
 		<table>
 			<tr>

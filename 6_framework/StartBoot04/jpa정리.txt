@@ -1,3 +1,12 @@
+jpa(java persistence api)
+: 자바에서 객체와 데이터베이스 테이블을 자동으로 매핑해주는 ORM 기술 표준.
+
+ORM이란? (Object-Relational Mapping)
+객체(예:User,Post) <--> 테이블(예.users,posts)
+자바 객체와 DB 테이블 간의 데이터를 자동으로 매핑해주는 기술.
+
+자바 클래스 하나만 만들어도, JPA가 알아서 테이블을 만들어주고 거기서 데이터를 insert/update/delete 해줌.
+
 application.properties 설정
 
 spring.jpa.hibernate.ddl-auto=create

@@ -3,6 +3,8 @@ package com.boot.jpa.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -24,11 +26,12 @@ public class JpaController {
 	@GetMapping("/list")
 	public String selectAll(Model model) {
 		System.out.println("[list]");
-		
+
 		//List<JpaEntity> list = dao.findAll(); //JPA가 제공하는 findAll()메서드를 호출해서 테이블의 모든 행을 자바 객체 리스트로 가져온다.
 		List<JpaEntity> list = dao.findAll(Sort.by(Sort.Direction.DESC,"myno"));
 		
 		model.addAttribute("list",list);
+		
 		return "jpalist";
 	}
 	
