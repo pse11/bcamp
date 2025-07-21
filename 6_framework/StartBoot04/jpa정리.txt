@@ -1,0 +1,17 @@
+application.properties 설정
+
+spring.jpa.hibernate.ddl-auto=create
+: 애플리케이션을 시작할때 JPA가 테이블을 어떻게 처리할지 결정
+create:
+서버 실행 시 기존 테이블 다 지우고 -> 새로 생성
+(주의: 기존 데이터 다 날라감! 개발 중에만 쓰는 게 좋음)
+
+none: 아무 작업도 하지 않음(테이블 자동 생성 x)
+create : 실행할 때 기존 테이블 삭제 후 새로 생성(초기화 됨)
+create-drop : 시작할 때 create, 종료할 때 테이블 drop
+update : 기존 테이블은 유지하면서 변경사항만 반영(컬럼 추가 등)
+validate : 테이블이 정확히 매핑돼 있는지만 검증 (변경은 안함)
+
+*개발중에는 create나 update를 주로 사용하고,
+배포 단계에서는 none이나 validate로 바꾸는 게 일반적
+실무에서는 보통 update나 none사용
