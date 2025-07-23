@@ -109,6 +109,7 @@
 			                        <div class="wimg">👤</div>
 			                        <div class="wname">
 			                            <p>${boarddto.writer }</p>
+			                            <p>[현대이지웰] Java 풀스택 개발자 아카데미 5회차</p>
 			                        </div>
 			                        <div class="updatebtn">
 			                        <c:choose>
@@ -127,6 +128,38 @@
 			                    <div class="stitle">${boarddto.title }</div>
 			                    <div class="scontent">${boarddto.content }</div>
 			                    <div class="skeyword">${boarddto.keyword }</div>
+			                    <div class="scomment">
+			                    	<div class="inputcomment">
+			                    		<span>👤</span>
+			                    		<form action="comment" method="post">
+			                    			<input type="hidden" name="command" value="insert">
+			                    			<input type="hidden" name="id" value="${dto.id }">
+			                    			<input type="hidden" name="boardno" value="${boarddto.no }">
+				                    		<input type="text" name="content" placeholder="댓글을 입력해 주세요.">
+				                    		<input type="submit" value="등록">
+			                    		</form>
+			                    	</div>
+			                    	<div class="showcomment">
+			                    		<div class="countcomment">
+			                    			<span>📨</span>
+			                    			<p>댓글 ${commentCount }</p>
+			                    		</div>
+			                    		<div class="commentlist">
+			                    			<c:choose>
+			                    				<c:when test="${empty clist }">
+			                    				</c:when>
+			                    				<c:otherwise>
+			                    					<c:forEach items="${clist }" var="commentdto">
+			                    					<div>
+			                    						<span>👤</span>
+			                    						<div>${comment }</div>
+			                    					</div>
+			                    					</c:forEach>
+			                    				</c:otherwise>
+			                    			</c:choose>
+			                    		</div>
+			                    	</div>
+			                    </div>
 			                </div>
             			</c:forEach>
             		</c:otherwise>

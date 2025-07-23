@@ -7,6 +7,7 @@
 	<typeAliases>
 		<typeAlias type="com.mlp.dto.MemberDto" alias="MemberDto"/>
 		<typeAlias type="com.mlp.dto.BoardDto" alias="BoardDto"/>
+		<typeAlias type="com.mlp.dto.CommentDto" alias="CommentDto"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -24,5 +25,6 @@
 	<mappers>
 		<mapper resource="db/member_mapper.xml"></mapper>
 		<mapper resource="db/board_mapper.xml"></mapper>
+		<mapper resource="db/comment_mapper.xml"></mapper>
 	</mappers>
 </configuration>

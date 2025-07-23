@@ -9,10 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.mlp.dao.BoardDao;
+import com.mlp.dao.CommentDao;
 import com.mlp.dto.BoardDto;
+import com.mlp.dto.CommentDto;
 
 @WebServlet("/board")
 public class BoardController extends HttpServlet {
@@ -24,9 +25,13 @@ public class BoardController extends HttpServlet {
 		String command = request.getParameter("command");
 		
 		BoardDao dao = new BoardDao();
+		CommentDao cdao = new CommentDao();
 		if(command.equals("showfeeds")) {
 			List<BoardDto> list = dao.selectAll();
+			List<CommentDto> clist = cdao.selectAll();
 			request.setAttribute("list", list);
+			request.setAttribute("clist", clist);
+			request.setAttribute("commentCount", clist.size());
 			RequestDispatcher dispatch = request.getRequestDispatcher("main.jsp");
 			dispatch.forward(request, response);
 		}else if(command.equals("createfeed")) {
