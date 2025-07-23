@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -134,38 +135,56 @@
 			                    		<form action="comment" method="post">
 			                    			<input type="hidden" name="command" value="insert">
 			                    			<input type="hidden" name="id" value="${dto.id }">
+			                    			<input type="hidden" name="name" value="${dto.name }">
 			                    			<input type="hidden" name="boardno" value="${boarddto.no }">
 				                    		<input type="text" name="content" placeholder="댓글을 입력해 주세요.">
 				                    		<input type="submit" value="등록">
 			                    		</form>
 			                    	</div>
+	                    			<c:set var="commentCount" value="0"/>
+			                    	<c:forEach items="${clist}" var="commentdto">
+			                    		<c:if test="${commentdto.boardno eq boarddto.no }">
+			                    			<c:set var="commentCount" value="${commentCount+1 }"/>
+			                    		</c:if>
+			                    	</c:forEach>
 			                    	<div class="showcomment">
-			                    		<div class="countcomment">
+		                    			<div class="countcomment">
 			                    			<span>📨</span>
-			                    			<p>댓글 ${commentCount }</p>
+			                    			<p>댓글 ${commentCount}</p>
 			                    		</div>
-			                    		<div class="commentlist">
-			                    			<c:choose>
-			                    				<c:when test="${empty clist }">
-			                    				</c:when>
-			                    				<c:otherwise>
-			                    					<c:forEach items="${clist }" var="commentdto">
-			                    					<div>
+				                    	<div class="commentlist">
+			                    			<c:forEach items="${clist }" var="commentdto">
+			                    				<c:if test="${boarddto.no eq commentdto.boardno }">
+				                    				<div>
 			                    						<span>👤</span>
-			                    						<div>${comment }</div>
+			                    						<div>
+			                    							<span>${commentdto.name }</span>
+			                    							<span><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${commentdto.cdate }"/></span>
+			                    							<span>${commentdto.content }</span>
+			                    						</div>
+			                    						<div class="cupdate">
+								                        <c:choose>
+								                        	<c:when test="${dto.id eq commentdto.id }">
+								                        		<a class="feedbt" href="comment?command=updateform&no=${commentdto.no }&content=${commentdto.content}" >수정</a>
+								                        		<a class="feedbt" href="comment?command=delete&no=${commentdto.no}" >삭제</a>
+								                        	</c:when>
+								                        	<c:otherwise>
+								                        		<a class="feedbt" href="">신고</a>
+								                        	</c:otherwise>
+								                        </c:choose>
+								                        </div>
 			                    					</div>
-			                    					</c:forEach>
-			                    				</c:otherwise>
-			                    			</c:choose>
-			                    		</div>
-			                    	</div>
-			                    </div>
-			                </div>
-            			</c:forEach>
-            		</c:otherwise>
-            	</c:choose>
-            </div>
-        </div>
+			                    				</c:if>
+			                    			</c:forEach>
+				                    	</div>
+					                 </div>
+					              </div>
+			    	           </div>
+			             </c:forEach>
+		             </c:otherwise>
+	             </c:choose>
+             </div>
+          </div>
     </div>
     <div id="rightbtns">
         <div id="bookmark" onclick="location.href='board?command=bookmark'">

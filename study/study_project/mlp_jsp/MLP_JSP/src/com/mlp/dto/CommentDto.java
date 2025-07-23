@@ -18,14 +18,22 @@ public class CommentDto {
 	private int boardno;
 	private String id;
 	private String content;
+	private String name;
 	private Date cdate;
 	public CommentDto() {}
-	public CommentDto(int no, int boardno, String id, String content, Date cdate) {
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public CommentDto(int no, int boardno, String id, String content, String name, Date cdate) {
 		super();
 		this.no = no;
 		this.boardno = boardno;
 		this.id = id;
 		this.content = content;
+		this.name = name;
 		this.cdate = cdate;
 	}
 	public int getNo() {

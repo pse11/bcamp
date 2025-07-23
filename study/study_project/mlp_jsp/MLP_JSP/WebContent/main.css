@@ -335,7 +335,6 @@ input:focus, textarea:focus{
     background-color: rgb(253, 255, 245);
     padding: 30px;
     margin-top: 10px;
-    height: 500px;
 }
 
 .writer{

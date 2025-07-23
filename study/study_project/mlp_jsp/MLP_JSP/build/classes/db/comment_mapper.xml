@@ -6,10 +6,18 @@
  <mapper namespace="com.my.comment">
  	
  	<insert id="insert">
- 		INSERT INTO MLPCOMMENT VALUES(SEQ_COMMENT.NEXTVAL,#{boardno},#{id},#{content},SYSDATE)
+ 		INSERT INTO MLPCOMMENT VALUES(SEQ_COMMENT.NEXTVAL,#{boardno},#{id},#{name},#{content},SYSDATE)
  	</insert>
  	
  	<select id="selectAll" resultType="CommentDto">
  		SELECT * FROM MLPCOMMENT ORDER BY NO DESC
  	</select>
+ 	
+ 	<update id="update">
+ 		UPDATE MLPCOMMENT SET CONTENT=#{content} WHERE NO=#{no}
+ 	</update>
+ 	
+ 	<delete id="delete" parameterType="Integer">
+ 		DELETE FROM MLPCOMMENT WHERE NO=#{no}
+ 	</delete>
  </mapper>
