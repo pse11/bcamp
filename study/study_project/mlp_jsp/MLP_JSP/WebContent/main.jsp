@@ -124,7 +124,7 @@
 			                        </c:choose>
 			                        </div>
 			                    </div>
-			                    <div class="sdate"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${boarddto.regDate }"/></div>
+			                    <div class="sdate"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boarddto.regDate }"/></div>
 			                    <div class="srange">${boarddto.release }</div>
 			                    <div class="stitle">${boarddto.title }</div>
 			                    <div class="scontent">${boarddto.content }</div>
@@ -137,8 +137,8 @@
 			                    			<input type="hidden" name="id" value="${dto.id }">
 			                    			<input type="hidden" name="name" value="${dto.name }">
 			                    			<input type="hidden" name="boardno" value="${boarddto.no }">
-				                    		<input type="text" name="content" placeholder="댓글을 입력해 주세요.">
-				                    		<input type="submit" value="등록">
+				                    		<input type="text" class="insertcomment" name="content" placeholder="댓글을 입력해 주세요.">
+				                    		<input type="submit" class="csubmitbtn" value="등록">
 			                    		</form>
 			                    	</div>
 	                    			<c:set var="commentCount" value="0"/>
@@ -149,18 +149,18 @@
 			                    	</c:forEach>
 			                    	<div class="showcomment">
 		                    			<div class="countcomment">
-			                    			<span>📨</span>
+			                    			<p>📨</p>
 			                    			<p>댓글 ${commentCount}</p>
 			                    		</div>
 				                    	<div class="commentlist">
 			                    			<c:forEach items="${clist }" var="commentdto">
 			                    				<c:if test="${boarddto.no eq commentdto.boardno }">
-				                    				<div>
+				                    				<div class="commentone">
 			                    						<span>👤</span>
-			                    						<div>
-			                    							<span>${commentdto.name }</span>
-			                    							<span><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${commentdto.cdate }"/></span>
-			                    							<span>${commentdto.content }</span>
+			                    						<div class="commentwriter">
+			                    							<span><b>${commentdto.name }</b></span>
+			                    							<span><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${commentdto.cdate }"/></span>
+			                    							<p>${commentdto.content }</p>
 			                    						</div>
 			                    						<div class="cupdate">
 								                        <c:choose>

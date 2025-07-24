@@ -11,7 +11,7 @@ body{
 /* https://www.daleseo.com/css-centering/ 중앙배치 참고 사이트 */
 #content{
   width: 600px;
-  height: 500px;
+ 
   border-radius: 15px;
   box-shadow: 0px 0px 10px rgba(150, 148, 148, 0.76);
 }
@@ -26,7 +26,7 @@ body{
   top: 70px;
   left: 35%;
 }
-#insertIdPw{
+#insertIdPw,#insertinfo{
   text-align: center;
 }
 input,#registbtn{
@@ -35,7 +35,6 @@ input,#registbtn{
   width: 70%;
   margin: 15px;
   border-radius: 10px;
-  focus: none;
 }
 input:focus{
     outline:none;

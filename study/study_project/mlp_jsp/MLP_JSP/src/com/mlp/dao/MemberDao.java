@@ -38,5 +38,13 @@ public class MemberDao extends SqlMapConfig{
 		session.close();
 		return res;
 	}
+	public int insert(MemberDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		session = getSqlSessionFactory().openSession(true);
+		res = session.insert("com.my.member.insert",dto);
+		session.close();
+		return res;
+	}
 	
 }

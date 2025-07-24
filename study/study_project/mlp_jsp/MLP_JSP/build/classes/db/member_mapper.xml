@@ -15,4 +15,7 @@
  	<select id="selectMember" resultType="MemberDto">
  		SELECT * FROM MLPMEMBER WHERE NO=#{no}
  	</select>
+ 	<insert id="insert">
+ 		INSERT INTO MLPMEMBER VALUES(SEQ_MLPMEMBER.NEXTVAL,#{id},#{pw},#{name},#{email},#{phone},#{dept},NULL)
+ 	</insert>
  </mapper>

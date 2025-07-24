@@ -71,6 +71,22 @@ public class MemberController extends HttpServlet {
 				session.invalidate();
 			}
 			response.sendRedirect("login.jsp");
+		}else if(command.equals("registform")) {
+			response.sendRedirect("regist.jsp");
+		}else if(command.equals("regist")) {
+			String name= request.getParameter("name");
+			String id = request.getParameter("id");
+			String pw=request.getParameter("pw");
+			String email=request.getParameter("email");
+			String phone=request.getParameter("phone");
+			String dept=request.getParameter("dept");
+			MemberDto dto = new MemberDto(0,id,pw,name,email,phone,dept,null);
+			int res = dao.insert(dto);
+			if(res>0) {
+				response.sendRedirect("login.jsp");
+			}else {
+				response.sendRedirect("member?command=registform");
+			}
 		}
 	}
 

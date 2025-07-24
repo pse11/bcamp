@@ -456,3 +456,58 @@ input:focus, textarea:focus{
 #info{
 	font-size:8pt;
 }
+.scomment{
+	margin-top: 30px;
+}
+/*댓글창 css*/
+.inputcomment{
+	border-top:1px solid gray;
+	display: flex;
+	width: 99%;
+	padding:10px;
+}
+.inputcomment span{
+	font-size:25pt;
+	padding:10px;
+}
+.inputcomment form{
+	padding-top:10px;
+}
+
+.insertcomment{
+	font-size:13pt;
+	padding:10px;
+	width:500px;
+}
+.csubmitbtn{
+	height:70%;
+	width:60px;
+}
+.countcomment{
+	display:flex;
+}
+.countcomment p{
+	margin:0px;
+	font-size:18pt;
+}
+.commentlist{
+	margin:15px;
+	border-top:1px solid gray;
+}
+.commentone{
+	margin-top:20px;
+	display:flex;
+	height:50px;
+}
+.commentwriter{
+	display:block;
+}
+.commentwriter p{
+	margin:0px;
+}
+.commentwriter span:nth-child(2){
+	color:gray;
+}
+.cupdate{
+	float:right;
+}
