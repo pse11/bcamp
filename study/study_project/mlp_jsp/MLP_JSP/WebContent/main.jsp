@@ -11,18 +11,29 @@
 <link type="text/css" rel="stylesheet" href="./main.css" />
 <script type="text/javascript" src="./main.js"></script>
 <script>
-	function replyForm(){
-		const div = document.getElementsByClass("reply")[0];
+	function replyForm(commentno,loginno){
+		let div = document.getElementById("reply"+commentno);
 		
 		//이미 form이 있으면 중복 생성 방지
-		if(document.getElementById("replyform")){
+		if(document.getElementById("replyform"+commentno)){
 			return;
 		}
-		
+		console.log(commentno);
+		console.log(loginno);
 		//form 생성
-		const form = document.createElement("form");
-		form.id="replyform";
-		form.innerHTML=`<
+		let form = document.createElement("form");
+		form.id="replyform"+commentno;
+		form.action="reply";
+		form.method="post";
+		form.innerHTML=`
+			<input type="hidden" name="command" value="reply">
+			<input type="hidden" name="commentno" value="44">
+			<input type="hidden" name="writerno" value="2">
+			<span>👤</span>
+			<input type="text" name="replys" placeholder="답글을 입력해 주세요.">
+			<input type="submit" value="등록">
+		`;
+		div.appendChild(form);
 	}
 </script>
 </head>
@@ -177,7 +188,7 @@
 			                    							<p>${commentdto.content }</p>
 			                    						</div>
 			                    						<div class="cupdate">
-			                    						<a class="feedbt" href="reply?command=reply&no=${commentdto.no }" onclick="replyForm()">답글</a>
+			                    						<a class="feedbt" onclick="replyForm('${commentdto.no }','${dto.no }')">답글</a>
 								                        <c:choose>
 								                        	<c:when test="${dto.id eq commentdto.id }">
 								                        		<a class="feedbt" href="comment?command=updateform&no=${commentdto.no }&content=${commentdto.content}" >수정</a>
@@ -189,7 +200,7 @@
 								                        </c:choose>
 								                        </div>
 			                    					</div>
-			                    					<div class="reply"></div>
+			                    					<div class="reply" id="reply${commentdto.no }"></div>
 			                    				</c:if>
 			                    			</c:forEach>
 				                    	</div>
