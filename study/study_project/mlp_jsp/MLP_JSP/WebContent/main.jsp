@@ -10,7 +10,21 @@
 <title>Insert title here</title>
 <link type="text/css" rel="stylesheet" href="./main.css" />
 <script type="text/javascript" src="./main.js"></script>
-
+<script>
+	function replyForm(){
+		const div = document.getElementsByClass("reply")[0];
+		
+		//이미 form이 있으면 중복 생성 방지
+		if(document.getElementById("replyform")){
+			return;
+		}
+		
+		//form 생성
+		const form = document.createElement("form");
+		form.id="replyform";
+		form.innerHTML=`<
+	}
+</script>
 </head>
 <body>
 	<div id="header">
@@ -163,6 +177,7 @@
 			                    							<p>${commentdto.content }</p>
 			                    						</div>
 			                    						<div class="cupdate">
+			                    						<a class="feedbt" href="reply?command=reply&no=${commentdto.no }" onclick="replyForm()">답글</a>
 								                        <c:choose>
 								                        	<c:when test="${dto.id eq commentdto.id }">
 								                        		<a class="feedbt" href="comment?command=updateform&no=${commentdto.no }&content=${commentdto.content}" >수정</a>
@@ -174,6 +189,7 @@
 								                        </c:choose>
 								                        </div>
 			                    					</div>
+			                    					<div class="reply"></div>
 			                    				</c:if>
 			                    			</c:forEach>
 				                    	</div>
