@@ -27,7 +27,7 @@ public class ReplyController extends HttpServlet {
 		if(command.equals("reply")) {
 			String reply = request.getParameter("replys");
 			int commentno = Integer.parseInt(request.getParameter("commentno"));
-			int writerno = Integer.parseInt(request.getParameter("loginno"));
+			int writerno = Integer.parseInt(request.getParameter("writerno"));
 			
 			MemberDto mdto = mdao.selectMember(writerno);
 			

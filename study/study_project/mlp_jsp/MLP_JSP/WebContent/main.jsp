@@ -25,15 +25,15 @@
 		form.id="replyform"+commentno;
 		form.action="reply";
 		form.method="post";
-		form.innerHTML=`
-			<input type="hidden" name="command" value="reply">
-			<input type="hidden" name="commentno" value="${commentno}">
-			<input type="hidden" name="writerno" value="${loginno}">
-			<span>👤</span>
-			<input type="text" name="replys" placeholder="답글을 입력해 주세요.">
-			<input type="submit" value="등록">
-		`;
+		let str = `<input type="hidden" name="command" value="reply">
+		<input type="hidden" name="commentno" value="${'${commentno}'}">
+		<input type="hidden" name="writerno" value="${'${loginno}'}">
+		<span>👤</span>
+		<input type="text" name="replys" placeholder="답글을 입력해 주세요.">
+		<input type="submit" value="등록">`;
+		form.innerHTML=str;
 		div.appendChild(form);
+		console.log(str);
 	}
 </script>
 </head>
