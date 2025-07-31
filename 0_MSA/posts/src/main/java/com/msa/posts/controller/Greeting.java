@@ -1,4 +1,6 @@
 package com.msa.posts.controller;
 
-public record Greeting() {
+public record Greeting(long id, String content) {
+
+
 }

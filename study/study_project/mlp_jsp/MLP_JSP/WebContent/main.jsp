@@ -27,8 +27,8 @@
 		form.method="post";
 		form.innerHTML=`
 			<input type="hidden" name="command" value="reply">
-			<input type="hidden" name="commentno" value="44">
-			<input type="hidden" name="writerno" value="2">
+			<input type="hidden" name="commentno" value="${commentno}">
+			<input type="hidden" name="writerno" value="${login}">
 			<span>👤</span>
 			<input type="text" name="replys" placeholder="답글을 입력해 주세요.">
 			<input type="submit" value="등록">
