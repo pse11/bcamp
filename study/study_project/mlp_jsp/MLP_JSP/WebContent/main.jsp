@@ -10,7 +10,32 @@
 <title>Insert title here</title>
 <link type="text/css" rel="stylesheet" href="./main.css" />
 <script type="text/javascript" src="./main.js"></script>
-
+<script>
+	function replyForm(commentno,loginno){
+		let div = document.getElementById("reply"+commentno);
+		
+		//이미 form이 있으면 중복 생성 방지
+		if(document.getElementById("replyform"+commentno)){
+			return;
+		}
+		console.log(commentno);
+		console.log(loginno);
+		//form 생성
+		let form = document.createElement("form");
+		form.id="replyform"+commentno;
+		form.action="reply";
+		form.method="post";
+		let str = `<input type="hidden" name="command" value="reply">
+		<input type="hidden" name="commentno" value="${'${commentno}'}">
+		<input type="hidden" name="writerno" value="${'${loginno}'}">
+		<span>👤</span>
+		<input type="text" name="replys" placeholder="답글을 입력해 주세요.">
+		<input type="submit" value="등록">`;
+		form.innerHTML=str;
+		div.appendChild(form);
+		console.log(str);
+	}
+</script>
 </head>
 <body>
 	<div id="header">
@@ -163,6 +188,7 @@
 			                    							<p>${commentdto.content }</p>
 			                    						</div>
 			                    						<div class="cupdate">
+			                    						<a class="feedbt" onclick="replyForm('${commentdto.no }','${dto.no }')">답글</a>
 								                        <c:choose>
 								                        	<c:when test="${dto.id eq commentdto.id }">
 								                        		<a class="feedbt" href="comment?command=updateform&no=${commentdto.no }&content=${commentdto.content}" >수정</a>
@@ -174,6 +200,7 @@
 								                        </c:choose>
 								                        </div>
 			                    					</div>
+			                    					<div class="reply" id="reply${commentdto.no }"></div>
 			                    				</c:if>
 			                    			</c:forEach>
 				                    	</div>

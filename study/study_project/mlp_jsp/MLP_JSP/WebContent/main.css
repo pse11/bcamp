@@ -511,3 +511,8 @@ input:focus, textarea:focus{
 .cupdate{
 	float:right;
 }
+
+/*답글창*/
+.reply{
+	margin-left:30px;
+}
