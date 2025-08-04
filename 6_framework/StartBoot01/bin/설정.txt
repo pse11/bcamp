@@ -1,0 +1,21 @@
+1. pom.xml -> java version 11
+			springframework version 2.7.18
+			
+2. application.properties : 우리가 보통 원하는 설정들 적는 곳
+	-> #port : 서버의 포트번호 변경
+	   #encoding
+	   #view : prefix, suffix 설정
+	   
+src/main/resources/static : 정적자원(ex. html)이 들어감
+src/main/resources/tamplate : jsp대신에 넣을 것들 boot전용이라고 보면 됨
+
+3. static에 index.html 생성
+
+실행 방법: 
+프로젝트 우클릭-> run as-> spring boot app 실행
+			-> 브라우저 url 입력 
+			
+4. pom.xml -> dependency 추가
+			spring boot는 jsp를 제대로 처리하지 못해서 dependency 추가해줘야한다.
+
+			

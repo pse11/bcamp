@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="fruit" class="com.test01.MessageBeanImpl"></bean> <!-- 기본생성자 -->
+	
+	<bean id="apple" class="com.test01.MessageBeanImpl">
+		<constructor-arg>
+			<value>apple</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>10000</value>
+		</constructor-arg>
+	</bean>
+	
+	<!-- public MessageBeanImpl(String fruit, int cost, String name){ -->
+	<bean id="mango" class="com.test01.MessageBeanImpl">
+		<constructor-arg index="1" value="15000"/>
+		<constructor-arg index="0" value="mango"/>
+		<constructor-arg index="2" value="hi"/> <!-- 타입 문제로 index지정해서 순서 명시해줄 수도 있다. -->
+	</bean>
+</beans>

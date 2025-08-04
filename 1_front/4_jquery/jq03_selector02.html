@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        function resizeImg(){
+            $("img").css({"width":"200px",height:"200px"}); //속성값은 문자열로, 속성명은 그냥 적어도 괜찮음.
+        }
+        function idSelector(){
+            //$("#selId").hide(); //id는 중복안되게끔 작성해줘야함. 지금처럼 두개 있으면 하나만 적용이 된다.
+            $("#selId").css("display","none");
+        }
+        function classSelector(){
+            $(".selClass").css("opacity","0.5");
+        }
+        function propSelector(){
+            //slideUp() : default->400
+            //$("img[title=img02])").slideup();
+            $("img[title*=img]").slideUp(4000); //이미지 전체 다 선택해서 적용
+            //*=img => title속성에 값이 img를 포함하는 경우
+        }
+        function changeImg(){
+            $("td > img").attr("src","../1_html/sample/images/img01.png");
+        }
+    </script>
+    <style>
+        img{
+            width: 100px; height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>1. 이미지들의 크기를 모두 200px*200px로 설정하자</h1>
+    <button onclick="resizeImg();">클릭!</button>
+
+    <h1>2. 이미지들 중 id가 "selId"인 태그 찾아서 숨기자</h1>
+    <button onclick="idSelector();">클릭</button>
+
+    <h1>3. 이미지들 중 class가 'selClass'인 태그를 찾아서 투명도를 50% 적용하자</h1>
+    <button onclick="classSelector();">클릭</button>
+
+    <h1>4. 이미지들 중 속성 값으로 탐색하여 slideUp() 적용 시키자
+        (title 속성값이 'img02'인 태그를 찾아서 적용)
+    </h1>
+    <button onclick="propSelector()">클릭</button>
+
+    <h1>5. td의 자식요소인 img만 선택해서 이미지 바꾸기
+        (attr( 속성명, 속성값 )실행하여 src 속성값 변경)</h1>
+    <button onclick="changeImg();">클릭</button>
+    
+
+    <table>
+        <tr>
+            <td><img id="selId" title="img01" alt="test01" src="../1_html/samplee/images/img02.png"></td>
+            <td><img title="img02" alt="test01" src="../1_html/samplee/images/img02.png"></td>
+            <td><img class="selClass" title="img03" alt="test01" src="../1_html/samplee/images/img02.png"></td>
+            <td><img class="selClass" title="img04" alt="test01" src="../1_html/samplee/images/img02.png"></td>
+        </tr>
+        <tr>
+            <td><img id="selId" title="img05" alt="test01" src="../1_html/samplee/images/img02.png"></td>
+            <td><span><img title="img06" alt="test01" src="../1_html/samplee/images/img02.png"></span></td>
+            <td><span><img class="selClass" title="img07" alt="test01" src="../1_html/samplee/images/img02.png"></span></td>
+            <td><img class="selClass" title="img08" alt="test01" src="../1_html/samplee/images/img02.png"></td>
+        </tr>
+    </table>
+</body>
+</html>

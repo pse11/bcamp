@@ -1,0 +1,951 @@
+-- 실행 : CTRL+ENTER
+SELECT * FROM EMPLOYEE;
+
+-- 테이블 블럭치고 F4 : 테이블의 컬럼명, 타입들 데이터 확인가능
+
+-- 데이터 기본 사항 처리 로직
+-- 데이터 베이스에서 실행하고자 하는 명령 종류
+-- [CRUD]
+-- CREATE	: 데이터 추가 / INSERT
+-- READ		: 데이터 조회 / SELECT 
+-- UPDATE 	: 데이터 수정 / UPDATE
+-- DELETE	: 데이터 삭제 / DELETE
+
+-- SELECT : 조회용 SQL 명령어
+-- SELECT 조회용컬럼	: 조회하고자 하는 내용
+-- FROM 테이블명		: 조회하고자 하는 테이블명
+-- WHERE 조건			: 특정 조건
+-- ORDER BY 컬럼		: 정렬
+-- ; 
+
+-- 부서코드가 'D6'인 부서의
+-- 직원 정보를 모두 조회하자.
+SELECT * 
+FROM EMPLOYEE 
+WHERE DEPT_CODE='D6';
+
+
+-- DAY 2
+-- 컬럼명에 별칭 달기 (RESULTS SET에 보이는 컬럼명 바꾸기)
+
+-- 1. AS 표현
+SELECT EMP_ID AS "사원번호",
+	   EMP_NAME AS "사원명"
+FROM EMPLOYEE;
+
+-- 2. AS 생략
+SELECT EMP_ID "사원번호",
+	   EMP_NAME 사원명
+FROM EMPLOYEE;
+-- ""으로 별명 작성
+-- 생략도 가능하다.
+-- 단, 별칭에 공백이 들어갈 경우 생략 불가!
+
+SELECT EMP_ID "사원 번호",
+		EMP_NAME 사원명
+FROM EMPLOYEE;
+
+-- EMPLOYEE 테이블에서 부서가 'D2' 이거나 'D1'인
+-- 사원들의 사원명, 입사일, 연락처를 조회
+-- (단, 조회하는 컬럼명에 별칭 부여)
+SELECT EMP_NAME "사원명",
+		HIRE_DATE 입사일,
+		PHONE "연락처"
+FROM EMPLOYEE
+WHERE DEPT_CODE='D2'
+	OR DEPT_CODE='D1';
+	
+	
+-- SELECT에 연산이 들어갈 수 있다.
+-- 컬럼값이 NULL이라면 어떤 연산 처리가 되어도
+-- 결과 값은 무조건 NULL
+SELECT EMP_NAME 사원명,
+	   SALARY 급여,
+	   (SALARY * 12) 연봉,
+	   BONUS 보너스,
+	   (SALARY + (SALARY*BONUS))*12 연봉총합
+FROM EMPLOYEE;
+
+-- NVL() : 현재 조회한 값이 NULL일 경우 별도로 지정한 값으로 변경
+SELECT BONUS, NVL(BONUS ,0)
+FROM EMPLOYEE;
+
+SELECT EMP_NAME 사원명,
+	   SALARY 급여,
+	   (SALARY*12) 연봉,
+	   BONUS 보너스,
+	   (SALARY+(SALARY*NVL(BONUS,0)))*12 연봉
+FROM EMPLOYEE;
+
+-- DISTINCT
+-- 해당하는 값이 컬럼에 여러개 존재할 경우 중복 제거하고 한개만 조회.(NULL도 포함)
+SELECT DEPT_CODE
+FROM EMPLOYEE;
+
+SELECT DISTINCT DEPT_CODE
+FROM EMPLOYEE;
+
+-- DEPARTMENT 테이블을 참고하여
+-- 부서가 '해외 영업2부'인 부서의 부서코드를 찾고
+-- EMPLOYEE 테이블에서 해당 부서의 사원들 중
+-- 급여가 200만원보다 많이 받는 직원의 
+-- 사번, 사원명, 급여 조회
+-- 1) '해외영업2부' 부서의 부서코드 확인
+SELECT *
+FROM DEPARTMENT;
+
+-- 부서코드 : D6
+
+-- 2) 해당 부서의 정보를 EMPLOYEE에서 조회 
+SELECT EMP_ID 사번,
+	   EMP_NAME 사원명,
+	   SALARY 급여
+FROM EMPLOYEE
+WHERE DEPT_CODE='D6' 
+  AND SALARY>2000000;
+
+-- WHERE 조건에 SELECT를 걸어 이렇게도 할 수 있다.
+SELECT EMP_ID 사번,
+	   EMP_NAME 사원명,
+	   SALARY 급여
+FROM EMPLOYEE
+WHERE DEPT_CODE=(SELECT DEPT_ID FROM DEPARTMENT
+				WHERE DEPT_TITLE='해외영업2부')
+	AND SALARY>2000000;
+
+-- 연산자
+-- 연결 연산자 '||'
+-- 여러 컬럼의 결과나 리터럴(값)을 하나의 컬럼으로 묶을 때 사용하는 연산자
+SELECT EMP_ID,
+	   '을 가진 사원의 이름은 ', --리터럴만 넣음
+	   EMP_NAME,
+	   '입니다.'
+FROM EMPLOYEE;
+
+SELECT EMP_ID ||
+	   '을 가진 사원의 이름은 ' ||
+	   EMP_NAME ||
+	   '입니다.'
+FROM EMPLOYEE;
+
+-- 비교 연산자
+-- <, >, <=, >= : 크기를 비교하는 부등호
+-- = : 같은지 비교
+-- !=, ^=, <> : 같지 않다.
+SELECT * FROM EMPLOYEE
+-- WHERE DEPT_CODE != 'D9';
+-- WHERE DEPT_CODE ^= 'D9';
+WHERE DEPT_CODE <> 'D9';
+
+-- EMPLOYEE 테이블에서
+-- 급여가 350만원 이상 550만원 이하인
+-- 직원의 사번, 사원명, 부서코드, 직급코드, 급여를 조회
+SELECT EMP_ID 사번, 
+	   EMP_NAME 사원명,
+	   DEPT_CODE 부서코드,
+	   JOB_CODE 직급코드,
+	   SALARY 급여
+FROM EMPLOYEE
+WHERE SALARY >=3500000 
+  AND SALARY <=5500000;
+
+-- 방금 작성한 코드를
+-- BETWEEN A AND B
+SELECT EMP_ID 사번, 
+	   EMP_NAME 사원명,
+	   DEPT_CODE 부서코드,
+	   JOB_CODE 직급코드,
+	   SALARY 급여
+FROM EMPLOYEE
+WHERE SALARY BETWEEN 3500000 AND 5500000;
+
+-- 350만원 미만, 550만원 초과인 직원 정보 조회할 경우
+SELECT EMP_ID 사번, 
+	   EMP_NAME 사원명,
+	   DEPT_CODE 부서코드,
+	   JOB_CODE 직급코드,
+	   SALARY 급여
+FROM EMPLOYEE
+WHERE SALARY NOT BETWEEN 3500000 AND 5500000;
+
+SELECT EMP_ID 사번, 
+	   EMP_NAME 사원명,
+	   DEPT_CODE 부서코드,
+	   JOB_CODE 직급코드,
+	   SALARY 급여
+FROM EMPLOYEE
+WHERE SALARY < 3500000 
+  AND SALARY > 5500000;
+
+-- LIKE
+-- 입력한 숫자, 문자 포함된 정보를 조회할 때
+-- '_' : 임의의 한 문자
+-- '%' : 몇자리 문자건 관계없이
+
+-- EMPLOYEE에서
+-- 사원의 이름 가운데 '중'이 들어가는 사원 정보 조회
+SELECT * 
+FROM EMPLOYEE
+WHERE EMP_NAME LIKE '_중_';
+
+-- EMPLOYEE에서
+-- 주민등록번호 기준 여성인 사원 정보만 조회
+SELECT *
+FROM EMPLOYEE
+-- WHERE EMP_NO LIKE '%-2%';
+WHERE EMP_NO LIKE '______-2%';
+
+-- 사원의 이메일 아이디가
+-- 5글자 초과하는 사원의
+-- 사원명, 사번, 이메일 정보 조회
+
+SELECT EMP_NAME, EMP_ID, EMAIL
+FROM EMPLOYEE
+WHERE EMAIL LIKE '______%@%'; -- 6글자는 _로 들어오고 %로 그 뒤는 몇글자던 상관없다
+
+-- 사원 중 이메일 4째자리가 '_'인 사원의 정보 조회하기
+-- ESCAPE문자를 선언해야한다.
+-- 특수문자가 아닌 일반 문자로 선언하여 사용할 수 있다.
+SELECT EMP_NAME, EMP_ID, EMAIL
+FROM EMPLOYEE
+WHERE EMAIL LIKE '___#_%@%' ESCAPE '#'; -- ESCAPE 뒤에 나오는 문자는 일반 문자다.
+
+-- EMPLOYEE 테이블에서 성이 '이'인 사원 정보 조회
+SELECT * FROM EMPLOYEE
+WHERE EMP_NAME LIKE '이%';
+
+-- IN 연산자
+-- IN (값1, 값2, 값3, ...)
+-- 괄호 안에 있는 값들 중에 하나라도 일치하는 경우
+-- 해당 값 조회하는 연산자
+
+-- 부서코드가 D1이거나 D6인 직원 정보 조회
+SELECT * FROM EMPLOYEE
+WHERE DEPT_CODE='D1'
+   OR DEPT_CODE='D6';
+
+SELECT * FROM EMPLOYEE
+WHERE DEPT_CODE IN ('D1','D6');
+
+-- D1도 D6도 아닌 부서의 직원 조회
+-- WHERE DEPT_CODE != 'D1' AND DEPT_CODE !='D6';
+SELECT * FROM EMPLOYEE
+WHERE DEPT_CODE NOT IN ('D1','D6');
+
+-- 함수(FUNCTION)
+
+-- LENGH(), LENGTHB()
+-- 문자열의 길이를 계산하는 함수
+SELECT LENGTH('Hello'), LENGTHB('Hello'),
+	   LENGTH('하이'), LENGTHB('하이')
+FROM DUAL;
+
+-- DUAL : 임시테이블, 가상테이블, 테스트용
+-- 		  리터럴을 활용한 계산식등을 테스트 하고자 할 때 사용되는 임시테이블
+
+-- 오라클에서 한글은 3BYTE
+-- LENGTHB를 통해 해당 문자열의 바이트 크기를 확인
+
+SELECT EMP_NAME, EMAIL, LENGTH(EMAIL)
+FROM EMPLOYEE;
+
+-- INSTR : 주어진 값에서 원하는 문자가 몇번째인지 찾아 반환
+SELECT INSTR('ABCDE','A'),
+	   INSTR('ABCDE','C'),
+	   INSTR('ABCDE','BC'),
+	   INSTR('ABCDE','Z')
+FROM DUAL;
+
+SELECT EMAIL,
+	   INSTR(EMAIL, '_')
+FROM EMPLOYEE;
+
+-- SUBSTR : 주어진 문자열에서 특정 부분만 꺼내오는 함수
+-- SUBSTR(컬럼명(값), 시작위치, 갯수)
+SELECT 'Hello Oracle',
+	   SUBSTR('Hello Oracle',1,5),
+	   SUBSTR('Hello Oracle',3,5),
+	   SUBSTR('Hello Oracle',7)
+FROM DUAL;
+
+
+--[문제2]
+-- EMPLOYEE 테이블에서
+-- 사원들의 이름, 이메일 조회하는데
+-- 이메일은 아이디 부분만 조회하기
+-- 조회 결과 예시
+-- 이창진 lee_cj
+
+SELECT EMP_NAME, 
+       SUBSTR(EMAIL, 1, INSTR(EMAIL,'@')-1)
+FROM EMPLOYEE;
+
+-- LPAD/RPAD (LEFT PADDING, RIGHT PADDING)
+-- 빈칸을 지정한 문자로 채우는 함수
+SELECT LPAD(EMAIL, 20 , '#'),
+	   RPAD(EMAIL, 20,'*')
+FROM EMPLOYEE;
+
+-- LTRIM/RTRIM
+-- 현재 부여된 컬럼 값이나, 특정 값으로부터
+-- 특정 문자를 찾아 지워준다.
+SELECT '       HELLO',
+	   LTRIM('       HELLO       '),
+	   RTRIM('       HELLO       ')
+FROM DUAL;
+
+SELECT LTRIM('012345','0'),
+	   LTRIM('111123','1'),
+	   LTRIM('012345','5'),
+	   RTRIM('012345','5')
+FROM DUAL;
+
+-- TRIM
+-- 주어진 문자열에서 양끝을 기준으로 특정 문자를 지워주는 함수
+SELECT TRIM('     HELLO     ')
+FROM DUAL;
+
+SELECT TRIM('0' FROM '0000123000')
+FROM DUAL;
+
+SELECT TRIM(LEADING '0' FROM '0000123000')
+FROM DUAL;
+
+SELECT TRIM(TRAILING '0' FROM '0000123000')
+FROM DUAL;
+
+-- LOWER/ UPPER / INITCAP
+-- 주어진 문자열을 소문자, 대문자, 앞글자만 대문자로 변경해주는 함수
+
+SELECT LOWER('NICE TO MEET YOU'),
+	   UPPER('nice to meet you'),
+	   INITCAP('nice to meet you')
+FROM DUAL;
+
+-- CONCAT : 여러 문자열을 하나의 문자열로 합치는 함수
+SELECT CONCAT('오라클', '재밌어요:)')
+FROM DUAL;
+
+SELECT CONCAT(EMP_NAME, '님')
+FROM EMPLOYEE;
+
+SELECT EMP_NAME||'님'
+FROM EMPLOYEE;
+
+-- REPLACE : 주어진 문자열에서 특정 문자를 변경
+SELECT REPLACE('HELLO ORACLE','HELLO','BYE')
+FROM DUAL;
+
+--[문제3]
+--EMPLOYEE 테이블에서
+-- 사원의 주민번호를 확인
+-- 생년 생월 생일 각각 조회
+-- 예시
+-- 이름 | 생년 | 생월 | 생일
+--박상은| 00년 | 00월 | 00일
+
+SELECT EMP_NAME 이름,
+	   SUBSTR(EMP_NO, 1,2)||'년' 생년,
+	   SUBSTR(EMP_NO, 3,2)||'월' 생월,
+	   SUBSTR(EMP_NO, 5,2)||'일' 생일
+FROM EMPLOYEE;
+
+-- SUBSTR 이용하면 날짜 데이터도 쪼갤 수 있다.
+-- '25/06/02' -> 25 / 06 / 02
+SELECT EMP_NAME,
+	   HIRE_DATE,
+	   SUBSTR(HIRE_DATE,1,2),
+	   SUBSTR(HIRE_DATE,4,2)
+FROM EMPLOYEE;
+
+-- [문제4]
+-- EMPLOYEE 테이블에서 현재 근무하는
+-- 여성사원의 사번, 사원명, 직급코드를 조회
+-- ENT_YN : 퇴사여부
+-- WHERE 절에서도 함수 사용 가능
+-- 단일행 함수(Single Row Function)
+SELECT EMP_ID 사번,
+	   EMP_NAME 사원명,
+	   JOB_CODE 직급코드,
+	   ENT_YN 퇴사여부
+FROM EMPLOYEE
+WHERE SUBSTR(EMP_NO,8,1) = '2'
+  AND ENT_YN='N';
+
+-- 그룹 함수(Group Function) --
+-- SUM(), AVG(), MAX(), MIN(), COUNT()
+-- SUM(숫자가 기록된 컬럼) : 해당 컬럼들의 합계
+SELECT SUM(SALARY)
+FROM EMPLOYEE;
+
+-- AVG('') : 해당 컬럼들의 평균을 계산
+SELECT AVG(SALARY)
+FROM EMPLOYEE;
+
+-- MAX() : 해당 컬럼들의 값 중 최대값
+SELECT MAX(SALARY)
+FROM EMPLOYEE;
+
+-- MIN() :해당 컬럼들의 값 중 최소값
+SELECT MIN(SALARY)
+FROM EMPLOYEE;
+
+-- EMPLOYEE 테이블에서
+-- '해외영업1부'에 근무하는 모든 사원의
+-- 평균 급여, 가장 높은 급여, 가장 낮은 급여, 급여합계
+-- 조회하기
+
+-- '해외영업1부'의 부서코드 확인
+SELECT * FROM DEPARTMENT;
+-- DS
+SELECT AVG(SALARY), MAX(SALARY), MIN(SALARY), SUM(SALARY)
+FROM EMPLOYEE
+WHERE DEPT_CODE = 'D5';
+
+SELECT MAX(SALARY), EMP_NAME
+FROM EMPLOYEE;
+
+SELECT EMP_NAME, SALARY
+FROM EMPLOYEE
+WHERE SALARY = (SELECT MAX(SALARY) FROM EMPLOYEE);
+
+-- COUNT(컬럼명) : 행의개수
+SELECT COUNT(EMP_ID) FROM EMPLOYEE;
+SELECT COUNT(DEPT_CODE) FROM EMPLOYEE; --NULL을 포함하는 경우 COUNT에서 제외
+SELECT COUNT(*),
+	   COUNT(DEPT_CODE),
+	   COUNT(DISTINCT DEPT_CODE)
+FROM EMPLOYEE;
+
+SELECT DISTINCT DEPT_CODE
+FROM EMPLOYEE;
+
+-- 날짜 함수
+
+-- 현재 날짜, 시간 확인
+SELECT SYSDATE, SYSTIMESTAMP, CURRENT_DATE, CURRENT_TIMESTAMP
+FROM DUAL;
+
+-- MONTHS_BETWEEN : 두 날짜 사이의 개월 수
+SELECT HIRE_DATE "입사일",
+	   MONTHS_BETWEEN(SYSDATE, HIRE_DATE) "입사 후 개월 수"
+FROM EMPLOYEE;
+
+-- ADD_MONTHS(날짜, 개월 수)
+SELECT ADD_MONTHS(SYSDATE, 3) -- 현재로부터 3개월 뒤
+FROM DUAL;
+
+-- EXTRACT(YEAR|MONTH|DAY FROM 날짜데이터) : 지정한 날부터 날짜 값을 추출하는 함수
+SELECT EXTRACT(YEAR FROM SYSDATE),
+	   EXTRACT(MONTH FROM SYSDATE)
+FROM DUAL;
+
+SELECT EXTRACT(MONTH FROM HIRE_DATE)
+FROM EMPLOYEE;
+
+-- 
+SELECT HIRE_DATE,
+	   TO_CHAR(HIRE_DATE, 'YYYY/MM/DD')
+FROM EMPLOYEE;
+
+-- TO_CHAR() : 날짜나 숫자 값을 문자형태로 변환
+-- 0 : 남은 자리는 0으로 표시
+-- 9 : 남은 자리는 표시하지 않는다.
+SELECT SALARY,
+	   TO_CHAR(SALARY, '000,000,000'),
+	   TO_CHAR(SALARY, '999,999,999'),
+	   TO_CHAR(SALARY, 'L000,000,000'),
+	   TO_CHAR(SALARY, 'L999,999,999')
+FROM EMPLOYEE;
+
+-- 20250603 숫자값 => 날짜값으로
+-- '2025-06-03' => 
+-- TO_DATE() : 숫자값이나 문자형태를 날짜값으로 변환
+SELECT 20250603,
+	   TO_DATE(20250603, 'YYYY/MM/DD'),
+	   '20250603',
+	   TO_DATE('20250603', 'YYYYMMDD')
+FROM DUAL;
+
+-- JAVA의 3항 연산자
+-- DECODE
+-- 현재 근무하는 직원들의 성별을 남,여로 출력 해보자
+-- DECODE(컬럼|데이터 , 비교값1, 결과1, 비교값2, 결과2, ..., 기본값)
+SELECT EMP_NAME 사원명,
+	   EMP_NO,
+	   DECODE(SUBSTR(EMP_NO, 8,1),'2','여','남') 성별 -- SUBSTR이 2와 일치하면 여, 불일치하면 남으로
+FROM EMPLOYEE
+--ORDER BY EMP_NAME;
+--ORDER BY EMP_NO;
+--ORDER BY EMP_NAME ASC; -- 오름차순 ASC 생략 가능
+--ORDER BY EMP_NAME DESC; -- 내림차순 DESC 생략 불가
+--ORDER BY 2; -- 숫자 : SELECT문에 작성된 순서 (두번째)
+--ORDER BY 3 DESC;
+--ORDER BY 성별; -- 별칭
+ORDER BY 사원명 DESC;
+
+--[문제5]
+--EMPLOYEE 테이블에서
+-- 모든 직원의 사번, 사원명, 부서코드, 직급코드(JOB_CODE), 근무여부, 관리자 여부(MANAGER_ID)를 조회
+-- 만약 근무여부가 'Y'=> 퇴사자
+--				'N'=> 근무자
+-- 관리자사번(MANAGET_ID) 있으면 => 사원
+--						없으면(NULL인 경우) => 관리자
+--라고 조회
+-- DECODE 활용
+SELECT * FROM EMPLOYEE;
+
+SELECT EMP_ID 사번,
+	   EMP_NAME 사원명,
+	   DEPT_CODE 부서코드,
+	   JOB_CODE 직급코드,
+	   DECODE(ENT_YN, 'Y', '퇴사자', '근무자') 근무여부,
+	   DECODE(MANAGER_ID,NULL,'관리자','사원') 관리자여부
+FROM EMPLOYEE;
+	   
+-- MANAGER_ID가 NULL이라면 NVL을 통해 0으로 값을 변경하여 확인
+SELECT EMP_ID 사번,
+	   EMP_NAME 사원명,
+	   DEPT_CODE 부서코드,
+	   JOB_CODE 직급코드,
+	   DECODE(ENT_YN, 'Y', '퇴사자', '근무자') 근무여부,
+	   DECODE(NVL(MANAGER_ID,0), 0,'관리자','사원') 관리자여부
+FROM EMPLOYEE;
+
+--NVL2(컬럼명|데이터, NULL이 아닐 경우 값, NULL일 경우 값)
+SELECT EMP_ID 사번,
+	   EMP_NAME 사원명,
+	   BONUS 보너스,
+	   NVL(TO_CHAR(BONUS), 'X') "NVL함수",
+	   NVL2(BONUS, 'O', 'X') "NVL2함수" -- 왜 TO_CHAR쓰는거지
+FROM EMPLOYEE;
+
+-- CASE 문
+-- 자바의 SWITCH 문과 흡사
+
+-- 사용법
+-- CASE
+-- WHEN 조건1 THEN 결과1
+-- WHEN 조건2 THEN 결과2
+-- ELSE 결과3
+-- END
+
+SELECT EMP_ID 사번,
+ 	   EMP_NAME 사원명,
+ 	   CASE
+ 	   	WHEN ENT_YN = 'Y' THEN '퇴사자'
+ 	   	ELSE '근무자'
+ 	   	END "근무 여부",
+ 	   CASE
+	 	WHEN MANAGER_ID IS NOT NULL THEN '사원'
+	 	ELSE '관리자'
+	 	END "관리자 여부"
+FROM EMPLOYEE;
+
+-- 연산자 우선순위
+-- 0. ()
+-- 1. 산술
+-- 2. 연결
+-- 3. 비교
+-- 4. IS NULL, IS NOT NULL, LIKE, IN, NOT IN
+-- 5. BETWEEN A AND B
+-- 6. NOT
+-- 7. AND
+-- 8. OR
+
+
+-- DAY02 연습문제
+--1.  직급이 'J2'이면서 200만원 이상 받는 직원 이거나,
+--  직급이 'J7' 인 사원의 사번, 사원명, 직급코드, 급여
+--  정보 조회하기
+SELECT EMP_ID 사번,
+       EMP_NAME 사원명,
+       JOB_CODE 직급코드,
+       SALARY 급여
+FROM EMPLOYEE
+WHERE JOB_CODE ='J2' AND SALARY>=2000000 OR JOB_CODE ='J7';
+
+
+
+--2.  직급이 'J7' 이거나 'J2'이면서 급여를 200만원 이상
+--  받는 직원의 사번, 사원명, 직급코드, 급여, 연봉을
+--  조회하시오.
+SELECT EMP_ID 사번,
+       EMP_NAME 사원명, 
+       JOB_CODE 직급코드,
+       SALARY 급여,
+       SALARY*12 연봉
+FROM EMPLOYEE
+WHERE JOB_CODE ='J7' OR JOB_CODE ='J2' AND SALARY>=2000000;
+
+
+-- 3. EMPLOYEE 테이블에서
+-- 모든 사원의 사번, 사원명, 이메일, 주민번호를
+-- 조회하여 사원 목록표를 만들고자 한다.
+-- 이 때, 이메일은 '@' 전 까지, 
+-- 주민번호는 7번째 자리 이후 '*' 처리를 하여
+-- 조회 하시오.
+SELECT EMP_ID 사번,
+	   EMP_NAME 사원명,
+	   SUBSTR(EMAIL, 1, INSTR(EMAIL,'@')-1)이메일,
+	   REPLACE(EMP_NO,SUBSTR(EMP_NO,INSTR(EMP_NO,'-')+1,7),'*******') 주민번호
+FROM EMPLOYEE;
+
+
+--4. 직원명과 주민번호를 조회함
+--  단, 주민번호 9번째 자리부터 끝까지는 '*'문자로 채움
+--  예 : 홍길동 771120-1******
+SELECT EMP_NAME 직원명,
+ 	   REPLACE(EMP_NO, SUBSTR(EMP_NO, INSTR(EMP_NO,'-')+2), '******') 주민번호
+FROM EMPLOYEE;
+
+
+--5. 직원명, 직급코드, 연봉(원) 조회
+--  단, 연봉은 ￦57,000,000 으로 표시되게 함
+--     연봉은 보너스포인트가 적용된 1년치 급여임
+SELECT EMP_NAME 직원명,
+ 	   JOB_CODE 직급코드,
+ 	   TO_CHAR((SALARY+SALARY*NVL(BONUS,0))*12,'L999,999,999') 연봉
+FROM EMPLOYEE;
+
+
+--6. 부서코드가 D5, D9인 직원들 중에서 2004년도에 입사한 직원의 
+--   정보 조회함.
+--   사번 사원명 부서코드 입사일
+SELECT EMP_ID 사번,
+	   EMP_NAME 사원명,
+	   DEPT_CODE 부서코드,
+	   HIRE_DATE 입사일
+FROM EMPLOYEE
+WHERE (DEPT_CODE='D5' OR DEPT_CODE='D9') AND EXTRACT(YEAR FROM HIRE_DATE )=2004;
+-- WHERE DEPT_CODE IN('D5','D9')
+--	 AND SUBSTR(HIRE_DATE,1,2)=04;
+
+
+--7. 직원명, 부서코드, 생년월일, 나이(만) 조회
+--   단, 생년월일은 주민번호에서 추출해서, 
+--   ㅇㅇ년 ㅇㅇ월 ㅇㅇ일로 출력되게 함.
+--   나이는 주민번호에서 추출해서 날짜데이터로 변환한 다음, 계산함
+--  (이상한 날짜 값이 들어간 사원들은 WHERE 조건절을 이용하여 제외)
+SELECT * FROM EMPLOYEE;
+SELECT EMP_NAME 직원명,
+	   DEPT_CODE 부서코드,
+	   CONCAT(CONCAT(SUBSTR(EMP_NO, 1,2)||'년 ',SUBSTR(EMP_NO, 3,2)||'월 '), SUBSTR(EMP_NO, 5,2)||'일') 생년월일
+FROM EMPLOYEE;
+-- SELECT EMP_NAME 직원명,
+--	   DEPT_CODE 부서코드,
+--	   SUBSTR(EMP_NO,1,2)||'년' ||
+--	   SUBSTR(EMP_NO,3,2)||'월'||
+--	   SUBSTR(EMP_NO,5,2)||'일' 생년월일,
+--	   EXTRACT(YEAR FROM SYSDATE)-EXTRACT(YEAR FROM TO_DATE(SUBSTR(EMP_NO,1,6),'RRMMDD'))나이
+-- FROM EMPLOYEE
+-- WHERE EMP_ID IN()
+
+
+--8. 직원들의 입사일로 부터 년도만 가지고, 각 년도별 입사인원수를 구하시오.
+--  아래의 년도에 입사한 인원수를 조회하시오.
+--  => to_char, decode, sum 사용
+--
+--	-------------------------------------------------------------
+--	전체직원수   2001년   2002년   2003년   2004년
+--	-------------------------------------------------------------
+SELECT * FROM EMPLOYEE;
+SELECT COUNT(EMP_ID) 전체직원수,
+		COUNT(DECODE(SUBSTR(HIRE_DATE,1,4),2001))
+FROM EMPLOYEE;
+
+SELECT COUNT(*)전체,
+	   COUNT(DECODE(TO_CHAR(EXTRACT(YEAR FROM HIRE_DATE)), '2001',1))"2001년",
+	   COUNT(DECODE(TO_CHAR(EXTRACT(YEAR FROM HIRE_DATE)), '2002',1))"2002년",
+	   COUNT(DECODE(TO_CHAR(EXTRACT(YEAR FROM HIRE_DATE)), '2003',1))"2003년",
+	   COUNT(DECODE(TO_CHAR(EXTRACT(YEAR FROM HIRE_DATE)), '2004',1))"2004년"
+FROM EMPLOYEE;
+
+--9.  부서코드가 D5이면 총무부, D6이면 기획부, D9이면 영업부로 처리하시오.
+--   단, 부서코드가 D5, D6, D9 인 직원의 정보만 조회함
+--  => case 사용
+--   부서코드 기준 오름차순 정렬함.
+-- CASE
+-- WHEN 조건1 THEN 결과1
+-- WHEN 조건2 THEN 결과2
+-- ELSE 결과3
+-- END
+SELECT EMP_NAME 사원명, DEPT_CODE 부서코드,
+	   CASE
+	   	WHEN DEPT_CODE='D5' THEN '총무부'
+	   	WHEN DEPT_CODE='D6' THEN '기획부'
+	   	WHEN DEPT_CODE='D9' THEN '영업부'
+	   END "부서명"
+FROM EMPLOYEE
+WHERE DEPT_CODE IN('D5','D6','D9')
+ORDER BY 2;
+
+
+DROP TABLE MYMVCBOARD;
+DROP SEQUENCE SEQ_MYMVCBOARD;
+
+CREATE SEQUENCE SEQ_MYMVCBOARD NOCACHE;
+
+CREATE TABLE MYMVCBOARD(
+	SEQ NUMBER PRIMARY KEY,
+	WRITER VARCHAR2(200) NOT NULL,
+	TITLE VARCHAR2(2000) NOT NULL,
+	CONTENT VARCHAR2(4000) NOT NULL,
+	REGDATE DATE NOT NULL
+);
+
+INSERT INTO MYMVCBOARD VALUES(SEQ_MYMVCBOARD.NEXTVAL, '관리자','테스트','테스트중입니다.123','22/02/22');
+SELECT * FROM MYMVCBOARD;
+
+DROP TABLE MYMVCBOARD;
+DROP SEQUENCE SEQ_MYMVCBOARD;
+
+CREATE SEQUENCE SEQ_MYMVCBOARD NOCACHE;
+
+CREATE TABLE MYMVCBOARD(
+	SEQ NUMBER PRIMARY KEY,
+	WRITER VARCHAR2(200) NOT NULL,
+	TITLE VARCHAR2(2000) NOT NULL,
+	CONTENT VARCHAR2(4000) NOT NULL,
+	REGDATE DATE NOT NULL
+);
+
+INSERT INTO MYMVCBOARD VALUES(SEQ_MYMVCBOARD.NEXTVAL, '관리자','테스트','테스트중입니다.123','22/02/22');
+SELECT * FROM MYMVCBOARD;
+
+CREATE SEQUENCE BOARDNOSQ NOCACHE; 
+CREATE SEQUENCE GROUPNOSQ NOCACHE;
+
+CREATE TABLE ANSWERBOARD(
+	BOARDNO NUMBER PRIMARY KEY,
+	GROUPNO NUMBER NOT NULL,
+	GROUPSQ NUMBER NOT NULL,
+	TITLETAB NUMBER NOT NULL,
+	TITLE VARCHAR2(1000) NOT NULL,
+	CONTENT VARCHAR2(4000) NOT NULL,
+	WRITER VARCHAR2(500) NOT NULL,
+	REGDATE DATE NOT NULL
+);
+
+-- 첫 번째 글 작성
+INSERT INTO ANSWERBOARD VALUES(BOARDNOSQ.NEXTVAL,GROUPNOSQ.NEXTVAL,1,0,'첫번째 글','1번 글 입니다!!','유저1',SYSDATE);
+SELECT * FROM ANSWERBOARD;
+
+INSERT INTO ANSWERBOARD VALUES(BOARDNOSQ.NEXTVAL,GROUPNOSQ.NEXTVAL,1,0,'두번째 글','2번 글 입니다!!','유저2',SYSDATE);
+
+--답변글 작성(1번 글의)
+--부모(1번글)와 같은 GROUPNO
+--부모의 GROUPSQ+1, 부모의 TITLETAB+2
+INSERT INTO ANSWERBOARD 
+VALUES(BOARDNOSQ.NEXTVAL,
+		(SELECT GROUPNO FROM ANSWERBOARD WHERE BOARDNO=1),
+		(SELECT GROUPSQ FROM ANSWERBOARD WHERE BOARDNO=1)+1,
+		(SELECT TITLETAB FROM ANSWERBOARD WHERE BOARDNO=1)+2,
+		'RE:첫번째 글','1번글의 답변 글입니다.','유저2',SYSDATE);
+		
+	
+SELECT * FROM ANSWERBOARD ORDER BY GROUPNO DESC, GROUPSQ;
+		
+--세번째 글 작성
+INSERT INTO ANSWERBOARD
+VALUES(BOARDNOSQ.NEXTVAL, GROUPNOSQ.NEXTVAL,1,0,'세번째 글','3번 글입니다!!','유저3',SYSDATE)
+
+--답글 작성(두번째 글)
+--부모(2번 글)와 같은 GROUPNO
+--부모의 GROUPSQ+1, 부모의 TITLETAB+2
+INSERT INTO ANSWERBOARD 
+VALUES(BOARDNOSQ.NEXTVAL,
+		(SELECT GROUPNO FROM ANSWERBOARD WHERE BOARDNO=2),
+		(SELECT GROUPSQ FROM ANSWERBOARD WHERE BOARDNO=2)+1,
+		(SELECT TITLETAB FROM ANSWERBOARD WHERE BOARDNO=2)+2,
+		'RE:두번째 글','2번글의 답변 글입니다.','유저1',SYSDATE);
+
+SELECT * FROM ANSWERBOARD ORDER BY GROUPNO DESC, GROUPSQ;
+		
+		
+--답글 작성(NO가 5)
+INSERT INTO ANSWERBOARD 
+VALUES(BOARDNOSQ.NEXTVAL,
+		(SELECT GROUPNO FROM ANSWERBOARD WHERE BOARDNO=5),
+		(SELECT GROUPSQ FROM ANSWERBOARD WHERE BOARDNO=5)+1,
+		(SELECT TITLETAB FROM ANSWERBOARD WHERE BOARDNO=5)+2,
+		'RE:RE:두번째 글','2번글의 답변 글의 답변 글','유저2',SYSDATE);
+
+--답변글 작성(두번째글 - NO가 2)
+--부모와 같은 GROUPNO에서 
+--부모보다 큰 GROUPSQ글들을 GROUPSQ+1
+UPDATE ANSWERBOARD SET GROUPSQ=GROUPSQ+1
+WHERE GROUPNO=(SELECT GROUPNO FROM ANSWERBOARD WHERE BOARDNO=2)
+  AND GROUPSQ>(SELECT GROUPSQ FROM ANSWERBOARD WHERE BOARDNO=2);
+
+SELECT * FROM ANSWERBOARD ORDER BY GROUPNO DESC, GROUPSQ;
+		
+INSERT INTO ANSWERBOARD 
+VALUES(BOARDNOSQ.NEXTVAL,
+		(SELECT GROUPNO FROM ANSWERBOARD WHERE BOARDNO=2),
+		(SELECT GROUPSQ FROM ANSWERBOARD WHERE BOARDNO=2)+1,
+		(SELECT TITLETAB FROM ANSWERBOARD WHERE BOARDNO=2)+2,
+		'RE:두번째 글','2번글의 답변 글 두번째임','유저3',SYSDATE);
+
+--답변 작성(NO-7)
+--1. UPDATE
+--부모와 같은 GROUPNO이고 부모의 GROUPSQ보다 큰 글들의
+--GROUPSQ+1
+UPDATE ANSWERBOARD SET GROUPSQ=GROUPSQ+1
+WHERE GROUPNO=(SELECT GROUPNO FROM ANSWERBOARD WHERE BOARDNO=7)
+  AND GROUPSQ>(SELECT GROUPSQ FROM ANSWERBOARD WHERE BOARDNO=7);
+
+--2. INSERT
+-- 부모와 같은 GROUPNO, 부모의 GROUPSQ+1, 부모의 TITLETAB+2
+INSERT INTO ANSWERBOARD
+VALUES(BOARDNOSQ.NEXTVAL,
+		(SELECT GROUPNO FROM ANSWERBOARD WHERE BOARDNO=7),
+		(SELECT GROUPSQ FROM ANSWERBOARD WHERE BOARDNO=7)+1,
+		(SELECT TITLETAB FROM ANSWERBOARD WHERE BOARDNO=7)+2,
+		'R:RE:두번째글#@#','2번 글 답변 글의 답글','유저2',SYSDATE);
+
+SELECT * FROM ANSWERBOARD ORDER BY GROUPNO DESC, GROUPSQ;
+
+
+--
+DROP TABLE MYMEMBER;
+DROP SEQUENCE SEQ_MYMEMBER;
+
+CREATE SEQUENCE SEQ_MYMEMBER NOCACHE;
+
+CREATE TABLE MYMEMBER(
+	MYNO NUMBER PRIMARY KEY,
+	MYID VARCHAR2(500) NOT NULL UNIQUE,
+	MYPW VARCHAR2(500) NOT NULL,
+	MYNAME VARCHAR2(500) NOT NULL,
+	MYADDR VARCHAR2(2000),
+	MYPHONE VARCHAR2(1000) NOT NULL UNIQUE,
+	MYEMAIL VARCHAR2(2000) NOT NULL UNIQUE,
+	MYENABLED VARCHAR2(2) NOT NULL CHECK(MYENABLED IN ('Y','N')),
+	MYROLE VARCHAR2(50) NOT NULL
+);
+
+INSERT INTO MYMEMBER VALUES(SEQ_MYMEMBER.NEXTVAL,'ADMIN','ADMIN1234','관리자','관리시 관리구 관리동','010-1234-5678','ADMIN@MYMEMBER.COM','Y','ADMIN');
+SELECT * FROM MYMEMBER;
+
+CREATE TABLE BIKE_TB(
+	ADDR_GU VARCHAR2(4000),
+	CONTENT_ID NUMBER PRIMARY KEY,
+	CONTENT_NM VARCHAR2(4000),
+	NEW_ADDR VARCHAR2(4000),
+	CRADLE_COUNT NUMBER,
+	LONGITUDE NUMBER,
+	LATITUDE NUMBER
+);
+DROP TABLE BIKE_TB;
+SELECT * FROM BIKE_TB;
+DELETE FROM BIKE_TB;
+
+SELECT * FROM MYBOARD;
+
+SELECT * FROM BOARD;
+
+DROP TABLE COMMUNITYBOARD;
+DROP SEQUENCE SEQ_CB;
+CREATE SEQUENCE SEQ_CB NOCACHE;
+CREATE TABLE COMMUNITYBOARD(
+	NO NUMBER PRIMARY KEY,
+	NAME VARCHAR2(2000) NOT NULL,
+	TITLE VARCHAR2(2000),
+	CONTENT VARCHAR2(2000),
+	REGDATE DATE
+);
+DELETE FROM COMMUNITYBOARD;
+INSERT INTO COMMUNITYBOARD VALUES(SEQ_CB.NEXTVAL, '박상은','글제목','글내용',SYSDATE);
+
+SELECT * FROM COMMUNITYBOARD;
+
+CREATE SEQUENCE SEQ_CM NOCACHE;
+CREATE TABLE COMMUNITYMEMBER(
+	NO NUMBER PRIMARY KEY,
+	ID VARCHAR2(2000) NOT NULL UNIQUE,
+	PW VARCHAR2(2000) NOT NULL,
+	NAME VARCHAR2(2000) NOT NULL,
+	PHONE VARCHAR2(2000),
+	ENABLED VARCHAR2(1) CHECK(ENABLED IN('Y','N'))
+);
+
+INSERT INTO COMMUNITYMEMBER VALUES(SEQ_CM.NEXTVAL,'pse1','pse1234','박상은','010-1234-1234','Y');
+
+SELECT * FROM COMMUNITYMEMBER;
+DELETE FROM COMMUNITYMEMBER;
+
+
+
+
+DROP TABLE MYBOARD;
+CREATE TABLE MYBOARD(
+	MYNO NUMBER PRIMARY KEY,
+	MYNAME VARCHAR2(300) NOT NULL,
+	MYTITLE VARCHAR2(1000) NOT NULL,
+	MYCONTENT VARCHAR2(4000) NOT NULL,
+	MYDATE DATE NOT NULL
+);
+		
+CREATE SEQUENCE SEQ_MY NOCACHE;
+INSERT INTO MYBOARD VALUES(SEQ_MY.NEXTVAL, '관리자','스프링 테스트','SPRING MVC 재밌다...',SYSDATE);
+
+SELECT * FROM MYBOARD WHERE MYNO=1;
+		
+DROP TABLE MYMEMBER;
+DROP SEQUENCE SEQ_MEMBER;
+
+CREATE TABLE MYMEMBER(
+	MEMBERNO NUMBER PRIMARY KEY,
+	MEMBERID VARCHAR2(1000) NOT NULL,
+	MEMBERPW VARCHAR2(1000) NOT NULL,
+	MEMBERNAME VARCHAR2(300) NOT NULL
+);
+
+CREATE SEQUENCE SEQ_MEMBER NOCACHE;
+INSERT INTO MYMEMBER VALUES(SEQ_MEMBER.NEXTVAL, 'admin','1234','관리자');
+
+SELECT * FROM MYMEMBER;
+
+SELECT * FROM TESTBOARD ORDER BY TESTNO DESC;
+
+
+SELECT * FROM MYBOARD;
+
+SELECT * FROM mlpboard;
+SELECT * FROM MLPBOARD ORDER BY TITLE ASC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

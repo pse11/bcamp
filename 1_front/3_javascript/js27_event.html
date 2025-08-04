@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function test1(){
+            alert('클릭');
+        }
+        window.onload=()=>{
+            document.getElementById("test2").onclick=()=>{
+                alert('asdf');
+            }
+
+            document.getElementById("test3").addEventListener("click",function(){
+                alert("클릭@!!");
+            });//이벤트 종류, 해당 이벤트 발생했을 때 실행할 함수
+            document.getElementById("test4").addEventListener("click",function(){
+                alert("lif");
+                document.getElementById("test2").onclick=()=>{
+                alert('asdf!!'); //이벤트창 한번뜸
+                }
+
+                document.getElementById("test3").EventListener("click",function(){
+                    alert("CLICKD@@@");
+                }); //addEventListener는 덮어씌워지는 것이 아니라 추가적으로 코드가 진행된다. alert창 두번 뜸
+                
+            });
+            /*
+            콜백함수를 익명함수가 아닌 함수의 이름을 명확히 표시하면 removeEventListener가 동작한다.
+            document.getElementById("test3").addEventListener("click,clEv"); 위의 16번째 줄
+            function clEv(){
+                alert('click');
+            }
+            ...
+            document.getElementById("test3").removeEventListener("click",clEv); 위의 25번째 줄
+            */
+        }
+    </script>
+</head>
+<body>
+    <h1>이벤트 모델</h1>
+
+    <h3>인라인</h3>
+    <button onclick="alert('클릭');">클릭!</button>
+    <button onclick="test1()">클릭!</button>
+
+    <h3>고전</h3>
+    <button id="test2">클릭!!</button>
+
+    <h3>표준</h3>
+    <button id="test3">클릭</button>
+    <button id="test4">클릭</button>
+
+    <hr>
+    <h3>기본이벤트 제거</h3>
+    <form action="js01_start.html" method="get"> <!--나중에 action은 서버가 될 것임-->
+        이름 : <input type="text" name="name" id="name">
+        나이 : <input type="text" name="age" id="age">
+        <br>
+        <input type="submit" value="전송" onclick="return test5();">
+    </form>
+    <script>
+        function test5(){
+            let age = document.getElementById("age").value;
+
+            if(age<20){
+                alert("청소년 불가");
+                return false; //데이터 전달하지 않음 + onclick ="return test5();" 를 넣어줘야함.
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 암호화, 해독화 해주는 클래스-->
+	<!--  스프링에서 비밀번호 암호화(해시)를 하기 위해 BCrpty 알고리즘을 쓰겠다. -->
+	<!-- 해시 : 어떤 데이터를 고정된 길이의 암호 같은 값으로 바꿔주는 함수(또는 그 결과) 
+			원본 데이터 크기와 상관없이 항상 일정 길이의 결과(해시값, 해시코드)가 나옴.
+			원본->해시는 쉽지만, 해시->원본은 거의 불가능
+		해시 사용 이유:
+		1) 비밀번호 저장
+			DB에 비밀번호를 그대로 저장하면 해킹 당했을 때 다 털림.
+			그래서 비밀번호를 해시해서 저장.
+			예) "1234" -> 해시 -> "$2a$10$Fdi6...."
+			로그인할때도 입력받은 비번은 다시 해시해서 DB에 있는 해시와 비교하는 방식
+		2) 데이터 무결성 검사 
+		3) 자료구조에서 빠른 탐색
+			HashMap, HasSet 같은 게 내부적으로 키를 해시해서 빨리 찾음.
+	-->
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+</beans>

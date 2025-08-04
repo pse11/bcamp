@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #colorbox{
+            width: 320px;
+            height: 320px;
+            position: relative;
+        }
+        #red,#yellow,#blue,#black{
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+            position: absolute;
+        }
+        #yellow{left: 160px;}
+        #blue{top: 160px;}
+        #black{top: 160px; left: 160px;}
+    </style>
+    <script>
+        function allsel(check){
+            let chks = document.getElementsByName("chk");
+            for(let i=0;i<chks.length;i++){
+                chks[i].checked=check;
+            }
+        }
+        const allCheck = () => {
+            let chks = document.getElementsByName("chk");
+            let count = checkedCount(chks);
+            if(count==chks.length){
+                document.getElementsByName("all")[0].checked=true;
+            }
+            else {
+                document.getElementsByName("all")[0].checked = false;
+            }
+        }
+        function checkedCount(chks){
+            let count = 0;
+            for(let i=0;i<chks.length;i++){
+                if(chks[i].checked){
+                    count++;
+                }
+            }
+            return count;
+        }
+        function sel(){
+            var chks = document.getElementsByName("chk");
+            for(let i=0; i<chks.length;i++){    
+                if(chks[i].checked){
+                    document.getElementById(chks[i].value).style.backgroundColor=chks[i].value;
+                }else {
+                    document.getElementById(chks[i].value).style.backgroundColor="white";
+                }
+            }
+        }
+        function clearDiv(){
+            allsel(false);
+            document.getElementsByName("all")[0].checked=false;
+
+            //1. div태그들을 선택(힌트 : #colorbox > div)
+            let colorboxs = document.querySelectorAll("#colorbox > div");
+            //console.log(colorboxs);
+            //2. 선택된 div태그들의 배경색을 모두 white로 변경
+            for(let i=0;i<colorboxs.length;i++){
+                colorboxs[i].style.backgroundColor="white";
+            }
+            /*
+            var chks = document.getElementsByName("chk");
+            for(let i=0; i<chks.length;i++){    
+                document.getElementById(chks[i].value).style.backgroundColor="white";
+            }
+            */
+        }
+    </script>
+</head>
+<body>
+    <div id="colorbox">
+        <div id="red">red</div>
+        <div id="yellow">yellow</div>
+        <div id="blue">blue</div>
+        <div id="black">black</div>
+    </div>
+    <div id="base">
+        <form>
+            <input type="checkbox" name="all" onclick="allsel(this.checked)">전체 선택<br>
+
+            <input type="checkbox" name="chk" value="red" onclick="allCheck()">빨강<br>
+            <input type="checkbox" name="chk" value="yellow" onclick="allCheck()">노랑<br>
+            <input type="checkbox" name="chk" value="blue" onclick="allCheck()">파랑<br>
+            <input type="checkbox" name="chk" value="black" onclick="allCheck()">검정<br>
+            
+            <input type="button" value="선택" onclick="sel();">
+            <input type="button" value="초기화" onclick="clearDiv();"> 
+        </form> 
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="myclass" class="com.test02.date_number.MyClass"></bean>
+	
+	<!-- 이미 존재하는, 자바에서 존재하는, 자바외에 라이브러리에서 가져오는 빈도 가능 -->
+	<bean id="date" class="java.util.Date">
+		<property name="year" value="125"></property> <!-- 1900+125 = 2025년 -->
+		<property name="month" value="9"></property> <!-- 10월 (0부터 시작) -->
+		<property name="date" value="1"></property>
+	</bean>
+	
+	<bean id="beanTest" class="com.test02.date_number.BeanTest">
+		<!-- 1.public BeanTest(Date date) -->
+		<constructor-arg name="date" ref="date"></constructor-arg>
+		<!-- 2.public void setMyClass(MyClass myClass) -->
+		<property name="myClass" ref="myclass"></property>
+		<!-- 3.public void setDate(Date date) -->
+		<property name="date" ref="date"></property>
+		<!-- 4.public void setNumber(int num) -->
+		<property name="number">
+			<value type="int">100</value>
+		</property>
+		<!-- 5.public void setArray(String[] arr)  -->
+		<property name="array">
+			<array>
+				<value>박상은</value>
+				<value>김상은</value>
+				<value>이상은</value>
+			</array>
+		</property>
+		
+		<!-- 6.public void setList(List<String> list) -->
+		<property name="list">
+			<list>
+				<value>봄</value> <!-- value=> string 값 -->
+				<value>여름</value>
+				<value>가을</value>
+				<value>겨울</value>
+			</list>
+		</property>
+		<!-- 7.public void setSet(Set<String> set)-->
+		<property name="set">
+			<set>
+				<value>가</value>
+				<value>나</value>
+				<value>다</value>
+			</set>
+		</property>
+		<!-- 8. public void setMap(Map<String,String> map)-->
+		<property name="map">
+			<map>
+				<entry>
+					<key><value>1</value></key>
+					<value>봄</value>
+				</entry>
+				<entry key="2" value="여름"/>
+			</map>
+		</property>
+		
+		<!-- 9. public void setScore(List<Score> list)-->
+		<property name="score">
+			<list> <!-- list안에는 <bean> <value> <ref>를 넣을 수 있다. -->
+				<bean class="com.test02.date_number.Score">
+					<property name="name" value="박상은"/>
+					<property name="kor" value="70"></property>
+					<property name="eng" value="80"/>
+					<property name="math" value="100"/>
+				</bean>
+				<bean class="com.test02.date_number.Score">
+					<constructor-arg value="김상은"/>
+					<constructor-arg value="30"/>
+					<constructor-arg value="100"/>
+					<constructor-arg value="70"/>
+				</bean>
+				<ref bean="sc"/> <!-- 이미 정의된 bean -->
+			</list>
+		</property>
+	</bean>
+	<bean id="sc" class="com.test02.date_number.Score">
+			<property name="name" value="최상은"/>
+			<property name="kor" value="80"/>
+			<property name="eng" value="90"/>
+			<property name="math" value="60"/>
+	</bean>
+</beans>

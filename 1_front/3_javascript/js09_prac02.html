@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 400px;
+        height: 200px;
+        background-color: rgb(255, 183, 141);
+        border: 2px solid rgb(171, 142, 250);
+      }
+    </style>
+    <script>
+      function prinVal() {
+        let name = document.getElementsByTagName('input')[0].value; //Elements는 한개만 있어도 배열로 가져온다!!
+        let pname = document.getElementById('pname').value;
+        let price = document.getElementsByName('price')[0].value;
+        document.getElementsByTagName('div')[0].innerHTML =
+          name + '\n' + pname + '\n' + price;
+        let res = document.getElementsByTagName('div')[0];
+        res.innerHTML = '구입자: ' + name + '님<br>';
+        res.innerHTML += '구입상품: ' + pname + '<br>';
+        res.innerHTML += '구매가격: ' + price + '만원';
+      }
+    </script>
+  </head>
+  <body>
+    <h1>HTML 태그에 접근</h1>
+    <!-- 구매자는 태그 이름으로, 상품명은 id로, 구매가격은 name으로 접근 -->
+    <br /><br />
+    <label>구매자 : </label>
+    <input type="text" placeholder="구매자 이름을 입력하세요" />
+    <br /><br />
+    <label>상품명 : </label>
+    <input type="text" id="pname" placeholder="구매 상품명을 입력하세요" />
+
+    <br /><br />
+    <label>가 격 : </label>
+    <input type="text" name="price" placeholder="구매 가격을 입력하세요" />
+
+    <br /><br />
+    <button onclick="prinVal();">입력값 출력하기</button>
+
+    <br /><br />
+    <div></div>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+10. pom.xml : ascpectjweaver, aspectjrt 추가
+	aspectjweaver : AOP를 위해 바이트코드 조작(위빙)을 해주는 라이브러리.
+	aspectjrt : AspectJ 런타임 라이브러리. 실제 AOP Advice 실행 시 필요.
+
+11. com/mvc/upgrade/common/aop/LogAop.java 
+	: 로그를 찍는 AOP클래스(Advice)
+	공동 관심사(로그, 트랜잭션, 보안 체크 등)를 모듈화한 클래스
+	보통 @Before, @AfterReturning, @Around 같은 AspectJ어노테이션 사용.
+
+12. WEB-INF/spring/appServlet/aop-context.xml (or 어노테이션)으로 aop설정
+	: AOP 를 활성화 하는 설정파일
+	<aop:aspectj-autoproxy>
+	=>@Aspect 붙은 클래스 찾아서 AOP프록시로 만들어 주는 핵심 태그.	
+
+13. web.xml에 aop설정한것 추가
+	: ContextLoaderListener가 aop-context.xml을 읽어서
+	@Aspect 빈을 만들고 AOP 프록시를 만들어줌.

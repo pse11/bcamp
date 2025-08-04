@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      border: 2px solid black;
+      height: 150px;
+
+    }
+  </style>
+  <script>
+    const mathTest=()=>{
+      let doc = document.getElementsByTagName("div")[0];
+      let num = -123;
+
+      //abs() : 절대값
+      doc.innerHTML += "절대값 :  " + Math.abs(num) + "<br>";
+
+      //random() : 임의의 난수 발생
+      doc.innerHTML += "임의의 난수 발생 : " + Math.random() + "<br>";
+
+      //round() : 반올림
+      doc.innerHTML += "반올림 : " + Math.round(3.7) + "<br>";
+      doc.innerHTML += "내림: " + Math.floor(3.2) + "<br>";
+      doc.innerHTML += "올림: " + Math.ceil(3.27) + "<br>";
+
+      //
+      doc.innerHTML += "Pi: " + Math.PI + "<br>" + 
+                      "오일러상수: " + Math.E + "<br>";
+    }
+
+    const randomBGColor=()=>{
+      let rNum = function(){
+        //1~100
+        //return Math.floor(Math.random()*100+1);
+
+        //rgb: 0~255
+        return Math.floor(Math.random()*256);
+      };  
+      console.log(rNum());
+      document.body.style.backgroundColor="rgb(" +rNum() +"," +rNum()+","+rNum()+")";
+      
+    }
+  </script>
+</head>
+<body>
+  <h1>Math 객체</h1>
+  <div></div>
+  <button onclick="mathTest();">확인</button>
+  <hr>
+  <h2>랜덤으로 배경색 설정하기</h2>
+  <button onclick="randomBGColor();">배경색 변경</button>
+
+</body>
+</html>

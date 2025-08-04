@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>detail.html</h1>
+	<table th:object="${dto}">
+		<tr>
+			<th>myname</th>
+			<td th:text="*{myname}">myname</td>
+		</tr>
+		<tr>
+			<th>mytitle</th>
+			<td th:text="*{mytitle}">mytitle</td>
+		</tr>
+		<tr>
+			<th>mycontent</th>
+			<td><textarea rows="10" cols="40" readonly="readonly" th:text="*{mycontent}">mycontent</textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="수정" th:onclick="|location.href='@{/myboard/updateform(myno=${dto.myno})}'|">
+				<input type="button" value="삭제" th:onclick="|location.href='@{/myboard/delete(myno=${dto.myno})}'|">
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

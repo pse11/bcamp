@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="p1" class="com.test01.Product">
+		<property name="pname" value="TV-123"/>
+		<property name="price" value="2000000"/>
+	</bean>
+	
+	<bean id="tv" class="com.test01.TV">
+		<constructor-arg name="product" ref="p1"></constructor-arg>
+		<constructor-arg name="inch" value="65"/>
+	</bean>
+	
+	<!-- 적절한 값을 저장하며 Phone 클래스 bean 생성 후 main에서 확인 -->
+	<bean id="phone" class="com.test01.Phone">
+		<constructor-arg name="pname" value="phone-11"/>
+		<constructor-arg name="price" value="1500000"/>
+		<property name="mobileAgency" value="KT"/>
+	</bean>
+</beans>

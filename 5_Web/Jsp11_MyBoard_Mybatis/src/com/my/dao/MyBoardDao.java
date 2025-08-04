@@ -1,0 +1,112 @@
+package com.my.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.my.dto.MyBoardDto;
+
+public class MyBoardDao extends SqlMapConfig{
+	private String namespace = "com.my.myboard";
+	//Jsp01_MyBoard dao와 비교(jdbc vs. mybatis)
+	
+	//전체 출력
+	public List<MyBoardDto> selectAll(){
+		//준비
+		List<MyBoardDto> res = new ArrayList<>();
+		SqlSession session = null;
+		
+		session = getSqlSessionFactory().openSession(true); //(true): autoCommit한다.
+		res = session.selectList("com.my.myboard.selectAll"); //namespace의 id
+		
+		session.close();
+		
+		return res;
+	}
+	
+	//선택출력(myno)
+	public MyBoardDto selectOne(int myno) {
+		SqlSession session = null;
+		MyBoardDto res = null;
+		
+		try {			
+			session = getSqlSessionFactory().openSession(true);
+			res = session.selectOne(namespace+".selectOne",myno);
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return res;
+	}
+	
+	//글 작성
+	public int insert(MyBoardDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		
+		session = getSqlSessionFactory().openSession(true);
+		res = session.insert(namespace+".myinsert", dto);
+		
+		session.close();
+		return res;
+	}
+	
+	//글 수정
+	public int update(MyBoardDto dto) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.update(namespace+".myupdate",dto);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return res;
+	}
+	
+	//글 삭제
+	public int delete(int myno) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.delete(namespace+".mydelete",myno);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return res;
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

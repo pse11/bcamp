@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--구조분해할당:  배열을 분해한다. -->
+    <h1>구조분해할당(Destructuring), 스프레드연산자</h1>
+    <script>
+        function test01(){
+            //배열의 구조분해할당
+            let arr = [1,2,3,4,5];
+            //각각 다른 변수에다가 넣어보자: 
+            //가장 기본
+            //let no1 = arr[0];
+            //let no2 = arr[1];
+
+            let [no1, no2, no3, no4, no5] =arr; //배열안의 값들이 알아서 해당변수에 차례로 저장
+
+           // console.log(no1);
+            //console.log(no2);
+            //console.log(no3);
+            //console.log(no4);
+            //console.log(no5);
+            let [num1,num2] = arr;
+            console.log(num1);
+            console.log(num2);
+
+            let [n1, n2,n3,n4,n5,n6] =arr;
+            console.log(n1);
+            console.log(n2);
+            console.log(n3);
+            console.log(n4);
+            console.log(n5);
+            console.log(n6);
+        }
+
+        function test02(){
+            let number = {
+                one:1,
+                two:"two",
+                three:33
+            }
+
+            let {one,two,three} = number; //객체를 가지고 각각의 속성들을 변수들에 쪼개 넣음
+            console.log(one,two,three);
+            
+            function func1({one,two,three}){ // 객체를 받을 때 {}로 묶어줘야함.
+                //alert(obj);
+                //console.log(obj.one);
+                console.log("in func1",one,two,three);
+            }
+            func1(number);
+        }
+        function test3() {
+            //배열 스프레드
+            let arr1 = [1,2,3];
+            //let arr2 = [5,6,arr1[0],arr1[1],7];
+            let arr2 = [5,6, ...arr1,7]; //해당하는 배열에 있는 값들을 ...arr1자리에 펼쳐넣는다.
+            console.log(arr2);
+            let arr3 = [5,6,arr1,7];
+            console.log(arr3);
+
+            //객체 스프레드
+            let obj1 = {
+                no1:1,
+                no2:2
+            }
+            let obj2 = {
+                no3:33,
+                no4:44,
+                ...obj1
+            }
+            console.log(obj2);
+
+            function func2(i1,i2,i3){
+                console.log("func2: " + i1,i2,i3);
+            }
+            func2(...arr1);
+            //위아래 결과 같음.
+            function func3(...arg){ //rest변수. 여러가지 값들을 한번에 받아올 수 있다.
+                console.log(arg);
+            }
+            func3(1,2,3);
+            
+        }
+    </script>
+    <h3>구조분해할당</h3>
+    <h4>배열</h4> 
+    <button onclick="test01()">클릭!</button>
+
+    <h4>객체</h4> <!--객체를 가지고 구조분해할당-->
+    <button onclick="test02()">클릭!</button>
+
+    <!-- 구조분해할당을 언제 많이 사용하는가? -->
+    
+    <h3>스프레드연산자</h3>
+    <button onclick="test3();">클릭!</button>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.board">
+	<select id="selectAll" resultType="BoardDto"> <!-- config에서 BoardDto 별칭 사용 , resultType은 무조건 있어야함-->
+		SELECT * FROM BOARD	ORDER BY SEQ DESC
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="BoardDto">
+		SELECT * FROM BOARD WHERE SEQ=#{seq}
+	</select>
+	
+	<update id="update" parameterType="BoardDto">
+		UPDATE BOARD 
+		SET TITLE=#{title}, CONTENT=#{content} 
+		WHERE SEQ=#{seq}
+	</update>
+	
+	<insert id="insert">
+		INSERT INTO BOARD
+		VALUES(SEQ_BOARD.NEXTVAL,#{writer},#{title},#{content},SYSDATE)
+	</insert>
+	
+	<delete id="muldel">
+		DELETE 
+		FROM BOARD
+		WHERE SEQ IN 
+		<foreach collection="seq" item="seq" open="(" separator="," close=")">
+			#{seq}
+		</foreach>
+	</delete>
+	
+	<delete id="delete">
+		DELETE FROM BOARD WHERE SEQ=#{seq}
+	</delete>
+</mapper>
+

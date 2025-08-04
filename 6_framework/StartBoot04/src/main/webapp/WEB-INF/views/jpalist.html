@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.tymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>	
+	<h1>JPA list</h1>
+	<!-- <h3 th:text="${session.login.membername+'님'}"></h3>-->
+	<!-- <input type="button" value="마이페이지" onclick="location.href='/member/mypage'">-->
+	<div>
+		<table>
+			<tr>
+				<th>Myno</th>
+				<th>Myname</th>
+				<th>Mytitle</th>
+				<th>Mydate</th>
+			</tr>
+			<tr th:if="${list.size()==0}"><!-- 조건 만족하는 경우 -->
+				<td colspan="4">----작성된 글이 존재하지 않습니다----</td>
+			</tr>
+			<tr th:unless="${list.size==0}" th:each="dto:${list}"><!-- 조건 만족하지 않는 경우 -->
+				<td th:text="${dto.myno}"></td>
+				<td th:text="${dto.myname}"></td>
+				<!-- <td><a th:href="@{/board/detail(myno=${dto.myno})}" th:text="${dto.mytitle}"></a></td>-->
+				<td><a th:href="|@{/board/detail}?myno=${dto.myno}|" th:text="${dto.mytitle}"></a></td>
+				<td th:text="${dto.mycontent}"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="글작성" onclick="location.href='insertform'">
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

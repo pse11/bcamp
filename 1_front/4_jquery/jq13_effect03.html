@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{width: 200px;height: 200px;}
+        .onoff{
+            display: none;
+        }
+        .changeSize{
+            width: 300px;
+        }
+    </style>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        
+        $(function(){
+            $("#btn").click(function(){
+                $("img").toggleClass("onoff"); //버튼 클릭하면 클래스를 넣는다. 
+                //img에 "onoff"클래스가 있으면 삭제, 없으면 추가
+
+            });
+            $("img").click(function(){
+                //해당 요소에 특정 클래스가 존재하면 제거,
+                //특정 클래스가 없으면 추가
+                if($(this).hasClass("changeSize")){//여기서 this : 클릭된 해당 이미지
+                    $(this).removeClass("changeSize");
+                }else{
+                    $(this).addClass("changeSize");
+                }
+                let imgs = document.getElementsByTagName("img");
+                for(let i=0;i<imgs.length;i++){
+                    let img = imgs[i];
+                    img.classList.add('aaa');
+                    console.log(i+" : "+img.className);
+                    //remove()
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+    <button id="btn">이미지 on/off</button>
+    <br>        <hr>        <br>
+    <img src="../1_html/sample/images/img01.png">
+    <img src="../1_html/sample/images/img02.png">
+    <img src="../1_html/sample/images/img03.png">
+</body>
+</html>

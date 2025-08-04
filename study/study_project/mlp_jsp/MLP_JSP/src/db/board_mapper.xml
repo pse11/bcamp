@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.my.board">
+ 	<insert id="insertFeed">
+ 		INSERT INTO MLPBOARD VALUES(SEQ_MLPBOARD.NEXTVAL,#{writer},#{id},#{title},#{content},#{keyword},#{release},SYSDATE)
+ 	</insert>
+ 	
+ 	<select id="selectAll" resultType="BoardDto">
+ 		SELECT * FROM MLPBOARD ORDER BY NO DESC
+ 	</select>
+ 	
+ 	<select id="orderbyDesc" resultType="BoardDto">
+ 		SELECT * FROM MLPBOARD ORDER BY NO DESC
+ 	</select>
+ 	
+ 	<select id="orderbyAsc" resultType="BoardDto">
+ 		SELECT * FROM MLPBOARD ORDER BY NO ASC
+ 	</select>
+ 	
+ 	<select id="orderbyTitle" resultType="BoardDto">
+ 		SELECT * FROM MLPBOARD ORDER BY TITLE ASC
+ 	</select>
+ 	
+ 	<select id="selectOne" resultType="BoardDto" parameterType="Integer">
+ 		SELECT * FROM MLPBOARD WHERE NO=#{boardno}
+ 	</select>
+ 	
+ 	<update id="update">
+ 		UPDATE MLPBOARD SET TITLE=#{title}, CONTENT=#{content}, KEYWORD=#{keyword},RELEASE=#{release} WHERE NO=#{no}
+ 	</update>
+ 	
+ 	<select id="search" resultType="BoardDto" parameterType="String">
+ 		SELECT * FROM MLPBOARD
+ 		WHERE TITLE LIKE '%'||#{searchfeed}||'%' 
+ 		OR CONTENT LIKE '%'||#{searchfeed}||'%' 
+ 		OR KEYWORD LIKE '%'||#{searchfeed}||'%' 
+ 		OR WRITER LIKE '%'||#{searchfeed}||'%'
+ 		ORDER BY NO DESC
+ 	</select>
+ 	
+ 	<delete id="delete" parameterType="Integer">
+ 		DELETE FROM MLPBOARD WHERE NO=#{no}
+ 	</delete>
+ </mapper>

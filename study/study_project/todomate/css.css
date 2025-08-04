@@ -1,0 +1,335 @@
+*{
+      color:white;
+}
+body{
+  background-color: black;
+  margin: auto; 
+  margin-top: 50px;
+  width: 1250px;
+}
+#main{
+  display: flex;
+}
+img{
+  color: white;
+}
+#header_left{
+  float: left;
+}
+#header_right{
+  float: right;
+  height: 50px;
+  line-height: 50px;
+  margin: 0 auto;
+  text-align: center;
+}
+#header_right>ul>li{
+  float: left;
+  width: 100px;
+  display:inline-block;
+  font-size:10pt;
+}
+#header ul{
+
+  padding-left: 0;
+}
+#header_right > ul>li>ul{
+  width: 150px;
+  display: none;
+  position: absolute;
+  font-size: 10pt;
+  background: rgb(61, 58, 58);
+}
+.sub_menu{
+    border: 1px solid white;
+}
+ul li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+#pimg{
+  cursor: pointer;
+}
+.hbtns{
+  text-decoration: none;
+  font-size:20pt;
+  cursor: pointer;
+}
+#header_left > img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+#header{
+  height: 40px;
+}
+#pimg{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: inline;
+}
+#profile{
+  margin-top: 20px;
+  height: 50px;
+}
+#pbtn{
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: gray;
+  opacity: 70%;
+  border: none;
+  box-shadow: none;
+}
+.ps{
+  width: 60px;
+  height: 60px;
+  float: left;
+  cursor: pointer;
+}
+.ps>p{
+  width: 50px;
+  color: white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+}
+#left_contents{
+  margin-top: 40px;
+  width: 50%;
+  border: 1px solid white;
+}
+#right_contents{
+  border: 1px solid white;
+  margin-top: 40px;
+  width: 50%;
+}
+#pimg2{
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+}
+#profile{
+  display:flex;
+}
+.intro{
+  display:inline;
+  font-size:10pt;
+  padding-left: 10px;
+  }
+#pintro{
+  opacity: 50%;
+}
+.pcl{
+  display: inline-block;
+  float: left;
+}
+#p3{
+  margin-top: 10px;
+  float:right;
+}
+#prof{
+  height: 70px;
+}
+.dateinline{
+  display: inline-block;
+}
+#chgbtn{
+  font-weight: bold;
+  font-size: 15pt;
+  float: right;
+}
+.dateinline >span {
+  font-size:15pt;
+}
+#date{
+  font-weight: bold;
+}
+/* #data_title{
+  display:flex;
+} */
+/* .day{
+  font-size: 13pt;
+  margin: 23px;
+} */
+/* .day:nth-child(6){
+  color: rgb(51, 119, 245);
+}
+.day:nth-child(7){
+  color: red;
+} */
+#date_header span{
+  cursor: pointer;
+}
+#calander{
+  width: 100%;
+}
+#ctitle{
+  width: 100%;
+}
+#ctitle td:nth-child(6){
+  color: rgb(51, 119, 245);
+} 
+#ctitle td:nth-child(7){
+  color: red;
+} 
+.pcl{
+  cursor: pointer;
+}
+#p3 > span{
+  font-size:23pt;
+}
+#ctitle,#calander{
+  text-align: center;
+}
+#calander td{
+  height: 60px;
+  cursor: pointer;
+}
+#calaner td span:nth-child(1){
+  font-size: 45pt;
+}
+.changecolor{
+  display:inline-block;
+  width: 22px;
+  height: 22px;
+  font-size: 10pt;
+  font-weight: bold;
+}
+.changebox{
+  background-color: rgb(63, 61, 61);
+  font-size:15pt;
+  border-radius: 8px;
+}
+.emoji1:nth-child(1){
+  font-weight: bold;
+}
+
+/* 오른쪽 카테고리 영역 css */
+.cateButton {
+  margin:5px;
+}
+.cateButton > span{
+  background-color: rgb(36, 34, 34);
+  display: inline-block;
+  margin: 8px;
+  font-size: 12pt;
+  padding: 10px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+#textd{
+  margin: 8px;
+}
+#todolist, .c_todolist{
+  margin: 10px;
+  font-size: 20pt;
+}
+.todo2{
+  width: 80%;
+  background-color: black;
+  border: none;
+  height: 40px;
+  border-bottom: 2px solid red;
+  font-size: 12pt;
+}
+.todo2:focus{
+  outline:none;
+}
+.c_todo_input{
+  display: inline-block;
+  width: 80%;
+  background-color: black;
+  border: none;
+  height: 40px;
+  border-bottom: none;
+  font-size: 11pt;
+}
+
+/* 수정, 삭제 팝업*/
+#deletepopup{
+  background-color: rgb(51, 48, 48);  
+  width:500px;
+  height: 100%;
+  position: absolute;
+  top: 100px;
+  left: 35%;
+}
+#clickcontent{
+  text-align: center;
+  padding: 15px;
+  height: 50px;
+}
+#deletepopup{
+   border-radius: 30px 30px 0px 0px;
+}
+#topcontent{
+  height: 100px;
+
+}
+#deletepopup{
+  display: none;
+}
+#correction{
+  text-align: center;
+  border-radius: 20px;
+  display: inline-block;
+  background-color: gray;
+  margin-left: 50px;
+  width: 37%;
+  height: 90px;
+  margin-right: 5%;
+  vertical-align: middle;
+}
+#delete{
+  text-align: center;
+  border-radius: 20px;
+  float: right;
+  display: inline-block;
+  background-color: gray;
+  margin-right: 50px;
+  width: 37%;
+  height: 90%;
+}
+#otherlist{
+  font-size:15pt;
+}
+#otherlist li{
+  padding:10px;
+}
+#otherlist span{
+  background-color: rgb(15, 109, 190);
+  border-radius: 50px;
+  margin-right: 10px;
+}
+.c_todolist >span, div{
+  cursor: pointer;
+}
+
+#n_header{
+  font-size:20pt;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+}
+#n_left_btn,#n_right_btn{
+  cursor: pointer;
+  font-size: 30;
+}
+#n_details{
+  display: none;
+  width: 1000px;
+  height: 800px;
+  position:absolute;
+  top: 100px;
+  left: 25%;
+  background-color: rgb(54, 51, 51);
+}

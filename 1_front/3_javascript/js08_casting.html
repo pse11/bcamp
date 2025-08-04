@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function casting() {
+        //[묵시적 형변환]
+        //문자열과 숫자의 + 연산
+        //문자열 + 숫자 => 문자열
+        //문자열 + 숫자 + 숫자 => 문자열숫자숫자
+        //숫자 + 숫자 + 문자열 => 숫자합문자열
+
+        let val = 7 + 7; //숫자 + 숫자
+        console.log('val: ' + val);
+        val = 7 + '7'; //숫자 + 문자
+        console.log('val: ' + val);
+        val = '7' + 7;
+        console.log('val: ' + val);
+        val = '7' + 7 + 7;
+        console.log('val: ' + val);
+        val = '7' + (7 + 7);
+        console.log('val: ' + val);
+        val = 7 + 7 + '7';
+        console.log('val: ' + val);
+
+        //[명시적 형변환]
+        let str = '10';
+        console.log(str + 10);
+
+        str = Number(str);
+        console.log(str + 10);
+
+        str = '10개';
+        str = Number(str);
+        console.log(str);
+
+        str = '10.02';
+        str = parseInt(str);
+        console.log(str);
+
+        let num = 20;
+        //=> String 타입으로 변경
+        num = String(num);
+        console.log(num + '');
+      }
+    </script>
+  </head>
+  <body>
+    <h2>형변환</h2>
+    <h3 onclick="casting();">
+      묵시적 형변환(자동형변환) and 명시적 형변환(강제형변환)
+    </h3>
+  </body>
+</html>

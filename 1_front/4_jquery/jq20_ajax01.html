@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0px; padding: 0px;}
+        table{width: 400px;}
+        fieldset{width: 400px;}
+        table tr:nth-child(odd){background-color: orange;}
+        body{width:1000px;margin:50px auto;}
+    </style>
+    <script src="js/jquery-3.7.1.min.js"></script> <!--jq가 없으면 ajax 못씀-->
+    <script>
+        $(function(){
+            //사원 입력하고 xml에 데이터 있는 지 확인하고 값을 뿌려준다.
+            $("#emp_search").click(function(){
+                let empid = $("input[name=empid]").val();
+                if(empid.length>2){ //제대로 입력했을때 (3자리 입력)
+                    //데이터 가져오기
+                    $.ajax({
+                        url:"emplist.xml",          //통신할 페이지 주소
+                        method:"get",               //서버에 전송하는 방식 결정
+                        //data:{id:"pse1234"},      //서버에 전송할 데이터
+                        dataType:"xml",             //전송받을 데이터의 타입(xml,json,html...), 위의 data와 다른것이니 주의!
+                        //async:false               //비동기요청인지 동기요청인지 결정, (ajax라는 비동기 통식에 위배하는 처리 방식.)
+                        success:function(data){      //통신에 성공했을 때 실행
+                            let empInfo = $(data).find("EMPLOYEE_ID:contains("+empid+")").parent(); //태그 내의 값을 찾는다. contains : 해당 엘리먼트만 가져온다.
+                            console.log(empInfo);
+
+                            if((empInfo).is("ROW")){ //ROW를 갖고 있다는 건 데이터값이 존재한다는 것이다.
+                                $("table input").each(function(i){  //each를 사용해서 가져온 값들을 뿌려준다.
+                                    $(this).val($(empInfo).children().eq(i).text());
+                                });
+                            }else{
+                                alert("검색대상이 존재하지 않습니다.");
+                            }
+                        },
+                        error:function(){        //통신에 실패했을 때 실행
+                            alert("데이터 로드 실패");
+                        }
+                    });//ajax 괄호안에 객체를 넘겨준다.
+                }else{
+                    alert("사원번호를 제대로 입력해 주세요!");
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+    <!-- 순수 자바스크립트에서는  XMHTTPRequest를 통해서 비동기 통신 사용 가능-->
+    <h1>데이터 가져오기</h1>
+    <fieldset>
+        <legend>사원정보 조회</legend>
+        <input type="text" name="empid">
+        <input type="button" id="emp_search" value="조회">
+    </fieldset>
+    <table>
+        <tr>
+            <th>사원번호</th>
+            <td><input type="text" name="empNum"></td>
+        </tr>
+        <tr>
+            <th>이 름</th>
+            <td><input type="text" name="lastName"></td>
+        </tr>
+        <tr>
+            <th>이 메 일</th>
+            <td><input type="text" name="email"></td>
+        </tr>
+        <tr>
+            <th>전화번호</th>
+            <td><input type="text" name="phone"></td>
+        </tr>
+        <tr>
+            <th>입 사 일</th>
+            <td><input type="text" name="hire"></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #menu{
+            background-color:orange;
+            text-align: right;
+        }
+        a{
+            text-decoration: none;
+            font-size:20px;
+        }
+        .box{
+            border:2px solid red;
+        }
+    </style>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            let $box = $("<div>").addClass("box");
+            //<div class='box'></div>
+            $(".sub_menu:first").wrap($box);
+            
+            $(".sub_menu").click(function(){
+                //box클래스를 가진 div를 벗긴다.
+                $(".sub_menu").each(function(){
+                    if($(this).parent().is(".box")){//this: 선택한 태그들 중에 첫번째부터 마지막까지 훑는데 그때의 태그
+                        $(this).unwrap(".box");
+                    } 
+                });
+                $(this).wrap($box);//this: 클릭이벤트가 발생한 태그(위의 this와 다르다.)
+            });
+            //
+            $("a").wrapInner("<span><span>");
+            //
+        });
+    </script>
+</head>
+<body>
+    <div id="menu">
+        <div class="sub_menu">
+            <a href="#"><span>아침메뉴</span></a>
+        </div>
+        <div class="sub_menu">
+            <a href="#">점심메뉴</a>
+        </div>
+        <div class="sub_menu">
+            <a href="#">저녁메뉴</a>
+        </div>
+        <div class="sub_menu">
+            <a href="#">야식메뉴</a>
+        </div>
+    </div>
+</body>
+</html>

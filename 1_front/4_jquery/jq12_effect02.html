@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main_menu{width:300px; cursor: pointer;}
+        .sub_menu2{cursor:default; display:none;}
+    </style>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $("b").click(function(){
+                //1.숨겨져 있는 ㄴ태그를 slideDown으로 보여지게끔 next()
+                //$(".sub_menu2").slideDown();
+                //2. 클릭한 메뉴를 제외한 나머지 서브메뉴는 다시 숨겨지게끔 추가하자.
+    
+                //3.확인 되는 메뉴를 다시 클릭했을때에는 숨겨지게끔 코드 추가하자.
+                $(this).next().slideToggle();     // li
+                                             //    |
+                                           //  ㅡㅡㅡㅡㅡㅡ
+                                           //  |        |
+                                           //  b       ul
+                //$(this).parent().siblings().find("ul").slideUp();//클릭한 태그를 기준으로 그 외 나머지 
+                
+                JS
+                //보여질때 : 특정 클래스를 태그에 추가.(add())
+                //숨겨질때 : 특정 클래스를 태그에서 삭제.(remove())
+                //hint: 엘리먼트.classList
+                
+                
+            });
+        });
+    </script>
+</head>
+<body>
+    <p>메뉴 만들기</p>
+    <ul type="square" class="main_menu">
+        <li class="sub_menu1">
+            <b>(1)CSS 선택자</b>
+            <ul type="circle" class="sub_menu2">
+                <li>tag로 선택하기</li>
+                <li>id로 선택하기</li>
+                <li>class로 선택하기</li>
+                <li>parent child로 선택하기</li>
+                <li>parent &gt; child로 선택하기</li>
+            </ul>
+        </li>
+        <li class="sub_menu1"><b>(2)속성 선택자</b>
+            <ul type="circle" class="sub_menu2">
+                <li>[attr]</li>
+                <li>[attr=val]</li>
+                <li>[attr*=val]</li> <!--[attr*=val] val를 포함하는지-->
+            </ul>
+        </li>
+        <li class="sub_menu1"><b>(3)폼 선택자</b>
+            <ul type="circle" class="sub_menu2">
+                <li>:input 타입</li>
+            </ul>
+        </li>
+        <li class="sub_menu1"><b>(4)사용자 정의 선택자</b>
+            <ul type="circle" class="sub_menu2">
+                <li>:eq(n)</li> <!--eq(n) : 해당하는 인덱스--> 
+                <li>:first</li>
+                <li>:last</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

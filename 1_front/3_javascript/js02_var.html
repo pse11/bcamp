@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      console.log(test); //var 호이스팅
+      var test = 1;
+      //변수명이 test인 변수에다 숫자 1을 저장(대입)
+      // '=' : 대입연산자
+      console.log(test);
+      test = 10;
+
+      // 변수 선언!
+      // 키워드(var, let, const) 변수명;
+
+      // 변수 선언과 동시에 초기화
+      //키워드 변수명 = 값;
+
+      //console.log(test2);
+      let test2;
+      console.log(test2);
+      test2 = 20;
+
+      const test3 = 3; //상수 값 못바꿈
+      console.log(test3);
+      //test3=30;//에러! 변경 불가 immutable 변수
+
+      {
+        var no = 10;
+        let no2 = 20;
+        const no3 = 30;
+      }
+      console.log(no);
+      //console.log(no2);
+      //console.log(no3);
+
+      //전역변수
+      let variable = 10; //전역변수, 값 유지, 공용으로 사용
+
+      function test01() {
+        variable = variable + 5;
+        console.log(variable);
+      }
+      function test01_1() {
+        variable = variable + 5;
+        console.log(variable);
+        console.log(variable2);
+      }
+
+      function test02() {
+        let variable2 = variable + 100; //지역변수
+        document.getElementById('res01').innerHTML =
+          '<b style="color:red;background:yellow;">' + variable2 + '</b>';
+      }
+
+      function test03() {
+        //문자(String)
+        let variable3 = '문자';
+        console.log(variable3 + ' : ' + typeof variable3);
+
+        //숫자(number)
+        variable3 = 5;
+        console.log(variable3 + ' : ' + typeof variable3);
+        console.log(`${variable3} : ${typeof variable3}`);
+
+        //논리(boolean)
+        variable3 = true;
+        console.log(`${variable3} : ${typeof variable3}`);
+
+        //널(null)
+        variable3 = null;
+        console.log(`${variable3} : ${typeof variable3}`);
+
+        //객체
+        // - 배열
+        variable3 = [1, 2, 3, 4];
+        console.log(`${variable3} : ${typeof variable3}`);
+        // - 객체
+        variable3 = { name: '박상은', age: 19 };
+        console.log(`${variable3} : ${typeof variable3}`);
+
+        //함수
+        //js는 함수도 변수에 저장 가능함
+        variable3 = function () {
+          alert('변수의 타입');
+        };
+        console.log(`${variable3} : ${typeof variable3}`);
+      }
+
+      //
+    </script>
+  </head>
+  <body>
+    <h1>변수 사용</h1>
+    <h3>변수 선언 규칙</h3>
+    <ol>
+      <li>대소문자 구분한다. aA aa</li>
+      <li>영문,&,_로 시작해야 한다.</li>
+      <li>영문,&,_,숫자를 포함하여 생성가능하다.</li>
+      <li>키워드나 예약어를 사용할 수 없다.</li>
+    </ol>
+    <h3>변수의 범위</h3>
+    <ol>
+      <li>
+        전역 변수 : 다른 함수들에서 공용으로 사용할 수 있다.(값 유지)
+        <button onclick="test01();">확인</button>
+      </li>
+      <li>
+        지역 변수 : 함수나 객체 내부에 선언되고 실행이 종료되면 사라진다.
+        <button onclick="test02();">확인</button>
+        <div id="res01"></div>
+      </li>
+    </ol>
+    <h3>변수 선언과 저장</h3>
+    <ol>
+      <li>let,var,const 키워드를 사용하여 변수를 선언한다.</li>
+      <li>
+        변수의 타입은 저장되는 데이터의 타입에 따라 결정된다.
+        <button onclick="test03();">확인</button>
+      </li>
+    </ol>
+
+    <h3>Infinity, NaN</h3>
+    <ol>
+      <li>Infinity:양의 무한대, 0으로 나누었을 떄</li>
+      <li>
+        NaN(Not a Number) : 숫자가 아닌 값
+        <button onclick="test04();">확인</button>
+      </li>
+    </ol>
+    <script>
+      function test04() {
+        const infi = 1 / 0;
+        console.log(infi);
+        const nan = 'String' / 2;
+        console.log(nan);
+      }
+    </script>
+  </body>
+</html>

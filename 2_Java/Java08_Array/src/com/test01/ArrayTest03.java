@@ -1,0 +1,108 @@
+package com.test01;
+
+public class ArrayTest03 {
+	
+	public void prn(int[] arr) {
+		for(int i=0;i<arr.length;i++) {
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+	}
+	public void shallowCopy() {
+		//얕은 복사
+		//주소만 복사해서 가져온다.
+		int[] oriArr = {1,2,3,4,5};
+		int[] cpyArr = oriArr; //복사
+		
+		System.out.println("1.oriArr");
+		prn(oriArr); //1 2 3 4 5
+		System.out.println("2.cpyArr");
+		prn(cpyArr); //1 2 3 4 5
+		
+		//원본 배열에 값 변경
+		oriArr[0]=99;
+		
+		System.out.println("1.oriArr변경 후 ");
+		System.out.println("oriArr");
+		prn(oriArr); //99 2 3 4 5
+		System.out.println("cpyArr");
+		prn(cpyArr); //99 2 3 4 5
+		
+		System.out.println("oriArr의 hashcode: "+oriArr.hashCode());
+		System.out.println("cpyArr의 hashcode: "+cpyArr.hashCode());
+		//참조하는 배열이 같기 때문에 해시코드는 같게 나온다.
+	}
+	public void deepCopy1() {
+		//깊은 복사 - 동일한 새로운 배열 하나 생성하고 값만 복사해 오는 것
+		int[] oriArr = {1,2,3,4,5};
+		int[] cpyArr = new int[5];
+		
+		//for문을 이용하여 값을 1:1로 복사
+		for(int i=0;i<oriArr.length;i++) {
+			cpyArr[i]=oriArr[i];
+		}
+		System.out.println("oriArr");
+		prn(oriArr);
+		System.out.println("cpyArr");
+		prn(cpyArr);
+		
+		System.out.println("------");
+		System.out.println("oriArr 변경 후");
+		oriArr[0]=99;
+		
+		System.out.println("oriArr");
+		prn(oriArr);
+		System.out.println("cpyArr");
+		prn(cpyArr);
+		
+		System.out.println("oriArr의 hashcode: "+oriArr.hashCode());
+		prn(oriArr);
+		System.out.println("cpyArr의 hashcode: "+cpyArr.hashCode());
+		prn(cpyArr);
+		
+	}
+	public void deepCopy2() {
+		//arraycopy()
+		//System에 있는 arraycopy() 활용
+		int[] oArr = {1,2,3,4,5};
+		int[] cArr = new int[10];
+		System.out.println(cArr.hashCode());
+		//arraycopy(src, srcPos, de, dePos, length);
+		//src : 원본배열 srcPos : 복사 시작 위치
+		//de : 카피배열 dePos : 붙여넣기시작 위치
+		//length : 복사될 길이
+		System.arraycopy(oArr,1,cArr,3,3); //(원본배열, 복사시작할인덱스, 복사배열, 붙여넣기를시작할인덱스, 붙여넣을갯수)
+		
+		System.out.println("oArr");
+		prn(oArr); //1 2 3 4 5
+		System.out.println("cArr");
+		prn(cArr); //0 0 0 2 3 4 0 0 0 0
+		
+		System.out.println("oArr의 hashcode: "+oArr.hashCode());
+		prn(oArr);
+		System.out.println("cArr의 hashcode: "+cArr.hashCode());
+		prn(cArr);
+		
+		
+		
+	}
+	public void deepCopy3() {
+		//clone() 이용한 복사
+		int[] oArr = {1,2,3,4,5};
+		int[] cArr = new int[10];
+		System.out.println("cArr의 hashcode: "+cArr.hashCode());
+		
+		//원본 배열을 통째로 복사하여 새로운 배열을 할당한다.
+		cArr = oArr.clone();
+		System.out.println("oArr");
+		prn(oArr); //1 2 3 4 5
+		System.out.println("cArr");
+		prn(cArr); //1 2 3 4 5
+		
+		System.out.println("oArr의 hashcode: "+oArr.hashCode());
+		prn(oArr);
+		System.out.println("cArr의 hashcode: "+cArr.hashCode());
+		prn(cArr);
+		//clone하기 전의 cArr의 해시코드와 clone 한 후의 cArr의 해시코드가 다르다.
+	}
+}

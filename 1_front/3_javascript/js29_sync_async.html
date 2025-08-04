@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    동기와 비동기
+    ex) settimeout
+    1.동기 : 순서대로 하나씩 실행되어 처리되는 방식.
+        test1();
+        test2();
+        test3();
+        ==>1실행->1종료->2실행-> ...
+    
+
+
+    2. 비동기 : 순서대로 처리하지 않는 방식.
+        test1();
+        test2();
+        test3();
+        //통신만한다. -> 화면이 바뀌지 않는다. 대신 서버와의 통신으로 데이터를 다룰때 처리가 가능해진다.
+        aJax (통신을 할때 비동기로 하겠다.)
+        개별적으로 따로 처리가 된다.
+        -->
+        <h1>동기와 비동기</h1>
+        <button onclick="test1();">click</button>
+        <script>
+            function test1(){
+                //동기
+                //순차적으로
+                //console.log("실행1");
+                //console.log("실행2");
+
+                console.log("실행1");
+
+                //일정 시간 후 fn 실행
+                setTimeout(()=>{console.log("실행2")},3000); //매개변수 : 실행할 함수, 시간(밀리세컨) -> 3초
+                //자바는 스레드 기준으로 동작
+                console.log("실행3");
+
+                sum(22,33,(val)=>{console.log("sum: " + val)}); //콜백함수로 넘겨준다.
+            }
+
+            function sum(no1,no2,callback){ 
+                setTimeout(()=>{
+                    const sum = no1+no2;
+                    callback(sum); //합을 구하고 매개변수를 콜백함수에 넘겨 출력한다.
+                },2000);
+            } //첫번째 setTimeout 실행되는 와중에 sum이 실행되기 때문에 동시에 실행되는 것 처럼 보인다.
+            //비동기 방식을 통한 알고리즘 구현 연습해보는것도 좋을 것 같다.
+        </script>
+</body>
+</html>
