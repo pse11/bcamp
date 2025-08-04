@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
- PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
- "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="com.my.reply">
- 	<insert id="insert">
- 		INSERT INTO MLPREPLY VALUES(SEQ_MLPREPLY.NEXTVAL,#{cno},#{id},#{name},#{reply},SYSDATE)
- 	</insert>
- </mapper>

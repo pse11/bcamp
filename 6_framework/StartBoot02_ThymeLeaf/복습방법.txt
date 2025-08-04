@@ -1,6 +1,0 @@
-project : StartBoot02_prac
-간단한 crud작업 구현
-mymember 테이블 이용하여
-게시판 처럼 crud 구현
-
-mapper를 인터페이스로 구현할땐 typealias 설정 안해도됨
