@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mlp.dao.BoardDao;
 import com.mlp.dao.CommentDao;
+import com.mlp.dao.ReplyDao;
 import com.mlp.dto.BoardDto;
 import com.mlp.dto.CommentDto;
+import com.mlp.dto.ReplyDto;
 
 @WebServlet("/board")
 public class BoardController extends HttpServlet {
@@ -26,11 +28,14 @@ public class BoardController extends HttpServlet {
 		
 		BoardDao dao = new BoardDao();
 		CommentDao cdao = new CommentDao();
+		ReplyDao rdao = new ReplyDao();
 		if(command.equals("showfeeds")) {
 			List<BoardDto> list = dao.selectAll();
 			List<CommentDto> clist = cdao.selectAll();
+			List<ReplyDto> rlist = rdao.selectAll();
 			request.setAttribute("list", list);
 			request.setAttribute("clist", clist);
+			request.setAttribute("rlist", rlist);
 			request.setAttribute("commentCount", clist.size());
 			RequestDispatcher dispatch = request.getRequestDispatcher("main.jsp");
 			dispatch.forward(request, response);

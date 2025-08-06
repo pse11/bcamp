@@ -12,15 +12,16 @@ public class MergeSort {
 		System.out.println();
 	}
 	
-	static int[] buff;
+	static int[] buff; //왼쪽 배열을 임시 저장하는 버퍼
 	public static void mergeSort(int[] a, int n) {
 		buff = new int[n];
 		
 		mSort(a,0,n-1);
 	}
+	//mSort : 배열 a의 left~right 범위를 병합 정렬
 	public static void mSort(int[] a, int left, int right) {
 		if(left<right) {
-			int center = (left+right)/2;
+			int center = (left+right)/2;//배열을 반으로 나눌 기준점
 			int p=0;
 			int j=0;
 			int k=left;

@@ -6,4 +6,13 @@
  	<insert id="insert">
  		INSERT INTO MLPREPLY VALUES(SEQ_MLPREPLY.NEXTVAL,#{cno},#{id},#{name},#{reply},SYSDATE)
  	</insert>
+ 	<select id="selectAll" resultType="ReplyDto">
+ 		SELECT * FROM MLPREPLY ORDER BY NO DESC
+ 	</select>
+ 	<update id="update">
+ 		UPDATE MLPREPLY SET REPLY=#{reply} WHERE NO=#{no}
+ 	</update>
+ 	<delete id="delete" parameterType="Integer">
+ 		DELETE FROM MLPREPLY WHERE NO=#{no}
+ 	</delete>
  </mapper>

@@ -21,8 +21,8 @@ public class InsertionSort {
 	
 	public static void insertionSort(int[] a, int n) {
 		for(int i=1;i<n;i++) { // [5,2,3,1] 의 경우 2부터 앞으로 삽입하기 때문에 i=1부터 시작 맨앞의 5는 이미 정렬이 되어있다고 가정
-			int j;
-			int tmp = a[i]; //비교하려하는 원소
+			int j; //타겟 왼쪽의 원소들을 비교하기 위한 커서 역할
+			int tmp = a[i]; //비교하려하는 원소(타겟)
 			for(j=i; j>0 && a[j-1]>tmp;j--) {
 				a[j]=a[j-1]; //앞에 있는 게 더 크니까 뒤로 한칸 미루겠다.
 			}

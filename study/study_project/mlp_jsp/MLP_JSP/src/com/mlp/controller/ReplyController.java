@@ -38,9 +38,32 @@ public class ReplyController extends HttpServlet {
 			dto.setCno(commentno);
 			int res = dao.insert(dto);
 			if(res>0) {
-				response.sendRedirect("main.jsp");
+				response.sendRedirect("board?command=showfeeds");
 			}else {
-				response.sendRedirect("main.jsp");				
+				response.sendRedirect("board?command=showfeeds");				
+			}
+		}else if(command.equals("update")) {
+			String content = request.getParameter("content");
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			ReplyDto dto = new ReplyDto();
+			dto.setReply(content);
+			dto.setNo(no);
+			
+			int res = dao.update(dto);
+			if(res>0) {
+				response.sendRedirect("board?command=showfeeds");
+			}else {
+				response.sendRedirect("board?command=showfeeds");
+			}
+		}else if(command.equals("delete")) {
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			int res = dao.delete(no);
+			if(res>0) {
+				response.sendRedirect("board?command=showfeeds");
+			}else {
+				response.sendRedirect("board?command=showfeeds");
 			}
 		}
 		

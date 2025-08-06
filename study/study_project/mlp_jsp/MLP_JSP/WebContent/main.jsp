@@ -12,7 +12,7 @@
 <script type="text/javascript" src="./main.js"></script>
 <script>
 	function replyForm(commentno,loginno){
-		let div = document.getElementById("reply"+commentno);
+		let div = document.getElementById("replyinput"+commentno);
 		
 		//이미 form이 있으면 중복 생성 방지
 		if(document.getElementById("replyform"+commentno)){
@@ -34,6 +34,14 @@
 		form.innerHTML=str;
 		div.appendChild(form);
 		console.log(str);
+	}
+	function replyUpdateForm(replyno,reply){
+		let replycontent = prompt('답글을 입력해주세요',`${'${reply}'}`);
+		location.href=`reply?command=update&no=${'${replyno}'}&content=${'${replycontent}'}`;
+	}
+	function commentUpdateForm(commentno,comment){
+		let commentContent = prompt('댓글을 입력해주세요',`${'${comment}'}`);
+		location.href=`comment?command=update&no=${'${commentno}'}&content=${'${commentContent}'}`;
 	}
 </script>
 </head>
@@ -172,6 +180,13 @@
 			                    			<c:set var="commentCount" value="${commentCount+1 }"/>
 			                    		</c:if>
 			                    	</c:forEach>
+			                    	<c:forEach items="${rlist }" var="replydto">
+			                    		<c:forEach items="${clist }" var="commentdto">
+			                    		<c:if test="${replydto.cno eq commentdto.no && commentdto.boardno eq boarddto.no}">
+			                    			<c:set var="commentCount" value="${commentCount+1 }"/>
+			                    		</c:if>
+			                    		</c:forEach>
+			                    	</c:forEach>
 			                    	<div class="showcomment">
 		                    			<div class="countcomment">
 			                    			<p>📨</p>
@@ -191,7 +206,7 @@
 			                    						<a class="feedbt" onclick="replyForm('${commentdto.no }','${dto.no }')">답글</a>
 								                        <c:choose>
 								                        	<c:when test="${dto.id eq commentdto.id }">
-								                        		<a class="feedbt" href="comment?command=updateform&no=${commentdto.no }&content=${commentdto.content}" >수정</a>
+								                        		<a class="feedbt" onclick="commentUpdateForm('${commentdto.no }','${commentdto.content}')" >수정</a>
 								                        		<a class="feedbt" href="comment?command=delete&no=${commentdto.no}" >삭제</a>
 								                        	</c:when>
 								                        	<c:otherwise>
@@ -200,7 +215,30 @@
 								                        </c:choose>
 								                        </div>
 			                    					</div>
-			                    					<div class="reply" id="reply${commentdto.no }"></div>
+			                    					<div class="replyinput" id="replyinput${commentdto.no }"></div>
+			                    					<c:forEach items="${rlist }" var="replydto">
+			                    					<c:if test="${commentdto.no eq replydto.cno}">
+				                    					<div class="reply" id="reply${replydto.no }">
+				                    						<span>👤</span>
+				                    						<div class="replywriter">
+				                    							<span><b>${replydto.name }</b></span>
+				                    							<span><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${replydto.cdate }"/></span>
+				                    							<p>${replydto.reply }</p>
+				                    						</div>
+				                    						<div class="replyupdate">
+				                    							<c:choose>
+				                    								<c:when test="${dto.id eq replydto.id}">
+				                    									<a class="feedbt" onclick="replyUpdateForm('${replydto.no}','${replydto.reply }')">수정</a>
+				                    									<a class="feedbt" href="reply?command=delete&no=${replydto.no }">삭제</a>
+				                    								</c:when>
+				                    								<c:otherwise>
+				                    									<a class="feedbt" href="">신고</a>
+				                    								</c:otherwise>
+				                    							</c:choose>
+				                    						</div>
+				                    					</div>
+			                    					</c:if>
+			                    					</c:forEach>
 			                    				</c:if>
 			                    			</c:forEach>
 				                    	</div>

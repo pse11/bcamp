@@ -8,7 +8,7 @@ public class ReplyDto {
 	private String id;
 	private String name;
 	private String reply;
-	private Date rdate;
+	private Date cdate;
 	public ReplyDto() {
 	}
 	
@@ -20,14 +20,14 @@ public class ReplyDto {
 		this.cno = cno;
 	}
 
-	public ReplyDto(int no, int cno, String id, String name, String reply, Date rdate) {
+	public ReplyDto(int no, int cno, String id, String name, String reply, Date cdate) {
 		super();
 		this.no = no;
 		this.cno = cno;
 		this.id = id;
 		this.name = name;
 		this.reply = reply;
-		this.rdate = rdate;
+		this.cdate = cdate;
 	}
 
 	public int getNo() {
@@ -54,11 +54,11 @@ public class ReplyDto {
 	public void setReply(String reply) {
 		this.reply = reply;
 	}
-	public Date getRdate() {
-		return rdate;
+	public Date getCdate() {
+		return cdate;
 	}
-	public void setRdate(Date rdate) {
-		this.rdate = rdate;
+	public void setCdate(Date cdate) {
+		this.cdate = cdate;
 	}
 	
 }
