@@ -1,5 +1,7 @@
-**/.metadata/
+.metadata/
 *.jar
 *.class
 *.classpath
 *.project
+**/target/
+.settings/
